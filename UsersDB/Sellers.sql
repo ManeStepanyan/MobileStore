@@ -8,6 +8,5 @@
     [Password] VARCHAR(25) NOT NULL, 
     [Roles_ID] INT NOT NULL, 
     [Rating] DECIMAL(5, 2) NOT NULL,
-	[QuantityRates] INT NULL, 
     CONSTRAINT [FK_Sellers_ToTableRoles] FOREIGN KEY ([Roles_ID]) REFERENCES [Roles]([Id])
 )
