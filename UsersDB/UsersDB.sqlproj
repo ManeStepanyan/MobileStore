@@ -67,7 +67,8 @@
     <Build Include="Stored Procedures\AddSeller.sql" />
     <Build Include="Stored Procedures\DeleteSeller.sql" />
     <Build Include="Stored Procedures\RateSeller.sql" />
-    <Build Include="Stored Procedures\AddCustomer.sql" />
+    <Build Include="Stored Procedures\GetSellers.sql" />
+    <Build Include="Stored Procedures\GetSellerByID.sql" />
     <Build Include="Stored Procedures\UpdateSeller.sql" />
   </ItemGroup>
   <ItemGroup>
