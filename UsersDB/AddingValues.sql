@@ -9,6 +9,6 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-/* Insert into Roles([Name], [Description]) Values('Admin', 'Manage users, products and orders')
-Insert into Roles([Name], [Description]) Values('Seller', 'Manage products')
-Insert into Roles([Name], [Description]) Values('Customer', 'View and order products') */
+/*Insert into Roles([Name], [Description]) Values('Admin', 'Manage users, products and orders')
+Insert into Roles([Name], [Description]) Values('Seller', 'Manage products') */
+Insert into Roles([Name], [Description]) Values('Customer', 'View and order products')
