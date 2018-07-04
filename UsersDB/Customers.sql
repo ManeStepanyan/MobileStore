@@ -7,7 +7,7 @@ CREATE TABLE [dbo].[Customers]
     [Email] NCHAR(30) NOT NULL, 
     [Login] NCHAR(20) NOT NULL, 
     [Password] NCHAR(30) NOT NULL, 
-    [Status] BIT NOT NULL, 
+    [Status] BIT NULL, 
     [Roles_ID] INT NOT NULL, 
     CONSTRAINT [FK_Customers_ToTableRoles] FOREIGN KEY ([Roles_ID]) REFERENCES [Roles]([Id])
 )
