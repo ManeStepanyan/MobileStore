@@ -1,5 +1,5 @@
 ﻿
-CREATE TABLE [dbo].[Admin]
+CREATE TABLE [dbo].[Admins]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
     [Name] NCHAR(20) NOT NULL, 
