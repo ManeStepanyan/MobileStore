@@ -67,6 +67,7 @@
     <Build Include="Stored Procedures\AddSeller.sql" />
     <Build Include="Stored Procedures\DeleteSeller.sql" />
     <Build Include="Stored Procedures\RateSeller.sql" />
+    <Build Include="Stored Procedures\AddCustomer.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="UsersDB.refactorlog" />
