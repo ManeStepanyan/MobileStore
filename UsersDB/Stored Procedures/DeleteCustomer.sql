@@ -3,4 +3,4 @@
 AS
 	Delete from Customers
 	where Id=@Id
-RETURN 0
+GO
