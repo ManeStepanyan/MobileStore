@@ -1,4 +1,5 @@
-﻿CREATE TABLE [dbo].[Customers]
+﻿
+CREATE TABLE [dbo].[Customers]
 (
 	[Id] INT NOT NULL PRIMARY KEY Identity, 
     [Name] NCHAR(20) NOT NULL, 
@@ -10,3 +11,4 @@
     [Roles_ID] INT NOT NULL, 
     CONSTRAINT [FK_Customers_ToTableRoles] FOREIGN KEY ([Roles_ID]) REFERENCES [Roles]([Id])
 )
+

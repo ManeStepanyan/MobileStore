@@ -59,10 +59,12 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Sellers_1.sql" />
-    <Build Include="Customers_1.sql" />
-    <Build Include="Roles_1.sql" />
-    <Build Include="Admins_1.sql" />
+    <Build Include="Sellers.sql" />
+    <Build Include="Customers.sql" />
+    <Build Include="Roles.sql" />
+    <Build Include="Admins.sql" />
+    <Build Include="AddSeller.sql" />
+    <Build Include="DeleteSeller.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="UsersDB.refactorlog" />
