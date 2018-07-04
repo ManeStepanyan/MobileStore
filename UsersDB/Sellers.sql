@@ -4,7 +4,7 @@
     [Name] VARCHAR(25) NOT NULL, 
     [CellPhone] BIGINT NOT NULL, 
     [Address] VARCHAR(60) NOT NULL, 
-    [Login] VARCHAR(30) NOT NULL, 
+    [Login] VARCHAR(30) NOT NULL Unique, 
     [Password] VARCHAR(25) NOT NULL, 
     [Roles_ID] INT NOT NULL, 
     [Rating] DECIMAL(5, 2) NULL,
