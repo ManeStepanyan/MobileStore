@@ -7,5 +7,5 @@
 	@Roles_ID int
 AS
 	Insert into Sellers(Name, CellPhone, Address, Login, Password,Roles_ID,Rating)
-	Values(@Name,@CellPhone,@Address,@Login,@Password,@Roles_ID,0)
+	Values(@Name,@CellPhone,@Address,@Login,@Password,@Roles_ID,NULL)
 Go
