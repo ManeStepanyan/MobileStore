@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="89a39247f40e4661bc668969ad004718" Name="Diagram1">
+      <Diagram DiagramId="483d59116ef646cb9627cc0a8357b25f" Name="Diagram1">
         <EntityTypeShape EntityType="UsersDBModel.C__RefactorLog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsersDBModel.Admin" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsersDBModel.Customer" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsersDBModel.Role" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsersDBModel.Seller" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsersDBModel.Admins" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsersDBModel.Customers" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsersDBModel.Roles" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsersDBModel.Sellers" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="UsersDBModel.FK_Admins_ToTableRoles" ManuallyRouted="false" />
         <AssociationConnector Association="UsersDBModel.FK_Customers_ToTableRoles" ManuallyRouted="false" />
         <AssociationConnector Association="UsersDBModel.FK_Sellers_ToTableRoles" ManuallyRouted="false" />

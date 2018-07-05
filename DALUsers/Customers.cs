@@ -12,17 +12,17 @@ namespace DALUsers
     using System;
     using System.Collections.Generic;
     
-    public partial class Seller
+    public partial class Customers
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public long CellPhone { get; set; }
-        public string Address { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public bool Status { get; set; }
         public int Roles_ID { get; set; }
-        public Nullable<decimal> Rating { get; set; }
     
-        public virtual Role Role { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }

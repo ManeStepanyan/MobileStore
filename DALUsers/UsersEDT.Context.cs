@@ -15,10 +15,10 @@ namespace DALUsers
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class UsersDBEntities2 : DbContext
+    public partial class UsersDBEntities3 : DbContext
     {
-        public UsersDBEntities2()
-            : base("name=UsersDBEntities2")
+        public UsersDBEntities3()
+            : base("name=UsersDBEntities3")
         {
         }
     
@@ -28,10 +28,10 @@ namespace DALUsers
         }
     
         public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
-        public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Seller> Sellers { get; set; }
+        public virtual DbSet<Admins> Admins { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Sellers> Sellers { get; set; }
     
         public virtual int AddAdmin(string name, string login, string password, Nullable<int> roles_ID)
         {
@@ -83,7 +83,7 @@ namespace DALUsers
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddCustomer", nameParameter, surnameParameter, emailParameter, loginParameter, passwordParameter, roles_IDParameter);
         }
     
-        public virtual int AddSeller(string name, string address, Nullable<long> cellPhone, string login, string password, Nullable<int> roles_ID)
+        public virtual int AddSeller(string name, string address, string cellPhone, string login, string password, Nullable<int> roles_ID)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -93,9 +93,9 @@ namespace DALUsers
                 new ObjectParameter("Address", address) :
                 new ObjectParameter("Address", typeof(string));
     
-            var cellPhoneParameter = cellPhone.HasValue ?
+            var cellPhoneParameter = cellPhone != null ?
                 new ObjectParameter("CellPhone", cellPhone) :
-                new ObjectParameter("CellPhone", typeof(long));
+                new ObjectParameter("CellPhone", typeof(string));
     
             var loginParameter = login != null ?
                 new ObjectParameter("Login", login) :
@@ -162,7 +162,7 @@ namespace DALUsers
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RateSeller", idParameter, rateParameter);
         }
     
-        public virtual int UpdateSeller(string name, string address, Nullable<long> cellPhone, string login, string password)
+        public virtual int UpdateSeller(string name, string address, string cellPhone, string login, string password)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -172,9 +172,9 @@ namespace DALUsers
                 new ObjectParameter("Address", address) :
                 new ObjectParameter("Address", typeof(string));
     
-            var cellPhoneParameter = cellPhone.HasValue ?
+            var cellPhoneParameter = cellPhone != null ?
                 new ObjectParameter("CellPhone", cellPhone) :
-                new ObjectParameter("CellPhone", typeof(long));
+                new ObjectParameter("CellPhone", typeof(string));
     
             var loginParameter = login != null ?
                 new ObjectParameter("Login", login) :

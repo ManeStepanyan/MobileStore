@@ -12,14 +12,14 @@ namespace DALUsers
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public Roles()
         {
-            this.Admins = new HashSet<Admin>();
-            this.Customers = new HashSet<Customer>();
-            this.Sellers = new HashSet<Seller>();
+            this.Admins = new HashSet<Admins>();
+            this.Customers = new HashSet<Customers>();
+            this.Sellers = new HashSet<Sellers>();
         }
     
         public int Id { get; set; }
@@ -27,10 +27,10 @@ namespace DALUsers
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Admin> Admins { get; set; }
+        public virtual ICollection<Admins> Admins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<Customers> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seller> Sellers { get; set; }
+        public virtual ICollection<Sellers> Sellers { get; set; }
     }
 }

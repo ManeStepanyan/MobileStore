@@ -30,7 +30,7 @@
           <Property Name="Surname" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="Email" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="Login" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Roles_ID" Type="int" Nullable="false" />
         </EntityType>
@@ -48,10 +48,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="CellPhone" Type="bigint" Nullable="false" />
+          <Property Name="CellPhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Roles_ID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
@@ -108,7 +108,7 @@
         <Function Name="AddSeller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Name" Type="varchar" Mode="In" />
           <Parameter Name="Address" Type="varchar" Mode="In" />
-          <Parameter Name="CellPhone" Type="bigint" Mode="In" />
+          <Parameter Name="CellPhone" Type="varchar" Mode="In" />
           <Parameter Name="Login" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
           <Parameter Name="Roles_ID" Type="int" Mode="In" />
@@ -131,7 +131,7 @@
         <Function Name="UpdateSeller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Name" Type="varchar" Mode="In" />
           <Parameter Name="Address" Type="varchar" Mode="In" />
-          <Parameter Name="CellPhone" Type="bigint" Mode="In" />
+          <Parameter Name="CellPhone" Type="varchar" Mode="In" />
           <Parameter Name="Login" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
         </Function>
@@ -165,7 +165,7 @@
           </Key>
           <Property Name="OperationKey" Type="Guid" Nullable="false" />
         </EntityType>
-        <EntityType Name="Admin">
+        <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -174,9 +174,9 @@
           <Property Name="Login" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Roles_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Admins_ToTableRoles" FromRole="Admins" ToRole="Roles" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Admins_ToTableRoles" FromRole="Admins" ToRole="Roles" />
         </EntityType>
-        <EntityType Name="Customer">
+        <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -185,12 +185,12 @@
           <Property Name="Surname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Roles_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Customers_ToTableRoles" FromRole="Customers" ToRole="Roles" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Customers_ToTableRoles" FromRole="Customers" ToRole="Roles" />
         </EntityType>
-        <EntityType Name="Role">
+        <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -201,23 +201,23 @@
           <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_ToTableRoles" FromRole="Roles" ToRole="Customers" />
           <NavigationProperty Name="Sellers" Relationship="Self.FK_Sellers_ToTableRoles" FromRole="Roles" ToRole="Sellers" />
         </EntityType>
-        <EntityType Name="Seller">
+        <EntityType Name="Sellers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CellPhone" Type="Int64" Nullable="false" />
+          <Property Name="CellPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Roles_ID" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="Decimal" Precision="5" Scale="2" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Sellers_ToTableRoles" FromRole="Sellers" ToRole="Roles" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Sellers_ToTableRoles" FromRole="Sellers" ToRole="Roles" />
         </EntityType>
         <Association Name="FK_Admins_ToTableRoles">
-          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
-          <End Role="Admins" Type="Self.Admin" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
               <PropertyRef Name="Id" />
@@ -228,8 +228,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Customers_ToTableRoles">
-          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
-          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
               <PropertyRef Name="Id" />
@@ -240,8 +240,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sellers_ToTableRoles">
-          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
-          <End Role="Sellers" Type="Self.Seller" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Sellers" Type="Self.Sellers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
               <PropertyRef Name="Id" />
@@ -251,12 +251,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UsersDBEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="UsersDBEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
-          <EntitySet Name="Admins" EntityType="Self.Admin" />
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Sellers" EntityType="Self.Seller" />
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Sellers" EntityType="Self.Sellers" />
           <AssociationSet Name="FK_Admins_ToTableRoles" Association="Self.FK_Admins_ToTableRoles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Admins" EntitySet="Admins" />
@@ -286,7 +286,7 @@
           <FunctionImport Name="AddSeller">
             <Parameter Name="Name" Mode="In" Type="String" />
             <Parameter Name="Address" Mode="In" Type="String" />
-            <Parameter Name="CellPhone" Mode="In" Type="Int64" />
+            <Parameter Name="CellPhone" Mode="In" Type="String" />
             <Parameter Name="Login" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
             <Parameter Name="Roles_ID" Mode="In" Type="Int32" />
@@ -309,7 +309,7 @@
           <FunctionImport Name="UpdateSeller">
             <Parameter Name="Name" Mode="In" Type="String" />
             <Parameter Name="Address" Mode="In" Type="String" />
-            <Parameter Name="CellPhone" Mode="In" Type="Int64" />
+            <Parameter Name="CellPhone" Mode="In" Type="String" />
             <Parameter Name="Login" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
@@ -320,27 +320,27 @@
           <Property Type="String" Name="Surname" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Login" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
           <Property Type="Boolean" Name="Status" Nullable="false" />
           <Property Type="Int32" Name="Roles_ID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="GetSellerByID_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="25" />
-          <Property Type="Int64" Name="CellPhone" Nullable="false" />
+          <Property Type="String" Name="CellPhone" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Address" Nullable="false" MaxLength="60" />
           <Property Type="String" Name="Login" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Roles_ID" Nullable="false" />
           <Property Type="Decimal" Name="Rating" Nullable="true" Precision="5" Scale="2" />
         </ComplexType>
         <ComplexType Name="GetSellers_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="25" />
-          <Property Type="Int64" Name="CellPhone" Nullable="false" />
+          <Property Type="String" Name="CellPhone" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Address" Nullable="false" MaxLength="60" />
           <Property Type="String" Name="Login" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Roles_ID" Nullable="false" />
           <Property Type="Decimal" Name="Rating" Nullable="true" Precision="5" Scale="2" />
         </ComplexType>
@@ -349,7 +349,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UsersDBModelStoreContainer" CdmEntityContainer="UsersDBEntities2">
+        <EntityContainerMapping StorageEntityContainer="UsersDBModelStoreContainer" CdmEntityContainer="UsersDBEntities3">
           <EntitySetMapping Name="C__RefactorLog">
             <EntityTypeMapping TypeName="UsersDBModel.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">
@@ -358,7 +358,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Admins">
-            <EntityTypeMapping TypeName="UsersDBModel.Admin">
+            <EntityTypeMapping TypeName="UsersDBModel.Admins">
               <MappingFragment StoreEntitySet="Admins">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -369,7 +369,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="UsersDBModel.Customer">
+            <EntityTypeMapping TypeName="UsersDBModel.Customers">
               <MappingFragment StoreEntitySet="Customers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -383,7 +383,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="UsersDBModel.Role">
+            <EntityTypeMapping TypeName="UsersDBModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -392,7 +392,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sellers">
-            <EntityTypeMapping TypeName="UsersDBModel.Seller">
+            <EntityTypeMapping TypeName="UsersDBModel.Sellers">
               <MappingFragment StoreEntitySet="Sellers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -468,7 +468,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

@@ -49,71 +49,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+    <Compile Include="Admins.cs">
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+    <Compile Include="Customers.cs">
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
     <Compile Include="C__RefactorLog.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCustomers_Result.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSellerByID_Result.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSellers_Result.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+    <Compile Include="Roles.cs">
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
-    <Compile Include="Seller.cs">
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+    <Compile Include="Sellers.cs">
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersEDM.Context.cs">
+    <Compile Include="UsersEDT.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsersEDM.Context.tt</DependentUpon>
+      <DependentUpon>UsersEDT.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersEDM.cs">
+    <Compile Include="UsersEDT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsersEDM.tt</DependentUpon>
+      <DependentUpon>UsersEDT.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersEDM.Designer.cs">
+    <Compile Include="UsersEDT.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsersEDM.edmx</DependentUpon>
+      <DependentUpon>UsersEDT.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="UsersEDM.edmx">
+    <EntityDeploy Include="UsersEDT.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UsersEDM.Designer.cs</LastGenOutput>
+      <LastGenOutput>UsersEDT.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="UsersEDM.edmx.diagram">
-      <DependentUpon>UsersEDM.edmx</DependentUpon>
+    <None Include="UsersEDT.edmx.diagram">
+      <DependentUpon>UsersEDT.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="UsersEDM.Context.tt">
+    <Content Include="UsersEDT.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UsersEDM.edmx</DependentUpon>
-      <LastGenOutput>UsersEDM.Context.cs</LastGenOutput>
+      <DependentUpon>UsersEDT.edmx</DependentUpon>
+      <LastGenOutput>UsersEDT.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="UsersEDM.tt">
+    <Content Include="UsersEDT.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UsersEDM.edmx</DependentUpon>
-      <LastGenOutput>UsersEDM.cs</LastGenOutput>
+      <DependentUpon>UsersEDT.edmx</DependentUpon>
+      <LastGenOutput>UsersEDT.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

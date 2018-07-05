@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[AddSeller]
 	@Name varchar(25),
 	@Address varchar(60),
-	@CellPhone bigint,
+	@CellPhone varchar(50),
 	@Login varchar(30),
 	@Password varchar(25),
 	@Roles_ID int
