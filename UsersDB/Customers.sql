@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[Customers]
     [Name] NCHAR(20) NOT NULL, 
     [Surname] NCHAR(30) NOT NULL, 
     [Email] NCHAR(30) NOT NULL Unique, 
-    [Login] NCHAR(20) NOT NULL Unique , 
+    [Login] NCHAR(40) NOT NULL Unique , 
     [Password] NCHAR(50) NOT NULL, 
     [Status] BIT NOT NULL, 
     [Roles_ID] INT NOT NULL, 

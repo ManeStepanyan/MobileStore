@@ -78,6 +78,10 @@
     <Build Include="Stored Procedures\GetCustomerByID.sql" />
     <Build Include="Stored Procedures\UpdateCustomer.sql" />
     <Build Include="Stored Procedures\ChangeStatus.sql" />
+    <Build Include="Stored Procedures\GetRole.sql" />
+    <Build Include="Stored Procedures\GetSellerByName.sql" />
+    <Build Include="Stored Procedures\GetCustomerByName.sql" />
+    <Build Include="Stored Procedures\GetAdminByID.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="UsersDB.refactorlog" />
