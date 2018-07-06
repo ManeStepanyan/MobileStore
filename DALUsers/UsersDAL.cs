@@ -408,13 +408,47 @@ namespace DALUsers
             }
             return sellers;
         }
-        public void UpdateSeller()
+        public void UpdateSeller(string login,string name, string address, string cellphone, string password)
         {
+            using (var connection = new SqlConnection())
+            {
+                connection.ConnectionString = this.connectionString;
+                connection.Open();
 
+                SqlCommand cmd = new SqlCommand(
+                    "UpdateSeller", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Address",address);
+                cmd.Parameters.AddWithValue("@CellPhone",cellphone);
+                cmd.Parameters.AddWithValue("@Login", login);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.ExecuteNonQuery();
+
+            }
         }
-        public void UpdateCustomer()
+        public void UpdateCustomer(string login, string name, string surname, string email, string password)
         {
+            using (var connection = new SqlConnection())
+            {
+                connection.ConnectionString = this.connectionString;
+                connection.Open();
 
+                SqlCommand cmd = new SqlCommand(
+                    "UpdateCustomer", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Surname", surname);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Login", login);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.ExecuteNonQuery();
+
+            }
         }
     }
 }

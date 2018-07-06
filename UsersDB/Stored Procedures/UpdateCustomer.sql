@@ -1,5 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateCustomer]
-    @Id int,
 	@Name varchar(25),
 	@Surname varchar(30),
 	@Email varchar(30),
@@ -8,5 +7,5 @@
 AS
 	Update Customers
 	set [Name]= @Name, [Surname]=@Surname, [Email]=@Email, [Login]=@Login, [Password]=@Password
-	where Id= @Id
+	where [Login]=@Login
 Go
