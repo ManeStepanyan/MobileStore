@@ -74,6 +74,10 @@
     <Build Include="Stored Procedures\GetCustomers.sql" />
     <Build Include="Stored Procedures\AddAdmin.sql" />
     <Build Include="Stored Procedures\DeleteAdmin.sql" />
+    <Build Include="Stored Procedures\DeleteCustomer.sql" />
+    <Build Include="Stored Procedures\GetCustomerByID.sql" />
+    <Build Include="Stored Procedures\UpdateCustomer.sql" />
+    <Build Include="Stored Procedures\ChangeStatus.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="UsersDB.refactorlog" />

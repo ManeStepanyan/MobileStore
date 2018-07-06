@@ -1,6 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[DeleteCustomer]
-	@Id int
+@Id int
 AS
-	Delete from Customers
-	where Id=@Id
-GO
+	delete from Customers where Id=@Id
+Go

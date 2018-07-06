@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F337BBA-D408-42A4-8C64-ACD1A439AE81}</ProjectGuid>
+    <ProjectGuid>{665CF7E9-EC45-426F-BBE8-3FB7423E12F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DALUsers</RootNamespace>
@@ -49,72 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admins.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customers.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="C__RefactorLog.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetCustomers_Result.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetSellerByID_Result.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetSellers_Result.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
+    <Compile Include="UsersDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roles.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sellers.cs">
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsersEDT.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsersEDT.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsersEDT.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsersEDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsersEDT.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsersEDT.edmx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="UsersEDT.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UsersEDT.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="UsersEDT.edmx.diagram">
-      <DependentUpon>UsersEDT.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="UsersEDT.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UsersEDT.edmx</DependentUpon>
-      <LastGenOutput>UsersEDT.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="UsersEDT.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UsersEDT.edmx</DependentUpon>
-      <LastGenOutput>UsersEDT.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

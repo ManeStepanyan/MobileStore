@@ -1,13 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateCustomer]
     @Id int,
-	@Name varchar(30),
-	@Surname varchar(50),
+	@Name varchar(25),
+	@Surname varchar(30),
 	@Email varchar(30),
-	@Login varchar(40),
-	@Password varchar(25),
-	@Roles_ID int
+	@Login varchar(30),
+	@Password varchar(25)
 AS
 	Update Customers
-	set [Name]=@Name, Surname=@Surname, Email=@Email, [Login]=@Login, [Password]=@Password, Roles_ID=@Roles_ID
-	where Id=@Id
-GO
+	set [Name]= @Name, [Surname]=@Surname, [Email]=@Email, [Login]=@Login, [Password]=@Password
+	where Id= @Id
+Go
