@@ -217,13 +217,16 @@ namespace DALUsers
                 cmd.Parameters.AddWithValue("@Id", id);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    customer.Id = (int)reader["Id"];
-                    customer.Name = (string)reader["Name"];
-                    customer.Surname = (string)reader["Surname"];
-                    customer.Login = (string)reader["Login"];
-                    customer.Password = (string)reader["Password"];
-                    customer.Roles_ID = (int)reader["Roles_ID"];
-                    customer.Status = reader.GetBoolean(reader.GetOrdinal("Status"));
+                    while (reader.Read())
+                    {
+                        customer.Id = (int)reader["Id"];
+                        customer.Name = (string)reader["Name"];
+                        customer.Surname = (string)reader["Surname"];
+                        customer.Login = (string)reader["Login"];
+                        customer.Password = (string)reader["Password"];
+                        customer.Roles_ID = (int)reader["Roles_ID"];
+                        customer.Status = reader.GetBoolean(reader.GetOrdinal("Status"));
+                    }
                 }
             }
             customer.CustomerRole = GetRole(customer.Roles_ID);
@@ -245,14 +248,17 @@ namespace DALUsers
                 cmd.Parameters.AddWithValue("@Id", id);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    seller.Id = (int)reader["Id"];
-                    seller.Name = (string)reader["Name"];
-                    seller.Address = (string)reader["Address"];
-                    seller.CellPhone = (string)reader["CellPhone"];
-                    seller.Login = (string)reader["Login"];
-                    seller.Password = (string)reader["Password"];
-                    seller.Roles_ID = (int)reader["Roles_ID"];
-                    seller.Rating = (float)reader["Rating"];
+                    while (reader.Read())
+                    {
+                        seller.Id = (int)reader["Id"];
+                        seller.Name = (string)reader["Name"];
+                        seller.Address = (string)reader["Address"];
+                        seller.CellPhone = (string)reader["CellPhone"];
+                        seller.Login = (string)reader["Login"];
+                        seller.Password = (string)reader["Password"];
+                        seller.Roles_ID = (int)reader["Roles_ID"];
+                        seller.Rating = (float)reader["Rating"];
+                    }
                 }
             }
             seller.SellerRole = GetRole(seller.Roles_ID);
@@ -274,13 +280,16 @@ namespace DALUsers
                 cmd.Parameters.AddWithValue("@Login", login);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    customer.Id = (int)reader["Id"];
-                    customer.Name = (string)reader["Name"];
-                    customer.Surname = (string)reader["Surname"];
-                    customer.Login = (string)reader["Login"];
-                    customer.Password = (string)reader["Password"];
-                    customer.Roles_ID = (int)reader["Roles_ID"];
-                    customer.Status = reader.GetBoolean(reader.GetOrdinal("Status"));
+                    while (reader.Read())
+                    {
+                        customer.Id = (int)reader["Id"];
+                        customer.Name = (string)reader["Name"];
+                        customer.Surname = (string)reader["Surname"];
+                        customer.Login = (string)reader["Login"];
+                        customer.Password = (string)reader["Password"];
+                        customer.Roles_ID = (int)reader["Roles_ID"];
+                        customer.Status = reader.GetBoolean(reader.GetOrdinal("Status"));
+                    }
                 }
             }
             customer.CustomerRole = GetRole(customer.Roles_ID);
@@ -302,14 +311,17 @@ namespace DALUsers
                 cmd.Parameters.AddWithValue("@Login", login);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    seller.Id = (int)reader["Id"];
-                    seller.Name = (string)reader["Name"];
-                    seller.Address = (string)reader["Address"];
-                    seller.CellPhone = (string)reader["CellPhone"];
-                    seller.Login = (string)reader["Login"];
-                    seller.Password = (string)reader["Password"];
-                    seller.Roles_ID = (int)reader["Roles_ID"];
-                    seller.Rating = (float)reader["Rating"];
+                    while (reader.Read())
+                    {
+                        seller.Id = (int)reader["Id"];
+                        seller.Name = (string)reader["Name"];
+                        seller.Address = (string)reader["Address"];
+                        seller.CellPhone = (string)reader["CellPhone"];
+                        seller.Login = (string)reader["Login"];
+                        seller.Password = (string)reader["Password"];
+                        seller.Roles_ID = (int)reader["Roles_ID"];
+                        seller.Rating = (float)reader["Rating"];
+                    }
                 }
             }
             seller.SellerRole = GetRole(seller.Roles_ID);
@@ -395,6 +407,14 @@ namespace DALUsers
                 }
             }
             return sellers;
+        }
+        public void UpdateSeller()
+        {
+
+        }
+        public void UpdateCustomer()
+        {
+
         }
     }
 }
