@@ -12,10 +12,12 @@ namespace DALUsers
     public class UsersDAL
     {
         private readonly string connectionString;
+
         public UsersDAL()
         {
             this.connectionString = ConfigurationManager.ConnectionStrings["UsersConnectionString"].ConnectionString;
         }
+
         public void AddAdmin(string name, string login, string password, int roles_id)
         {
             using (var connection = new SqlConnection())
@@ -36,6 +38,7 @@ namespace DALUsers
 
             }
         }
+
         public void AddCustomer(string name, string surname, string email, string login, string password, int roles_id)
         {
             using (var connection = new SqlConnection())
@@ -58,6 +61,7 @@ namespace DALUsers
 
             }
         }
+
         public void AddSeller(string name, string address, string cellphone, string login, string password, int roles_id)
         {
             using (var connection = new SqlConnection())
@@ -80,6 +84,7 @@ namespace DALUsers
 
             }
         }
+
         public void DeleteAdmin(int id)
         {
             using (var connection = new SqlConnection())
@@ -96,6 +101,7 @@ namespace DALUsers
                 cmd.ExecuteNonQuery();
             }
         }
+
         public void DeleteCustomer(int id)
         {
             using (var connection = new SqlConnection())
@@ -112,6 +118,7 @@ namespace DALUsers
                 cmd.ExecuteNonQuery();
             }
         }
+
         public void DeleteSeller(int id)
         {
             using (var connection = new SqlConnection())
@@ -128,6 +135,7 @@ namespace DALUsers
                 cmd.ExecuteNonQuery();
             }
         }
+
         public void ChangeStatus(int id, bool b)
         {
             using (var connection = new SqlConnection())
@@ -146,6 +154,7 @@ namespace DALUsers
 
             }
         }
+
         public Admin GetAdminByID(int id)
         {
             Admin admin = new Admin();
@@ -175,6 +184,7 @@ namespace DALUsers
             }
             return admin;
         }
+
         public Role GetRole(int id)
         {
             Role role = new Role();
@@ -201,6 +211,7 @@ namespace DALUsers
             }
             return role;
         }
+
         public Customer GetCustomerByID(int id)
         {
             Customer customer = new Customer();
@@ -232,6 +243,7 @@ namespace DALUsers
             customer.CustomerRole = GetRole(customer.Roles_ID);
             return customer;
         }
+
         public Seller GetSellerByID(int id)
         {
             Seller seller = new Seller();
@@ -327,6 +339,7 @@ namespace DALUsers
             seller.SellerRole = GetRole(seller.Roles_ID);
             return seller;
         }
+
         public void RateSeller(float rating)
         {
             using (var connection = new SqlConnection())
@@ -344,7 +357,8 @@ namespace DALUsers
 
             }
         }
-        public List<Customer> GetCustomers()
+
+        public IEnumerable<Customer> GetCustomers()
         {
             List<Customer> customers = new List<Customer>();
             using (var connection = new SqlConnection())
@@ -376,7 +390,8 @@ namespace DALUsers
             }
             return customers;
         }
-        public List<Seller> GetSellers()
+
+        public IEnumerable<Seller> GetSellers()
         {
             List<Seller> sellers = new List<Seller>();
             using (var connection = new SqlConnection())
@@ -408,7 +423,8 @@ namespace DALUsers
             }
             return sellers;
         }
-        public void UpdateSeller(string login,string name, string address, string cellphone, string password)
+
+        public void UpdateSeller(string login, string name, string address, string cellphone, string password)
         {
             using (var connection = new SqlConnection())
             {
@@ -429,6 +445,7 @@ namespace DALUsers
 
             }
         }
+
         public void UpdateCustomer(string login, string name, string surname, string email, string password)
         {
             using (var connection = new SqlConnection())
