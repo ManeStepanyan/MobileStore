@@ -437,8 +437,8 @@ namespace DALUsers
                     CommandType = CommandType.StoredProcedure
                 };
                 cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Address",address);
-                cmd.Parameters.AddWithValue("@CellPhone",cellphone);
+                cmd.Parameters.AddWithValue("@Address", address);
+                cmd.Parameters.AddWithValue("@CellPhone", cellphone);
                 cmd.Parameters.AddWithValue("@Login", login);
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.ExecuteNonQuery();
@@ -466,6 +466,47 @@ namespace DALUsers
                 cmd.ExecuteNonQuery();
 
             }
+        }
+        public bool LoginExistsCustomer(string login)
+        {
+            int x = 0;
+            using (var connection = new SqlConnection())
+            {
+                connection.ConnectionString = this.connectionString;
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand(
+                    "LoginExistsCustomer", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Login", login);
+                x = (int)cmd.ExecuteScalar();
+                if (x == 2) return false;
+
+            }
+            return true;
+        }
+
+        public bool LoginExistsSeller(string login)
+        {
+            int x = 0;
+            using (var connection = new SqlConnection())
+            {
+                connection.ConnectionString = this.connectionString;
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand(
+                    "LoginExistsSeller", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Login", login);
+                x = (int)cmd.ExecuteScalar();
+                if (x == 2) return false;
+
+            }
+            return true;
         }
     }
 }

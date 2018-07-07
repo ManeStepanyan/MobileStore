@@ -82,6 +82,8 @@
     <Build Include="Stored Procedures\GetSellerByName.sql" />
     <Build Include="Stored Procedures\GetCustomerByName.sql" />
     <Build Include="Stored Procedures\GetAdminByID.sql" />
+    <Build Include="LoginExistsSeller.sql" />
+    <Build Include="Stored Procedures\LoginExistsCustomer.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="UsersDB.refactorlog" />
