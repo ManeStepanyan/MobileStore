@@ -522,9 +522,10 @@ namespace DALUsers
                 };
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Login",login);
+                cmd.Parameters.AddWithValue("@Login", login);
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.ExecuteNonQuery();
             }
+        }
     }
 }
