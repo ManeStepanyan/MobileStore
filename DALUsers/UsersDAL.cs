@@ -25,7 +25,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "AddAdmin", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -46,7 +46,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "AddCustomer", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -69,7 +69,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "AddCustomer", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -92,7 +92,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "DeleteAdmin", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -109,7 +109,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "DeleteCustomer", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -126,7 +126,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "DeleteSeller", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -143,7 +143,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "ChangeStatus", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -157,13 +157,13 @@ namespace DALUsers
 
         public Admin GetAdminByID(int id)
         {
-            Admin admin = new Admin();
+            var admin = new Admin();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetAdminByID", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -187,13 +187,13 @@ namespace DALUsers
 
         public Role GetRole(int id)
         {
-            Role role = new Role();
+            var role = new Role();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetRole", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -214,13 +214,13 @@ namespace DALUsers
 
         public Customer GetCustomerByID(int id)
         {
-            Customer customer = new Customer();
+            var customer = new Customer();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetCustomerByID", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -246,13 +246,13 @@ namespace DALUsers
 
         public Seller GetSellerByID(int id)
         {
-            Seller seller = new Seller();
+            var seller = new Seller();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetSellerByID", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -278,13 +278,13 @@ namespace DALUsers
         }
         public Customer GetCustomerByName(string login)
         {
-            Customer customer = new Customer();
+            var customer = new Customer();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetCustomerByName", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -309,13 +309,13 @@ namespace DALUsers
         }
         public Seller GetSellerByName(string login)
         {
-            Seller seller = new Seller();
+            var seller = new Seller();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetSellerByName", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -347,7 +347,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "RateSeller", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -360,13 +360,13 @@ namespace DALUsers
 
         public IEnumerable<Customer> GetCustomers()
         {
-            List<Customer> customers = new List<Customer>();
+            var customers = new List<Customer>();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetCustomers", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -393,12 +393,12 @@ namespace DALUsers
 
         public IEnumerable<Seller> GetSellers()
         {
-            List<Seller> sellers = new List<Seller>();
+            var sellers = new List<Seller>();
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "GetSellers", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -407,7 +407,7 @@ namespace DALUsers
                 {
                     while (reader.Read())
                     {
-                        Seller seller = new Seller();
+                        var seller = new Seller();
                         seller.Id = (int)reader["Id"];
                         seller.Name = (string)reader["Name"];
                         seller.Address = (string)reader["Address"];
@@ -431,7 +431,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "UpdateSeller", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -453,7 +453,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "UpdateCustomer", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -475,7 +475,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "LoginExistsCustomer", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -496,7 +496,7 @@ namespace DALUsers
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "LoginExistsSeller", connection)
                 {
                     CommandType = CommandType.StoredProcedure
@@ -508,23 +508,25 @@ namespace DALUsers
             }
             return true;
         }
-        public void UpdateAdmin(int id, int name, int login, int password)
+
+        public void UpdateAdmin(int id, string name, string login, string password)
         {
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = this.connectionString;
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                var cmd = new SqlCommand(
                     "UpdateAdmin", connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Login",login);
+                cmd.Parameters.AddWithValue("@Login", login);
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.ExecuteNonQuery();
             }
+        }
     }
 }

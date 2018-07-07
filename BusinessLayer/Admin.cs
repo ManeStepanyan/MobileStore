@@ -12,6 +12,7 @@ namespace BusinessLayer
         {
             this.Roles_ID = 1;
         }
+
         public Admin(int? id, string Name, string Password, string Login) : 
             base(id, Name, Password, Login)
         {
