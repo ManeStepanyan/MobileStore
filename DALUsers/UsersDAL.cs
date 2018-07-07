@@ -508,5 +508,23 @@ namespace DALUsers
             }
             return true;
         }
+        public void UpdateAdmin(int id, int name, int login, int password)
+        {
+            using (var connection = new SqlConnection())
+            {
+                connection.ConnectionString = this.connectionString;
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand(
+                    "UpdateAdmin", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Login",login);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.ExecuteNonQuery();
+            }
     }
 }

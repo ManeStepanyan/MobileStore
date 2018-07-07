@@ -84,6 +84,7 @@
     <Build Include="Stored Procedures\GetAdminByID.sql" />
     <Build Include="LoginExistsSeller.sql" />
     <Build Include="Stored Procedures\LoginExistsCustomer.sql" />
+    <Build Include="UpdateAdmin.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="UsersDB.refactorlog" />
