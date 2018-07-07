@@ -49,9 +49,9 @@
     <Compile Include="Sellers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Criptografia\Criptografia.csproj">
+    <ProjectReference Include="..\Criptografia\Cryptography.csproj">
       <Project>{891a87d0-e6fd-4005-b0e4-50813115c0c9}</Project>
-      <Name>Criptografia</Name>
+      <Name>Cryptography</Name>
     </ProjectReference>
     <ProjectReference Include="..\DALUsers\DALUsers.csproj">
       <Project>{dcf4c5bc-0607-4967-8ea1-f5f405cfbfb4}</Project>

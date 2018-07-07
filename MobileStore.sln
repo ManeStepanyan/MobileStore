@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALUsers", "DALUsers\DALUse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{344E776B-59F7-4435-8141-3570161C04E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapper", "Mapper\Mapper.csproj", "{FF204D0D-9705-4C4C-A8C6-70F882D8411C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mapper", "Mapper\Mapper.csproj", "{FF204D0D-9705-4C4C-A8C6-70F882D8411C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Criptografia", "Criptografia\Criptografia.csproj", "{891A87D0-E6FD-4005-B0E4-50813115C0C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography", "Criptografia\Cryptography.csproj", "{891A87D0-E6FD-4005-B0E4-50813115C0C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBL", "TestBL\TestBL.csproj", "{7A747660-E77F-46AC-AB73-5D9EBA72F59B}"
 EndProject

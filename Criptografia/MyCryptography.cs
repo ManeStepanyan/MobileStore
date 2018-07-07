@@ -5,7 +5,7 @@ using System.IO;
 
 namespace BusinessLayer
 {
-    public static class Criptografia
+    public static class MyCryptography
     {
         public static string Encrypt(this string str)
         {
