@@ -2,3 +2,4 @@
 AS
 	Select * from Customers
 GO
+

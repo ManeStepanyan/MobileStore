@@ -70,7 +70,7 @@ namespace DALUsers
                 connection.Open();
 
                 var cmd = new SqlCommand(
-                    "AddCustomer", connection)
+                    "AddSeller", connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
