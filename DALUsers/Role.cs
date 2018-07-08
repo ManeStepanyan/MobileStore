@@ -8,7 +8,7 @@ namespace DALUsers
 {
     public class Role
     {
-        public int RoleId { get; set; }
+        public int RoleID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public ICollection<Seller> Sellers { get; set; }

@@ -43,7 +43,7 @@ namespace BLDALMapper
                .ForMember("Login", opt => opt.MapFrom(src => src.Login))).CreateMapper();
 
             RoleMapper = new MapperConfiguration(cfg => cfg.CreateMap<Role, DALUsers.Role>()
-               .ForMember("Id", opt => opt.MapFrom(c => c.RoleId))
+               .ForMember("RoleID", opt => opt.MapFrom(c => c.RoleID))
                .ForMember("Name", opt => opt.MapFrom(src => src.Name))
                .ForMember("Description", opt => opt.MapFrom(src => src.Description))).CreateMapper();
         }
