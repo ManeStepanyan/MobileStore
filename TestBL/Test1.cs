@@ -14,14 +14,14 @@ namespace TestBL
             int couunt = 20;
             var bl = new UsersRepository();
             var list = new List<Seller>();
-            for (var i = 1; i < couunt; ++i)
+            for (var i = 0; i < couunt; ++i)
             {
                 var seller = new Seller(null, $"name{i}", $"{i}{i}{i}", $"login{i}", $"{i}{i}{i}{i}{i}", $"{i}{i}{i}{i}{i}", i * 10);
                 list.Add(seller);
                 bl.SellerSignUp(seller);
             }
 
-            var AllSellers = new List<Seller>(bl.GetAllSellers());
+            var AllSellers = new List<Seller>(bl.GetAllSellers());            
             bool pass = true;
             for (var i = 0; i < couunt; ++i)
             {
@@ -29,7 +29,8 @@ namespace TestBL
                     list[i].Password != AllSellers[i].Password.Decrypt() ||
                     list[i].Login != AllSellers[i].Login ||
                     list[i].CellPhone != AllSellers[i].CellPhone ||
-                    list[i].Roles_ID != AllSellers[i].Roles_ID)
+                    list[i].Roles_ID != AllSellers[i].Roles_ID) 
+                    
                 {
                     pass = false;
                 }
@@ -46,7 +47,7 @@ namespace TestBL
             pass = true;
             for(var i = 0; i <  couunt; ++i)
             {
-                var seller = bl.GetSeller($"name{i}");
+                var seller = bl.GetSeller($"login{i}");
                 if (list[i].Name != seller.Name ||
                     list[i].Password != seller.Password.Decrypt() ||
                     list[i].Login != seller.Login ||
