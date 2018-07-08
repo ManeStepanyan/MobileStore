@@ -44,7 +44,7 @@ namespace BusinessLayer
             Mapper.Initialize(cfg => cfg.CreateMap<Role, DALUsers.Role>()
                 .ForMember("Id", opt => opt.MapFrom(c => c.Id))
                 .ForMember("Name", opt => opt.MapFrom(src => src.Name))
-                .ForMember("Description", opt => opt.MapFrom(src => src.Description)));
+                .ForMember("Description", opt => opt.MapFrom(src => src.Description))); 
         }
 
         public bool SellerSignUp(Seller seller)

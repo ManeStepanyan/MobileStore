@@ -16,7 +16,7 @@ namespace DALUsers
         public string Password { get; set; }
         public Role SellerRole { get; set; }
         public int Roles_ID { get; set; }
-        public float Rating { get; set; }
+        public decimal Rating { get; set; }
 
     }
 }

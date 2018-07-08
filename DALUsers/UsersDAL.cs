@@ -269,7 +269,10 @@ namespace DALUsers
                         seller.Login = (string)reader["Login"];
                         seller.Password = (string)reader["Password"];
                         seller.Roles_ID = (int)reader["Roles_ID"];
-                        seller.Rating = (float)reader["Rating"];
+                        if (!Convert.IsDBNull(reader["Rating"]))
+                        {
+                            seller.Rating = Convert.ToDecimal(reader["Rating"]);
+                        }
                     }
                 }
             }
@@ -332,201 +335,208 @@ namespace DALUsers
                         seller.Login = (string)reader["Login"];
                         seller.Password = (string)reader["Password"];
                         seller.Roles_ID = (int)reader["Roles_ID"];
-                        seller.Rating = (float)reader["Rating"];
-                    }
-                }
-            }
-            seller.SellerRole = GetRole(seller.Roles_ID);
-            return seller;
-        }
-
-        public void RateSeller(float rating)
-        {
-            using (var connection = new SqlConnection())
-            {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-
-                var cmd = new SqlCommand(
-                    "RateSeller", connection)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@Rate", rating);
-                cmd.ExecuteNonQuery();
-
-            }
-        }
-
-        public IEnumerable<Customer> GetCustomers()
-        {
-            var customers = new List<Customer>();
-            using (var connection = new SqlConnection())
-            {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-
-                var cmd = new SqlCommand(
-                    "GetCustomers", connection)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Customer customer = new Customer();
-                        customer.Id = (int)reader["Id"];
-                        customer.Name = (string)reader["Name"];
-                        customer.Surname = (string)reader["Surname"];
-                        customer.Login = (string)reader["Login"];
-                        customer.Password = (string)reader["Password"];
-                        customer.Roles_ID = (int)reader["Roles_ID"];
-                        customer.Status = reader.GetBoolean(reader.GetOrdinal("Status"));
-                        customer.CustomerRole = GetRole(customer.Roles_ID);
-                        customers.Add(customer);
-                    }
-                }
-            }
-            return customers;
-        }
-
-        public IEnumerable<Seller> GetSellers()
-        {
-            var sellers = new List<Seller>();
-            using (var connection = new SqlConnection())
-            {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-                var cmd = new SqlCommand(
-                    "GetSellers", connection)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var seller = new Seller();
-                        seller.Id = (int)reader["Id"];
-                        seller.Name = (string)reader["Name"];
-                        seller.Address = (string)reader["Address"];
-                        seller.CellPhone = (string)reader["CellPhone"];
-                        seller.Login = (string)reader["Login"];
-                        seller.Password = (string)reader["Password"];
-                        seller.Roles_ID = (int)reader["Roles_ID"];
-                        seller.Rating = (float)reader["Rating"];
+                        if (!Convert.IsDBNull(reader["Rating"]))
+                        {
+                            {
+                                seller.Rating = Convert.ToDecimal(reader["Rating"]);
+                            }
+                        }
                         seller.SellerRole = GetRole(seller.Roles_ID);
-                        sellers.Add(seller);
                     }
                 }
-            }
-            return sellers;
+                               
+            } return seller;
         }
-
-        public void UpdateSeller(string login, string name, string address, string cellphone, string password)
-        {
-            using (var connection = new SqlConnection())
+            public void RateSeller(decimal rating)
             {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-
-                var cmd = new SqlCommand(
-                    "UpdateSeller", connection)
+                using (var connection = new SqlConnection())
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Address", address);
-                cmd.Parameters.AddWithValue("@CellPhone", cellphone);
-                cmd.Parameters.AddWithValue("@Login", login);
-                cmd.Parameters.AddWithValue("@Password", password);
-                cmd.ExecuteNonQuery();
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
 
+                    var cmd = new SqlCommand(
+                        "RateSeller", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@Rate", rating);
+                    cmd.ExecuteNonQuery();
+
+                }
             }
-        }
 
-        public void UpdateCustomer(string login, string name, string surname, string email, string password)
-        {
-            using (var connection = new SqlConnection())
+            public IEnumerable<Customer> GetCustomers()
             {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-
-                var cmd = new SqlCommand(
-                    "UpdateCustomer", connection)
+                var customers = new List<Customer>();
+                using (var connection = new SqlConnection())
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Surname", surname);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Login", login);
-                cmd.Parameters.AddWithValue("@Password", password);
-                cmd.ExecuteNonQuery();
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
 
+                    var cmd = new SqlCommand(
+                        "GetCustomers", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Customer customer = new Customer();
+                            customer.Id = (int)reader["Id"];
+                            customer.Name = (string)reader["Name"];
+                            customer.Surname = (string)reader["Surname"];
+                            customer.Login = (string)reader["Login"];
+                            customer.Password = (string)reader["Password"];
+                            customer.Roles_ID = (int)reader["Roles_ID"];
+                            customer.Status = reader.GetBoolean(reader.GetOrdinal("Status"));
+                            customer.CustomerRole = GetRole(customer.Roles_ID);
+                            customers.Add(customer);
+                        }
+                    }
+                }
+                return customers;
             }
-        }
-        public bool LoginExistsCustomer(string login)
-        {
-            int x = 0;
-            using (var connection = new SqlConnection())
+
+            public IEnumerable<Seller> GetSellers()
             {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-
-                var cmd = new SqlCommand(
-                    "LoginExistsCustomer", connection)
+                var sellers = new List<Seller>();
+                using (var connection = new SqlConnection())
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@Login", login);
-                x = (int)cmd.ExecuteScalar();
-                if (x == 2) return false;
-
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
+                    var cmd = new SqlCommand(
+                        "GetSellers", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var seller = new Seller();
+                            seller.Id = (int)reader["Id"];
+                            seller.Name = (string)reader["Name"];
+                            seller.Address = (string)reader["Address"];
+                            seller.CellPhone = (string)reader["CellPhone"];
+                            seller.Login = (string)reader["Login"];
+                            seller.Password = (string)reader["Password"];
+                            seller.Roles_ID = (int)reader["Roles_ID"];
+                            if (!Convert.IsDBNull(reader["Rating"]))
+                            {
+                                seller.Rating = Convert.ToDecimal(reader["Rating"]);
+                            }
+                            seller.SellerRole = GetRole(seller.Roles_ID);
+                            sellers.Add(seller);
+                        }
+                    }
+                }
+                return sellers;
             }
-            return true;
-        }
 
-        public bool LoginExistsSeller(string login)
-        {
-            int x = 0;
-            using (var connection = new SqlConnection())
+            public void UpdateSeller(string login, string name, string address, string cellphone, string password)
             {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-
-                var cmd = new SqlCommand(
-                    "LoginExistsSeller", connection)
+                using (var connection = new SqlConnection())
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@Login", login);
-                x = (int)cmd.ExecuteScalar();
-                if (x == 2) return false;
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
 
+                    var cmd = new SqlCommand(
+                        "UpdateSeller", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    cmd.Parameters.AddWithValue("@Address", address);
+                    cmd.Parameters.AddWithValue("@CellPhone", cellphone);
+                    cmd.Parameters.AddWithValue("@Login", login);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.ExecuteNonQuery();
+
+                }
             }
-            return true;
-        }
 
-        public void UpdateAdmin(int id, string name, string login, string password)
-        {
-            using (var connection = new SqlConnection())
+            public void UpdateCustomer(string login, string name, string surname, string email, string password)
             {
-                connection.ConnectionString = this.connectionString;
-                connection.Open();
-
-                var cmd = new SqlCommand(
-                    "UpdateAdmin", connection)
+                using (var connection = new SqlConnection())
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Login", login);
-                cmd.Parameters.AddWithValue("@Password", password);
-                cmd.ExecuteNonQuery();
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
+
+                    var cmd = new SqlCommand(
+                        "UpdateCustomer", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    cmd.Parameters.AddWithValue("@Surname", surname);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Login", login);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+            public bool LoginExistsCustomer(string login)
+            {
+                int x = 0;
+                using (var connection = new SqlConnection())
+                {
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
+
+                    var cmd = new SqlCommand(
+                        "LoginExistsCustomer", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@Login", login);
+                    x = (int)cmd.ExecuteScalar();
+                    if (x == 2) return false;
+
+                }
+                return true;
+            }
+
+            public bool LoginExistsSeller(string login)
+            {
+                int x = 0;
+                using (var connection = new SqlConnection())
+                {
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
+
+                    var cmd = new SqlCommand(
+                        "LoginExistsSeller", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@Login", login);
+                    x = (int)cmd.ExecuteScalar();
+                    if (x == 2) return false;
+
+                }
+                return true;
+            }
+
+            public void UpdateAdmin(int id, string name, string login, string password)
+            {
+                using (var connection = new SqlConnection())
+                {
+                    connection.ConnectionString = this.connectionString;
+                    connection.Open();
+
+                    var cmd = new SqlCommand(
+                        "UpdateAdmin", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    cmd.Parameters.AddWithValue("@Login", login);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }
-}
