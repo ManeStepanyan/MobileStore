@@ -2,53 +2,19 @@
 using System.Linq;
 using DALUsers;
 using AutoMapper;
+using BLDALMapper;
 
 namespace BusinessLayer
 {
     public class UsersRepository
     {
-        public UsersDAL DAL { get; }
-        IMapper mapper1;
-        IMapper mapper2;
-        IMapper mapper3;
-        IMapper mapper4;
+        private UsersDAL dal;
+
+        public object Map { get; private set; }
 
         public UsersRepository()
         {
-            this.DAL = new UsersDAL();
-
-
-             mapper1 = new MapperConfiguration(cfg => cfg.CreateMap<Seller, DALUsers.Seller>()
-                .ForMember("Id", opt => opt.MapFrom(c => c.Id))
-                .ForMember("Name", opt => opt.MapFrom(src => src.Name))
-                .ForMember("Password", opt => opt.MapFrom(src => src.Password))
-                .ForMember("Roles_ID", opt => opt.MapFrom(src => src.Roles_ID))
-                .ForMember("Login", opt => opt.MapFrom(src => src.Login))
-                .ForMember("CellPhone", opt => opt.MapFrom(src => src.CellPhone))
-                .ForMember("Address", opt => opt.MapFrom(src => src.Address))
-                .ForMember("Rating", opt => opt.MapFrom(src => src.Rating))).CreateMapper();
-
-             mapper2 = new MapperConfiguration(cfg => cfg.CreateMap<Customer, DALUsers.Customer>()
-                .ForMember("Id", opt => opt.MapFrom(c => c.Id))
-                .ForMember("Name", opt => opt.MapFrom(src => src.Name))
-                .ForMember("Password", opt => opt.MapFrom(src => src.Password))
-                .ForMember("Roles_ID", opt => opt.MapFrom(src => src.Roles_ID))
-                .ForMember("Login", opt => opt.MapFrom(src => src.Login))
-                .ForMember("Surname", opt => opt.MapFrom(src => src.Surname))
-                .ForMember("Email", opt => opt.MapFrom(src => src.Email))
-                .ForMember("Status", opt => opt.MapFrom(src => src.Status))).CreateMapper();
-
-             mapper3 = new MapperConfiguration(cfg => cfg.CreateMap<Admin, DALUsers.Admin>()
-                .ForMember("Id", opt => opt.MapFrom(c => c.Id))
-                .ForMember("Name", opt => opt.MapFrom(src => src.Name))
-                .ForMember("Password", opt => opt.MapFrom(src => src.Password))
-                .ForMember("Roles_ID", opt => opt.MapFrom(src => src.Roles_ID))
-                .ForMember("Login", opt => opt.MapFrom(src => src.Login))).CreateMapper();
-
-             mapper4 = new MapperConfiguration(cfg => cfg.CreateMap<Role, DALUsers.Role>()
-                .ForMember("Id", opt => opt.MapFrom(c => c.Id))
-                .ForMember("Name", opt => opt.MapFrom(src => src.Name))
-                .ForMember("Description", opt => opt.MapFrom(src => src.Description))).CreateMapper(); 
+            this.dal = new UsersDAL();
         }
 
         public bool SellerSignUp(Seller seller)
@@ -58,7 +24,7 @@ namespace BusinessLayer
                 return false;
             }
 
-            this.DAL.AddSeller(
+            this.dal.AddSeller(
                 seller.Name,
                 seller.Address,
                 seller.CellPhone,
@@ -71,7 +37,7 @@ namespace BusinessLayer
 
         public bool SellerDelete(int id)
         {
-            this.DAL.DeleteSeller(id);
+            this.dal.DeleteSeller(id);
             ///Ստեղ կարելա քեշավորել ու պահել որոշակի ժամկետով անվտանգության նկատառումներով
             return true;
         }
@@ -83,7 +49,7 @@ namespace BusinessLayer
                 return false;
             }
 
-            this.DAL.UpdateSeller(seller.Login,
+            this.dal.UpdateSeller(seller.Login,
                 seller.Name,
                 seller.Address, 
                 seller.CellPhone, 
@@ -93,28 +59,22 @@ namespace BusinessLayer
 
         public bool CheckSellerLogin(string login)
         {
-            return this.DAL.LoginExistsSeller(login);
+            return this.dal.LoginExistsSeller(login);
         }
 
         public Seller GetSeller(int id)
         {
-            //var map = new ReflectionBasedMapper<Seller, DALUsers.Seller>();
-            //return map.MapBack(this.DAL.GetSellerByID(id));
-            return mapper1.Map<DALUsers.Seller, Seller>(this.DAL.GetSellerByID(id));
+            return this.dal.GetSellerByID(id).ConvertToBlSeller();
         }
 
         public Seller GetSeller(string login)
         {
-            //var map = new ReflectionBasedMapper<Seller, DALUsers.Seller>();
-            //return map.MapBack(this.DAL.GetSellerByName(login));
-            return mapper1.Map<DALUsers.Seller, Seller>(this.DAL.GetSellerByName(login));
+            return this.dal.GetSellerByName(login).ConvertToBlSeller();
         }
 
         public IEnumerable<Seller> GetAllSellers()
         {
-            //var map = new ReflectionBasedMapper<Seller, DALUsers.Seller>();
-            //return this.DAL.GetSellers().Select(a => map.MapBack(a));
-            return mapper1.Map<IEnumerable<DALUsers.Seller>, List<Seller>>(this.DAL.GetSellers());
+            return this.dal.GetSellers().ConvertToBlSellerEnum();
         }
 
         public bool CustomerSignUp(Customer customer)
@@ -124,7 +84,7 @@ namespace BusinessLayer
                 return false;
             }
 
-            this.DAL.AddCustomer(
+            this.dal.AddCustomer(
                 customer.Name, 
                 customer.Surname, 
                 customer.Email,
@@ -137,7 +97,7 @@ namespace BusinessLayer
 
         public bool CustomerDelete(int id)
         {
-            this.DAL.DeleteCustomer(id);
+            this.dal.DeleteCustomer(id);
             ///Ստեղ կարելա քեշավորել ու պահել որոշակի ժամկետով անվտանգության նկատառումներով
             return true;
         }
@@ -149,7 +109,7 @@ namespace BusinessLayer
                 return false;
             }
 
-            this.DAL.UpdateCustomer(customer.Login,
+            this.dal.UpdateCustomer(customer.Login,
                 customer.Name,
                 customer.Surname,
                 customer.Email,
@@ -160,33 +120,27 @@ namespace BusinessLayer
 
         public bool CheckCustomerLogin(string login)
         {
-            return this.DAL.LoginExistsCustomer(login);
+            return this.dal.LoginExistsCustomer(login);
         }
 
         public Customer GetCustomer(int id)
         {
-            //var map = new ReflectionBasedMapper<Customer, DALUsers.Customer>();
-            //return map.MapBack(this.DAL.GetCustomerByID(id));
-            return mapper2.Map<DALUsers.Customer, Customer>(this.DAL.GetCustomerByID(id));
+            return this.dal.GetCustomerByID(id).ConvertToBlCustomer();
         }
 
         public Customer GetCustomer(string login)
         {
-            //var map = new ReflectionBasedMapper<Customer, DALUsers.Customer>();
-            //return map.MapBack(this.DAL.GetCustomerByName(login));
-            return mapper2.Map<DALUsers.Customer, Customer>(this.DAL.GetCustomerByName(login));
+            return this.dal.GetCustomerByName(login).ConvertToBlCustomer();
         }
 
         public IEnumerable<Customer> GetAllCustomer()
         {
-            //var map = new ReflectionBasedMapper<Customer, DALUsers.Customer>();
-            //return this.DAL.GetCustomers().Select(a => map.MapBack(a));
-            return mapper2.Map<IEnumerable<DALUsers.Customer>, List<Customer>>(this.DAL.GetCustomers());
+            return this.dal.GetCustomers().ConvertToBlCustomerEnam();
         }
 
         public bool AdminSignUp(Admin admin)
         {
-            this.DAL.AddAdmin(
+            this.dal.AddAdmin(
                 admin.Name,
                 admin.Login,
                 admin.Password,
@@ -197,14 +151,14 @@ namespace BusinessLayer
 
         public bool AdminDelete(int id)
         {
-            this.DAL.DeleteAdmin(id);
+            this.dal.DeleteAdmin(id);
             ///Ստեղ կարելա քեշավորել ու պահել որոշակի ժամկետով անվտանգության նկատառումներով
             return true;
         }
 
         public bool AdminUpdate(Admin admin)
         {
-            this.DAL.UpdateAdmin(
+            this.dal.UpdateAdmin(
                 (int)admin.Id,
                 admin.Name,
                 admin.Login,
@@ -215,22 +169,12 @@ namespace BusinessLayer
 
         public Admin GetAdmin(int id)
         {
-            //var map = new ReflectionBasedMapper<Admin, DALUsers.Admin>();
-            //return map.MapBack(this.DAL.GetAdminByID(id));
-            return mapper3.Map<DALUsers.Admin, Admin>(this.DAL.GetAdminByID(id));
+            return this.dal.GetAdminByID(id).ConvertToBlAdmin();
         }
-
-        //public Admin GetAdmin(string login)
-        //{
-        //    var map = new ReflectionBasedMapper<Admin, DALUsers.Admin>();
-        //    return map.MapBack(this.DAL.GetAdminByName(login));
-        //}
 
         public Role GetRole(int id)
         {
-            //var map = new ReflectionBasedMapper<Role, DALUsers.Role>();
-            //return map.MapBack(this.DAL.GetRole(id));
-            return mapper4.Map<DALUsers.Role, Role>(this.DAL.GetRole(id));
+            return this.dal.GetRole(id).ConvertToBlRole();
         }
 
 
@@ -241,7 +185,7 @@ namespace BusinessLayer
                 return false;
             }
 
-            this.DAL.ChangeStatus(id, NewStatus);
+            this.dal.ChangeStatus(id, NewStatus);
             return true;
         }
     }
