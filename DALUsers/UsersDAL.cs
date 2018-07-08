@@ -198,12 +198,12 @@ namespace DALUsers
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@RoleId", id);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        role.Id = (int)reader["Id"];
+                        role.RoleId = (int)reader["Id"];
                         role.Name = (string)reader["Name"];
                         role.Description = (string)reader["Description"];
                     }
