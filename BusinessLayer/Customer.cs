@@ -13,7 +13,7 @@ namespace BusinessLayer
             this.Roles_ID = 3;
         }
 
-        public Customer(int Id, string Name, string Password, string Login,
+        public Customer(int? Id, string Name, string Password, string Login,
             string Surname, string Email) :
             base(Id, Name, Password, Login)
         {
