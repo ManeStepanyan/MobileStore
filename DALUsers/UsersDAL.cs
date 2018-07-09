@@ -203,7 +203,7 @@ namespace DALUsers
                 {
                     while (reader.Read())
                     {
-                        role.Id = (int)reader["Id"];
+                        role.RoleId = (int)reader["Id"];
                         role.Name = (string)reader["Name"];
                         role.Description = (string)reader["Description"];
                     }
