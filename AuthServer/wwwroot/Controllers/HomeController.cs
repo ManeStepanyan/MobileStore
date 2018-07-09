@@ -8,7 +8,7 @@ using AuthServer.Models;
 
 namespace AuthServer.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]")]
     public class HomeController : Controller
     {
         public IActionResult Index()
