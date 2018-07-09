@@ -13,7 +13,7 @@ namespace DALUsers
         public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        [ForeignKey("AdminRole")]
+      //  [ForeignKey("AdminRole")]
         public Role AdminRole { get; set; }
         public int Roles_ID { get; set; }
     }

@@ -13,9 +13,9 @@ namespace BusinessLayer
             this.Roles_ID = 3;
         }
 
-        public Customer(int? id, string Name, string Password, string Login,
+        public Customer(int Id, string Name, string Password, string Login,
             string Surname, string Email) :
-            base(id, Name, Password, Login)
+            base(Id, Name, Password, Login)
         {
             this.Roles_ID = 3;
             this.Surname = Surname;
@@ -23,8 +23,8 @@ namespace BusinessLayer
             this.Status = false;
         }
 
-        public string Surname { get; private set; }
-        public string Email { get; private set; }
-        public bool Status { get; private set; }
+        public string Surname { get;  set; }
+        public string Email { get; set; }
+        public bool Status { get;  set; }
     }
 }

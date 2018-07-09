@@ -14,7 +14,7 @@ namespace DALUsers
         public string Address { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        [ForeignKey("SellerRole")]
+     //   [ForeignKey("SellerRole")]
         public Role SellerRole { get; set; }        
         public int Roles_ID { get; set; }
         public decimal Rating { get; set; }

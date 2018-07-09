@@ -9,12 +9,21 @@ namespace BusinessLayer
     public class UsersRepository
     {
         private UsersDAL dal;
+        readonly Mapper<DALUsers.Seller,Seller> mapperSeller;
+        readonly Mapper<DALUsers.Customer, Customer> mapperCustomer;
+        readonly Mapper<DALUsers.Admin, Admin> mapperAdmin;
+        readonly Mapper<DALUsers.Role, Role> mapperRole;
 
-        public object Map { get; private set; }
+       // public object Map { get; private set; }
 
         public UsersRepository()
         {
+            mapperSeller = new Mapper<DALUsers.Seller, Seller>();
+            mapperCustomer = new Mapper<DALUsers.Customer, Customer>();
+            mapperAdmin = new Mapper<DALUsers.Admin, Admin>();
+            mapperRole = new Mapper<DALUsers.Role, Role>();
             this.dal = new UsersDAL();
+     
         }
 
         public bool SellerSignUp(Seller seller)
@@ -51,8 +60,8 @@ namespace BusinessLayer
 
             this.dal.UpdateSeller(seller.Login,
                 seller.Name,
-                seller.Address, 
-                seller.CellPhone, 
+                seller.Address,
+                seller.CellPhone,
                 seller.Password.Encrypt());
             return true;
         }
@@ -64,18 +73,32 @@ namespace BusinessLayer
 
         public Seller GetSeller(int id)
         {
-            return this.dal.GetSellerByID(id).ConvertToBlSeller();
+            var temp =this. mapperSeller.Map(this.dal.GetSellerByID(id));
+            //   return this.dal.GetSellerByID(id).ConvertToBlSeller();
+            /* var temp = this.dal.GetSellerByID(id);
+             var l= AutoMapper.Mapper.Map<DALUsers.Seller, Seller>(temp);
+             return l; */
+            return temp;
+
         }
 
-        public Seller GetSeller(string login)
-        {
-            return this.dal.GetSellerByName(login).ConvertToBlSeller();
-        }
+           public Seller GetSeller(string login)
+          {
+          return  this.mapperSeller.Map(this.dal.GetSellerByName(login));
+              //return this.dal.GetSellerByName(login).ConvertToBlSeller();
+          } 
 
-        public IEnumerable<Seller> GetAllSellers()
-        {
-            return this.dal.GetSellers().ConvertToBlSellerEnum();
-        }
+            public IEnumerable<Seller> GetAllSellers()
+            {
+            List<Seller> result = new List<Seller>();
+            // var temp = this.dal.GetSellers().ConvertToBlSellerEnum();
+            var sellers = this.dal.GetSellers();
+            foreach(var item in sellers)
+            {
+                result.Add(mapperSeller.Map(item));
+            }
+                return result;
+            } 
 
         public bool CustomerSignUp(Customer customer)
         {
@@ -85,11 +108,11 @@ namespace BusinessLayer
             }
 
             this.dal.AddCustomer(
-                customer.Name, 
-                customer.Surname, 
+                customer.Name,
+                customer.Surname,
                 customer.Email,
-                customer.Login, 
-                customer.Password.Encrypt(), 
+                customer.Login,
+                customer.Password.Encrypt(),
                 customer.Roles_ID);
 
             return true;
@@ -123,20 +146,28 @@ namespace BusinessLayer
             return this.dal.LoginExistsCustomer(login);
         }
 
-        public Customer GetCustomer(int id)
-        {
-            return this.dal.GetCustomerByID(id).ConvertToBlCustomer();
-        }
+         public Customer GetCustomer(int id)
+          {
+            // return this.dal.GetCustomerByID(id).ConvertToBlCustomer();
+            return this.mapperCustomer.Map(this.dal.GetCustomerByID(id));
 
-        public Customer GetCustomer(string login)
-        {
-            return this.dal.GetCustomerByName(login).ConvertToBlCustomer();
-        }
+          } 
 
-        public IEnumerable<Customer> GetAllCustomer()
-        {
-            return this.dal.GetCustomers().ConvertToBlCustomerEnam();
-        }
+             public Customer GetCustomer(string login)
+             {
+            // return this.dal.GetCustomerByName(login).ConvertToBlCustomer();
+            return this.mapperCustomer.Map(this.dal.GetCustomerByName(login));
+             } 
+
+           public IEnumerable<Customer> GetAllCustomer()
+           { List<Customer> res = new List<Customer>();
+            // return this.dal.GetCustomers().ConvertToBlCustomerEnam();
+            var customers = this.dal.GetCustomers();
+            foreach(var item in customers)
+            {
+                res.Add(this.mapperCustomer.Map(item));
+            } return res;
+           } 
 
         public bool AdminSignUp(Admin admin)
         {
@@ -167,26 +198,29 @@ namespace BusinessLayer
             return true;
         }
 
-        public Admin GetAdmin(int id)
-        {
-            return this.dal.GetAdminByID(id).ConvertToBlAdmin();
-        }
-
-        public Role GetRole(int id)
-        {
-            return this.dal.GetRole(id).ConvertToBlRole();
-        }
-
-
-        public bool ChangeCustomerStatus(int id, bool NewStatus)
-        {
-            if (!CheckCustomerLogin(GetCustomer(id).Login))
+            public Admin GetAdmin(int id)
             {
-                return false;
-            }
+            // return this.dal.GetAdminByID(id).ConvertToBlAdmin();
+            return this.mapperAdmin.Map(this.dal.GetAdminByID(id));
+            } 
 
-            this.dal.ChangeStatus(id, NewStatus);
-            return true;
-        }
+             public Role GetRole(int id)
+             {
+            // return this.dal.GetRole(id).ConvertToBlRole();
+            return this.mapperRole.Map(this.dal.GetRole(id));
+             } 
+
+
+            public bool ChangeCustomerStatus(int id, bool NewStatus)
+            {
+                if (!CheckCustomerLogin(GetCustomer(id).Login))
+                {
+                    return false;
+                }
+
+                this.dal.ChangeStatus(id, NewStatus);
+                return true;
+            }
+        } 
     }
-}
+

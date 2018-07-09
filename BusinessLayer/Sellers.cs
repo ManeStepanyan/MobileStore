@@ -13,8 +13,8 @@ namespace BusinessLayer
             this.Roles_ID = 2;
         }
 
-        public Seller(int? id, string Name, string Password, string Login, string CellPhone, string Address, decimal? Rating) :
-            base(id, Name, Password, Login)
+        public Seller(int Id, string Name, string Password, string Login, string CellPhone, string Address, decimal? Rating) :
+            base(Id, Name, Password, Login)
         {
             this.Roles_ID = 2;
             this.CellPhone = CellPhone;
@@ -22,8 +22,8 @@ namespace BusinessLayer
             this.Rating = Rating;
         }
 
-        public string CellPhone { get; private set; }
-        public string Address { get; private set; }
-        public decimal? Rating { get; private set; }
+        public string CellPhone { get;set; }
+        public string Address { get; set; }
+        public decimal? Rating { get;  set; }
     }
 }

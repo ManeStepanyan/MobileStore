@@ -16,7 +16,7 @@ namespace DALUsers
         public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        [ForeignKey("CustomerRole")]
+      //  [ForeignKey("CustomerRole")]
         public Role CustomerRole { get; set; }
         public int Roles_ID { get; set; }
         public bool Status { get; set; }

@@ -203,7 +203,7 @@ namespace DALUsers
                 {
                     while (reader.Read())
                     {
-                        role.RoleID = (int)reader["Id"];
+                        role.Id = (int)reader["Id"];
                         role.Name = (string)reader["Name"];
                         role.Description = (string)reader["Description"];
                     }
@@ -274,9 +274,9 @@ namespace DALUsers
                             seller.Rating = Convert.ToDecimal(reader["Rating"]);
                         }
                     }
+                    seller.SellerRole = GetRole(seller.Roles_ID);
                 }
             }
-            seller.SellerRole = GetRole(seller.Roles_ID);
             return seller;
         }
         public Customer GetCustomerByName(string login)

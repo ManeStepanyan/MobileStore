@@ -11,8 +11,7 @@ namespace TestBL
     {
         static void Main(string[] args)
         {
-            SellerTest t1 = new SellerTest();
-                        
+            SellerTest t1 = new SellerTest();                                
             Console.WriteLine("End Test..");
             Console.Read();
         }
