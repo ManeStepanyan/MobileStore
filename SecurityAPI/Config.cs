@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4;
+using IdentityServer4.Models;
 
 namespace SecurityAPI
 {
@@ -12,7 +12,7 @@ namespace SecurityAPI
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1", "My API")
+                new ApiResource("Security", "SecurityAPI")
             };
         }
     }

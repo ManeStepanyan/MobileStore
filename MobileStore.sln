@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityAPI", "SecurityAPI\SecurityAPI.csproj", "{65B850B1-DF39-49A4-8E00-1FA20E98C9B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer", "AuthServer\AuthServer.csproj", "{7526A78B-3159-4209-914D-31F38E2A712A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationServer", "AuthenticationServer\AuthenticationServer.csproj", "{94A351C8-A29E-48AB-AA61-DA25E73DB0E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +55,10 @@ Global
 		{65B850B1-DF39-49A4-8E00-1FA20E98C9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65B850B1-DF39-49A4-8E00-1FA20E98C9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65B850B1-DF39-49A4-8E00-1FA20E98C9B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7526A78B-3159-4209-914D-31F38E2A712A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7526A78B-3159-4209-914D-31F38E2A712A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7526A78B-3159-4209-914D-31F38E2A712A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7526A78B-3159-4209-914D-31F38E2A712A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94A351C8-A29E-48AB-AA61-DA25E73DB0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A351C8-A29E-48AB-AA61-DA25E73DB0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A351C8-A29E-48AB-AA61-DA25E73DB0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A351C8-A29E-48AB-AA61-DA25E73DB0E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

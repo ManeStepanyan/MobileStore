@@ -15,7 +15,7 @@ namespace BusinessLayer
 
         }
 
-        public BaseUser(int? Id, string Name, string Password, string Login)
+        public BaseUser(int Id, string Name, string Password, string Login)
         {
             this.Id = this.Id;
             this.Name = Name;
@@ -23,10 +23,11 @@ namespace BusinessLayer
             this.Login = Login;
         }
         [Required(), Key()]
-        public int? Id { get; set; } // private set
+        public int Id { get;set; } // private set
         public string Name { get; set; }
         public string Password { get;  set; }
         public int Roles_ID { get; set; }
         public string Login { get;  set; }
+        public bool IsActive { get; set; }
     }
 }

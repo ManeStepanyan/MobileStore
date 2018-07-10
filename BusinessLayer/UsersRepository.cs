@@ -6,7 +6,7 @@ using BLDALMapper;
 
 namespace BusinessLayer
 {
-    public class UsersRepository
+    public class UsersRepository:IUsersRepository
     {
         private UsersDAL dal;
         readonly Mapper<DALUsers.Seller,Seller> mapperSeller;
@@ -221,6 +221,19 @@ namespace BusinessLayer
                 this.dal.ChangeStatus(id, NewStatus);
                 return true;
             }
+
+        public BaseUser FindUserAsync(string login)
+        {
+            // return this.dal.GetCustomerByName(login).ConvertToBlCustomer();
+            return this.mapperCustomer.Map(this.dal.GetCustomerByName(login));
+        }
+
+        public BaseUser FindUserAsync(int id)
+        {
+            // return this.dal.GetCustomerByID(id).ConvertToBlCustomer();
+            return this.mapperCustomer.Map(this.dal.GetCustomerByID(id));
+
         } 
     }
+}
 
