@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DALUsers;
+﻿using DALUsers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,19 +59,7 @@ namespace BLDALMapper
         public TS MapBack(TD source)
         {
             return Helper<TD, TS>(source);
-            /*  var destination = new TS();
-              var sourcetype = source.GetType();
-              var destinationtype = destination.GetType();
-              var sourceProperties = sourcetype.GetProperties();
-              foreach (var item in sourceProperties)
-              {
-                  var prop = destinationtype.GetProperty(item.Name);
-                  if (prop != null)
-                  {
-                      prop.SetValue(destination, item.GetValue(source));
-                  }
-              }
-              return destination; */
+           
         }
         public T2 Helper<T1, T2>(T1 source) where T1 : new() where T2 : new()
         {
