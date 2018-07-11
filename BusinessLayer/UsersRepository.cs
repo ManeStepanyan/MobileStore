@@ -227,10 +227,10 @@ namespace BusinessLayer
                 return true;
             }
 
-        public BaseUser FindUser(string login)
+        public BaseUser FindUserAsync(string login)
         {
-            Task task1 = Task.Factory.StartNew(() => this.mapperSeller.Map(this.dal.GetSellerByName(login)));
-            Task task2 = Task.Factory.StartNew(() => this.mapperCustomer.Map(this.dal.GetCustomerByName(login)));
+            Task<Seller> task1 = Task.Factory.StartNew(() => this.mapperSeller.Map(this.dal.GetSellerByName(login)));
+            Task<Customer> task2 = Task.Factory.StartNew(() => this.mapperCustomer.Map(this.dal.GetCustomerByName(login)));
             task1.Start();
             task2.Start();
             bool flag = true;
@@ -238,17 +238,18 @@ namespace BusinessLayer
             {
                 if (task1.IsCompleted)
                     return task1.Result;
+             
                 else if(task2.IsCompleted)
                     return task2.Result;
             }
             return null;
         }
 
-        public BaseUser FindUser(int id)
+        public BaseUser FindUserAsync(int id)
         {
-            Task task1 = Task.Factory.StartNew(() => this.mapperAdmin.Map(this.dal.GetAdminByID(id)));
-            Task task2 = Task.Factory.StartNew(() => this.mapperSeller.Map(this.dal.GetSellerByID(id)));
-            Task task3 = Task.Factory.StartNew(() => this.mapperCustomer.Map(this.dal.GetCustomerByID(id)));
+            Task<Admin> task1 = Task.Factory.StartNew(() => this.mapperAdmin.Map(this.dal.GetAdminByID(id)));
+            Task<Seller> task2 = Task.Factory.StartNew(() => this.mapperSeller.Map(this.dal.GetSellerByID(id)));
+            Task<Customer> task3 = Task.Factory.StartNew(() => this.mapperCustomer.Map(this.dal.GetCustomerByID(id)));
 
             task1.Start();
             task2.Start();
