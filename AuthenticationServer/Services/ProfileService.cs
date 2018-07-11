@@ -89,9 +89,8 @@ namespace AuthenticationServer.Services
             return new List<Claim>
             {
                 new Claim("user_id", user.Id.ToString() ?? ""),
-                new Claim(JwtClaimTypes.Name, (!string.IsNullOrEmpty(user.Name) ? (user.Name) : "")),
-
-                new Claim(JwtClaimTypes.Role, userRepository.GetRole(user.Roles_ID).Name)
+                new Claim(JwtClaimTypes.Name, (!string.IsNullOrEmpty(user.Name) ? (user.Name) : "")),                
+                new Claim(JwtClaimTypes.Role, userRepository.GetRole(user.Roles_ID).Name) 
             };
         }
     }
