@@ -16,7 +16,7 @@ namespace DALUsers
         public UsersDAL()
         {
             // this.connectionString = ConfigurationManager.ConnectionStrings["UsersConnectionString"].ConnectionString;
-            this.connectionString = "Data Source=(local);Initial Catalog=UsersDB;";
+            this.connectionString = "Data Source=(local);Initial Catalog=UsersDB;Integrated Security=true;";
         }
 
         public void AddAdmin(string name, string login, string password, int roles_id)
