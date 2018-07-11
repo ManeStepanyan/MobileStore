@@ -12,7 +12,7 @@ namespace AuthenticationServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("Security", "SecurityAPI")
+                new ApiResource("Users","UserAPI")
             };
         }
 

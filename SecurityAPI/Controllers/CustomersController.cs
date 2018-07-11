@@ -7,15 +7,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UsersAPI.Controllers
 {
-    public class CustomersController: Controller
+    [Route("api/Customer")]
+    public class CustomersController : Controller
     {
         private UsersRepository userRepository;
-         
+
         public CustomersController()
         {
             this.userRepository = new UsersRepository();
         }
 
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+/*
         [HttpGet]
         public IEnumerable<Customer> Get()
         {
@@ -44,6 +51,6 @@ namespace UsersAPI.Controllers
         public void Delete(int id)
         {
             this.userRepository.CustomerDelete(id);
-        }
+        }*/
     }
 }

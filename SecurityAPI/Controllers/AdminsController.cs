@@ -7,6 +7,7 @@ using BusinessLayer;
 
 namespace UsersAPI.Controllers
 {
+    [Route("api/Admin")]
     public class AdminsController: Controller
     {
         private UsersRepository userRepository;
@@ -16,6 +17,10 @@ namespace UsersAPI.Controllers
             this.userRepository = new UsersRepository();
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         /*[HttpGet]
         public IEnumerable<Admin> Get()
         {

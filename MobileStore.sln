@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography", "Cryptograph
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{CF091794-2572-44B2-9E82-A703B179F1D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityAPI", "SecurityAPI\SecurityAPI.csproj", "{65B850B1-DF39-49A4-8E00-1FA20E98C9B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersAPI", "SecurityAPI\UsersAPI.csproj", "{65B850B1-DF39-49A4-8E00-1FA20E98C9B3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationServer", "AuthenticationServer\AuthenticationServer.csproj", "{94A351C8-A29E-48AB-AA61-DA25E73DB0E3}"
 EndProject

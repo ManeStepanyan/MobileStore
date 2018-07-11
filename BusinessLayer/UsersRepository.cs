@@ -3,6 +3,7 @@ using System.Linq;
 using DALUsers;
 using AutoMapper;
 using BLDALMapper;
+using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
@@ -227,17 +228,43 @@ namespace BusinessLayer
                 return true;
             }
 
-        public BaseUser FindUserAsync(string login)
+        public BaseUser FindUser(string login)
         {
-            // return this.dal.GetCustomerByName(login).ConvertToBlCustomer();
-            return this.mapperCustomer.Map(this.dal.GetCustomerByName(login));
+            Task task1 = Task.Factory.StartNew(() => this.mapperSeller.Map(this.dal.GetSellerByName(login)));
+            Task task2 = Task.Factory.StartNew(() => this.mapperCustomer.Map(this.dal.GetCustomerByName(login)));
+            task1.Start();
+            task2.Start();
+            bool flag = true;
+            while (flag)
+            {
+                if (task1.IsCompleted)
+                    return task1.Result;
+                else if(task2.IsCompleted)
+                    return task2.Result;
+            }
+            return null;
         }
 
-        public BaseUser FindUserAsync(int id)
+        public BaseUser FindUser(int id)
         {
-            // return this.dal.GetCustomerByID(id).ConvertToBlCustomer();
-            return this.mapperCustomer.Map(this.dal.GetCustomerByID(id));
+            Task task1 = Task.Factory.StartNew(() => this.mapperAdmin.Map(this.dal.GetAdminByID(id)));
+            Task task2 = Task.Factory.StartNew(() => this.mapperSeller.Map(this.dal.GetSellerByID(id)));
+            Task task3 = Task.Factory.StartNew(() => this.mapperCustomer.Map(this.dal.GetCustomerByID(id)));
 
+            task1.Start();
+            task2.Start();
+            task3.Start();
+            bool flag = true;
+            while (flag)
+            {
+                if (task1.IsCompleted)
+                    return task1.Result;
+                else if (task2.IsCompleted)
+                    return task2.Result;
+                else if (task3.IsCompleted)
+                    return task3.Result;
+            }
+            return null;
         } 
     }
 }

@@ -7,6 +7,7 @@ using BusinessLayer;
 
 namespace UsersAPI.Controllers
 {
+    [Route("api/Seller")]
     public class SellersController:Controller
     {
         private UsersRepository userRepository;
