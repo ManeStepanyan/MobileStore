@@ -8,7 +8,7 @@ namespace BusinessLayer
 {
     public interface IUsersRepository
     {
-        public async BaseUser FindUserAsync(string login);
-        public async BaseUser FindUserAsync(int id);
+        public BaseUser FindUser(string login);
+        public BaseUser FindUser(int id);
     }
 }
