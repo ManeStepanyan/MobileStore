@@ -11,7 +11,7 @@ using IdentityModel;
 
 namespace AuthenticationServer.Services
 {
-    public class ProfileService
+    public class ProfileService: IProfileService
     {
         private IUsersRepository usersRepository;
 
