@@ -254,10 +254,6 @@
       <Project>{ff202959-17d5-4fcc-991a-552df139fa1b}</Project>
       <Name>Cryptography</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DALUsers\DALUsers.csproj">
-      <Project>{dcf4c5bc-0607-4967-8ea1-f5f405cfbfb4}</Project>
-      <Name>DALUsers</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

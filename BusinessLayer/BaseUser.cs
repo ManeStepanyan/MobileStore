@@ -28,5 +28,6 @@ namespace BusinessLayer
         public string Password { get;  set; }
         public int Roles_ID { get; set; }
         public string Login { get;  set; }
+        public bool IsActive { get; set; }
     }
 }

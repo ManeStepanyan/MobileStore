@@ -5,13 +5,13 @@ using BLDALMapper;
 
 namespace BusinessLayer
 {
-    public class UsersRepository
+    public class UsersRepository:IUsersRepository
     {
         private UsersDAL dal;
-        readonly Mapper<DALUsers.Seller,Seller> mapperSeller;
-        readonly Mapper<DALUsers.Customer, Customer> mapperCustomer;
-        readonly Mapper<DALUsers.Admin, Admin> mapperAdmin;
-        readonly Mapper<DALUsers.Role, Role> mapperRole;
+        private readonly Mapper<DALUsers.Seller,Seller> mapperSeller;
+        private readonly Mapper<DALUsers.Customer, Customer> mapperCustomer;
+        private readonly Mapper<DALUsers.Admin, Admin> mapperAdmin;
+        private readonly Mapper<DALUsers.Role, Role> mapperRole;
 
        // public object Map { get; private set; }
 
@@ -27,7 +27,7 @@ namespace BusinessLayer
 
         public bool SellerSignUp(Seller seller)
         {
-            if (CheckSellerLogin(seller.Login))
+            if (CheckSellerLogin(seller.Login) || CheckCustomerLogin(seller.Login))
             {
                 return false;
             }
@@ -101,7 +101,7 @@ namespace BusinessLayer
 
         public bool CustomerSignUp(Customer customer)
         {
-            if (CheckCustomerLogin(customer.Login))
+            if (CheckCustomerLogin(customer.Login) || CheckSellerLogin(customer.Login))
             {
                 return false;
             }
@@ -170,6 +170,11 @@ namespace BusinessLayer
 
         public bool AdminSignUp(Admin admin)
         {
+            if (CheckCustomerLogin(admin.Login) || CheckSellerLogin(admin.Login))
+            {
+                return false;
+            }
+
             this.dal.AddAdmin(
                 admin.Name,
                 admin.Login,
@@ -220,6 +225,19 @@ namespace BusinessLayer
                 this.dal.ChangeStatus(id, NewStatus);
                 return true;
             }
+
+        public BaseUser FindUserAsync(string login)
+        {
+            // return this.dal.GetCustomerByName(login).ConvertToBlCustomer();
+            return this.mapperCustomer.Map(this.dal.GetCustomerByName(login));
+        }
+
+        public BaseUser FindUserAsync(int id)
+        {
+            // return this.dal.GetCustomerByID(id).ConvertToBlCustomer();
+            return this.mapperCustomer.Map(this.dal.GetCustomerByID(id));
+
         } 
     }
+}
 

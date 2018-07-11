@@ -234,6 +234,7 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="BaseUser.cs" />
+    <Compile Include="IUsersRepository.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="UsersRepository.cs" />
     <Compile Include="Customer.cs" />
