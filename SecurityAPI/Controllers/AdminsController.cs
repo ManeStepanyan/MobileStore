@@ -8,26 +8,29 @@ using DatabaseAccess.SpExecuters;
 using System.Linq;
 using System.Net.Http;
 using System.Net;
+using DatabaseAccessor.Repository;
 
 namespace UsersAPI.Controllers
 {
-    [Route("api/Admin")]
+    [Route("api/admins")]
+   // [Authorize]
     public class AdminsController: Controller
     {
-        
-        private Repo<AdminInfo, SpExecuter> repo;
-        private Repo<AdminPublicInfo, SpExecuter> publicRepo;
-        private Repo<UserPublicInfo, SpExecuter> userRepo;
+        private MapInfo mapInfo;
+        private ISpExecuter spExecuter;
+        private Repo<AdminInfo> repo;
+        private Repo<AdminPublicInfo> publicRepo;
+        private Repo<UserPublicInfo> userRepo;
 
         public AdminsController()
         {
-            this.repo = new Repo<AdminInfo, SpExecuter>("MapInfo\\UserMap.xml");
-            this.publicRepo = new Repo<AdminPublicInfo, SpExecuter>("MapInfo\\UserMap.xml");
-            this.userRepo = new Repo<UserPublicInfo, SpExecuter>("MapInfo\\UserMap.xml");
+            this.repo = new Repo<AdminInfo>(mapInfo,spExecuter);
+            this.publicRepo = new Repo<AdminPublicInfo>(mapInfo,spExecuter);
+            this.userRepo = new Repo<UserPublicInfo>(mapInfo,spExecuter);
         }
 
         [HttpGet]
-        [Authorize]
+     //   [Authorize]
         public IEnumerable<AdminPublicInfo> Get()
         {
             return (IEnumerable<AdminPublicInfo>) this.publicRepo.ExecuteOperation("GetAllAdmins");
@@ -37,13 +40,14 @@ namespace UsersAPI.Controllers
         [Authorize]
         public AdminPublicInfo GetAdmin(int id)
         {
-            var Id = int.Parse(
+            var userId = int.Parse(
                    ((System.Security.Claims.ClaimsIdentity)this.User.Identity).Claims
-                   .Where(claim => claim.Type == "Id").First().Value);
-            if (Id == id)
+                   .Where(claim => claim.Type == "user_id").First().Value);
+            if (((AdminInfo)this.repo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) })).User_Id == userId)
             {
                 return (AdminPublicInfo)this.publicRepo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) });
             }
+
             else return default(AdminPublicInfo);
         }
 

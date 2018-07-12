@@ -5,50 +5,44 @@ using IdentityServer4.Services;
 using IdentityServer4.Validation;
 using AuthenticationServer.Services;
 using AuthenticationServer.Validators;
-using BusinessLayer;
+using DatabaseAccess;
+using DatabaseAccess.SpExecuters;
+using DatabaseAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using DatabaseAccessor.Repository;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using AuthenticationServer.UsersRepository;
 
 namespace AuthenticationServer
 {
     public class Startup
     {
-
+        private IConfiguration Configuration = new ConfigurationBuilder()
+                   .SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile("appsettings.json").Build();
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddMvc();
-            var policy1 = new AuthorizationPolicyBuilder()
-  .AddAuthenticationSchemes("Cookie, Bearer")
-  .RequireAuthenticatedUser()
-  .RequireRole("")
-  .RequireAssertion(ctx =>
-  {
-      return ctx.User.HasClaim("Role", "2");
-             
-  })
-  .Build();
+
             services.AddIdentityServer().AddDeveloperSigningCredential()
                     .AddInMemoryIdentityResources(Config.GetIdentityResources())
                     .AddInMemoryApiResources(Config.GetApiResources())
                     .AddInMemoryClients(Config.GetClients())
                     .AddProfileService<ProfileService>();
-            services.AddAuthorization(options =>
-    {
-        options.AddPolicy("ContentsEditor", policy =>
-        {
-            policy.AddAuthenticationSchemes("Cookie, Bearer");
-            policy.RequireAuthenticatedUser();
-            policy.RequireRole("Seller");
-            policy.RequireClaim("Role", "2");
-        });
-    });
-
             services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
             services.AddTransient<IProfileService, ProfileService>();
+
+            // adding singletons
+            
+            services.AddSingleton(new Repo<User>(
+                new MapInfo(this.Configuration["Mappers:Users"]),
+                new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
         }
 
 

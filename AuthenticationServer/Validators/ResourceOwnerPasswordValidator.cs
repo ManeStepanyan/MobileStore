@@ -4,63 +4,89 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BusinessLayer;
 using System.Security.Claims;
 using IdentityModel;
-
+using AuthenticationServer.UsersRepository;
 
 namespace AuthenticationServer.Validators
 {
+    /// <summary>
+    /// Resource owner password validatpr
+    /// </summary>
     public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
-        private IUsersRepository usersRepository;
+        /// <summary>
+        /// User repository
+        /// </summary>
+        private readonly IUserRepository _userRepository;
 
-        public ResourceOwnerPasswordValidator(IUsersRepository usersRepository)
+        /// <summary>
+        /// Constructs new instance of 
+        /// <see cref="ResourceOwnerPasswordValidator"/> with the given user repoistory.
+        /// </summary>
+        /// <param name="userRepository">User Repositor</param>
+        public ResourceOwnerPasswordValidator(IUserRepository userRepository)
         {
-            this.usersRepository = usersRepository;
+            this._userRepository = userRepository;
         }
+
+        /// <summary>
+        /// Validates context
+        /// </summary>
+        /// <param name="context">Context</param>
+        /// <returns>Validation task.</returns>
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
             try
             {
-                //get your user model from db (by username - in my case its login)
-                var user = usersRepository.FindUserAsync(context.UserName);
+                // getting user
+                var user = await this._userRepository.FindAsync(context.UserName);
+
+                // checking password
                 if (user != null)
                 {
-                    //check if password match - remember to hash password if stored as hash in db
+                    // if password is ok set
                     if (user.Password == context.Password)
                     {
-                        //set the result
                         context.Result = new GrantValidationResult(
                             subject: user.Id.ToString(),
                             authenticationMethod: "custom",
                             claims: GetUserClaims(user));
-
                         return;
                     }
 
-                    context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Incorrect password");
+                    // othwerwise construct error response
+                    context.Result = new GrantValidationResult(
+                        TokenRequestErrors.InvalidGrant, "Incorrect password");
                     return;
                 }
-                context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "User does not exist.");
+                // message about non-existing user
+                context.Result = new GrantValidationResult(
+                    TokenRequestErrors.InvalidGrant, "User does not exist.");
                 return;
             }
-            catch (Exception ex)
+            // catching exception
+            catch (Exception)
             {
-                context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Invalid username or password");
+                context.Result = new GrantValidationResult(
+                    TokenRequestErrors.InvalidGrant, "Invalid username or password");
             }
         }
-        public static IEnumerable<Claim> GetUserClaims(BaseUser user)
-        {
-            var userRepository = new UsersRepository();
-            return new List<Claim>
-            {
-                new Claim("user_id", user.Id.ToString() ?? ""),
-                new Claim(JwtClaimTypes.Name, (!string.IsNullOrEmpty(user.Name) ? (user.Name) : "")),
 
-                //roles
-                new Claim(JwtClaimTypes.Role, userRepository.GetRole(user.Roles_ID).Name)
+        /// <summary>
+        /// Constructs claims with the given user.
+        /// </summary>
+        /// <param name="user">User</param>
+        /// <returns>Claims</returns>
+        public static Claim[] GetUserClaims(User user)
+        {
+            // constructing and returning claims
+            return new Claim[]
+            {
+                new Claim("user_id", user.Id.ToString()),
+                new Claim(JwtClaimTypes.Name,user.Login),
             };
         }
     }
 }
+
