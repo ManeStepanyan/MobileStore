@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessLayer;
+using Microsoft.AspNetCore.Authorization;
 
-namespace UsersAPI.Controllers
-{
+namespace SecurityAPI.Controllers
+{   [Authorize (Roles="Seller")]
     [Route("api/Seller")]
     public class SellersController:Controller
     {
@@ -18,6 +19,7 @@ namespace UsersAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IEnumerable<Seller> Get()
         {
             return this.userRepository.GetAllSellers();
@@ -30,6 +32,7 @@ namespace UsersAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public void Post([FromBody]Seller seller)
         {
             this.userRepository.SellerSignUp(seller);

@@ -13,6 +13,7 @@ namespace AuthenticationServer
             return new List<ApiResource>
             {
                 new ApiResource("Users","UserAPI")
+               
             };
         }
 
@@ -31,7 +32,7 @@ namespace AuthenticationServer
                     {
                         new Secret("secret".Sha256())
                     },
-                    AllowedScopes = { "Security" }
+                    AllowedScopes = { "Users" }
                 }
             };
 

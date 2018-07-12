@@ -33,7 +33,7 @@ namespace SecurityAPI
                     {
                         options.Authority = "http://localhost:5000";
                         options.RequireHttpsMetadata = false;
-                        options.ApiName = "User";
+                        options.ApiName = "Users";
                     });
         }
 
