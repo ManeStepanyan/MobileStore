@@ -37,9 +37,14 @@ namespace UsersAPI.Controllers
         [Authorize]
         public AdminPublicInfo GetAdmin(int id)
         {
-           
+            var Id = int.Parse(
+                   ((System.Security.Claims.ClaimsIdentity)this.User.Identity).Claims
+                   .Where(claim => claim.Type == "Id").First().Value);
+            if (Id == id)
+            {
                 return (AdminPublicInfo)this.publicRepo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) });
-            
+            }
+            else return default(AdminPublicInfo);
         }
 
         [HttpPost]
