@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AuthenticationServer;
@@ -25,6 +26,10 @@ namespace SecurityAPI
         }
 
         public IConfiguration Configuration { get; }
+        private IConfiguration Configuration1 = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json").Build();
+
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -41,8 +46,8 @@ namespace SecurityAPI
                         options.ApiName = "Users";
                     });
             services.AddSingleton(new Repo<UserInfo>(
-                new MapInfo(this.Configuration["Mappers:Users"]),
-                new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+                new MapInfo(this.Configuration1["Mappers:Users"]),
+                new SpExecuter(this.Configuration1["ConnectionStrings:UsersDB"])));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

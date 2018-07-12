@@ -38,10 +38,10 @@ namespace DatabaseAccess.Repository
         {
 
             // setting fields
-            //this._mapInfo = mapInfo;
-            this._mapInfo = new MapInfo("UserMap.xml");
-            // this._spExecuter = spExecuter;
-            this._spExecuter = new SpExecuter("Data Source=(local);Initial Catalog=UsersDatabase;Integrated Security=True");
+            this._mapInfo = mapInfo;
+           // this._mapInfo = new MapInfo("UserMap.xml");
+             this._spExecuter = spExecuter;
+           // this._spExecuter = new SpExecuter("Data Source=(local);Initial Catalog=UsersDatabase;Integrated Security=True");
         }
 
         /// <summary>

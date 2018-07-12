@@ -4,7 +4,7 @@ using DALUsers;
 using BLDALMapper;
 using System.Threading.Tasks;
 
-namespace BusinessLayer
+namespace Cryptography
 {
     public class UsersRepository:IUsersRepository
     {

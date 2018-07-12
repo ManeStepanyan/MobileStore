@@ -9,11 +9,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Net;
 using DatabaseAccessor.Repository;
-
+using Cryptography;
 namespace UsersAPI.Controllers
 {
     [Route("api/admins")]
-    [Authorize]
+  //  [Authorize]
     public class AdminsController: Controller
     {
         private MapInfo mapInfo;
@@ -30,7 +30,7 @@ namespace UsersAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+      //  [Authorize]
         public IEnumerable<AdminPublicInfo> Get()
         {
             return (IEnumerable<AdminPublicInfo>) this.publicRepo.ExecuteOperation("GetAllAdmins");
@@ -57,7 +57,7 @@ namespace UsersAPI.Controllers
         {
             var response = new HttpResponseMessage();
             if ((int)this.userRepo.ExecuteOperation("ExistsLogin", new[] { new KeyValuePair<string, object>("login", admin.Login) }) != 1)
-                return (HttpResponseMessage)this.repo.ExecuteOperation("CreateAdmin", new[] { new KeyValuePair<string, object>("name", admin.Name), new KeyValuePair<string, object>("email", admin.Email), new KeyValuePair<string, object>("login", admin.Login), new KeyValuePair<string, object>("password", admin.Password) });
+                return (HttpResponseMessage)this.repo.ExecuteOperation("CreateAdmin", new[] { new KeyValuePair<string, object>("name", admin.Name), new KeyValuePair<string, object>("email", admin.Email), new KeyValuePair<string, object>("login", admin.Login), new KeyValuePair<string, object>("password",MyCryptography.Encrypt(admin.Password)) });
             else
             {               
                 response.StatusCode = HttpStatusCode.BadRequest;
