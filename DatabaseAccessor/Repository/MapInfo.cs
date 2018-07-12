@@ -5,75 +5,112 @@ using System.Xml.Linq;
 
 namespace DatabaseAccessor.Repository
 {
+    /// <summary>
+    /// Class for mappinng information
+    /// </summary>
     public class MapInfo
     {
-        private string path;
+        /// <summary>
+        /// Mapping info file path
+        /// </summary>
+        private readonly string _path;
 
+        /// <summary>
+        /// Gets or sets operations names
+        /// </summary>
         public Dictionary<string, string> OpNames
         {
             get; private set;
 
         }
 
+        /// <summary>
+        /// Gets or sets return values
+        /// </summary>
         public Dictionary<string, ReturnDataType> ReturnValues
         {
             get; private set;
         }
 
-        public Dictionary<string, List<KeyValuePair<string, string>>> Parameters
+        /// <summary>
+        /// Gets or sets parameters
+        /// </summary>
+        public Dictionary<string, Dictionary<string, string>> Parameters
         {
             get; private set;
         }
 
+        /// <summary>
+        /// Creates new instance of <see cref="MapInfo"/>
+        /// </summary>
+        /// <param name="path"></param>
         public MapInfo(string path)
         {
-            this.path = path;
+            this._path = path;
 
             this.GetMapInfo();
         }
 
+        /// <summary>
+        /// Gets mapping information from file
+        /// </summary>
         private void GetMapInfo()
         {
-            var xml = XDocument.Load(this.path);
+            // getting xml document
+            var xml = XDocument.Load(this._path);
 
-            var operations = xml.Elements("operation");
+            // getting operations
+            var operations = xml.Element("operations").Elements("operation");
 
+            // variables for storing
             var opNames = new Dictionary<string, string>();
-
             var returnValues = new Dictionary<string, ReturnDataType>();
+            var parameters = new Dictionary<string, Dictionary<string, string>>();
 
-            var parameters = new Dictionary<string, List<KeyValuePair<string, string>>>();
-
-            foreach(var operation in operations)
+            // loop over operations
+            foreach (var operation in operations)
             {
+                // getting operation name
                 var opName = operation.Attribute("name");
 
+                // getting stored procedure name
                 var spName = operation.Element("spName");
 
+                // adding names
                 opNames.Add(opName.Value, spName.Value);
 
+                // getting return values and adding
                 var returnDataType = operation.Element("returnDataType");
 
-                returnValues.Add(opName.Value, 
-                    (ReturnDataType)Enum.Parse(typeof(ReturnDataType),returnDataType.Value));
+                returnValues.Add(opName.Value,
+                    (ReturnDataType)Enum.Parse(typeof(ReturnDataType), returnDataType.Value));
 
-                var paramsXML = operation.Element("parameters").Elements("parameter");
+                // getting parameters xml element
+                var paramsXML = operation.Element("parameters");
 
-                var paramsList = new List<KeyValuePair<string, string>>();
-
-                foreach (var parameter in paramsXML)
+                // getting parameters if they exist
+                if (paramsXML != null)
                 {
-                    var paramName = parameter.Element("parameterName");
+                    var paramsList = new Dictionary<string, string>();
 
-                    var spParamName = parameter.Element("spParameterName");
+                    // loop over parameters
+                    foreach (var parameter in paramsXML.Elements("parameter"))
+                    {
+                        var paramName = parameter.Element("parameterName");
 
-                    paramsList.Add(new KeyValuePair<string, string>(
-                        paramName.Value, spParamName.Value));
+                        var spParamName = parameter.Element("spParameterName");
+
+                        paramsList.Add(paramName.Value, spParamName.Value);
+                    }
+
+                    // add parameters
+                    parameters.Add(opName.Value, paramsList);
                 }
-
-                parameters.Add(opName.Value, paramsList);
+                // otherwise add null indicating that this operation doesn't have parameters
+                else parameters.Add(opName.Value, null);
             }
 
+            // setting properties
             this.OpNames = opNames;
             this.ReturnValues = returnValues;
             this.Parameters = parameters;
