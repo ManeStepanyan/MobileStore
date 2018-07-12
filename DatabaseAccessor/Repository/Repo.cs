@@ -36,9 +36,12 @@ namespace DatabaseAccess.Repository
         /// <param name="spExecuter">stored procedure executer</param>
         public Repo(MapInfo mapInfo, ISpExecuter spExecuter)
         {
+
             // setting fields
-            this._mapInfo = mapInfo;
-            this._spExecuter = spExecuter;
+            //this._mapInfo = mapInfo;
+            this._mapInfo = new MapInfo("UserMap.xml");
+            // this._spExecuter = spExecuter;
+            this._spExecuter = new SpExecuter("Data Source=(local);Initial Catalog=UsersDatabase;Integrated Security=True");
         }
 
         /// <summary>

@@ -13,7 +13,7 @@ using DatabaseAccessor.Repository;
 namespace UsersAPI.Controllers
 {
     [Route("api/admins")]
-   // [Authorize]
+    [Authorize]
     public class AdminsController: Controller
     {
         private MapInfo mapInfo;
@@ -30,7 +30,7 @@ namespace UsersAPI.Controllers
         }
 
         [HttpGet]
-     //   [Authorize]
+        [Authorize]
         public IEnumerable<AdminPublicInfo> Get()
         {
             return (IEnumerable<AdminPublicInfo>) this.publicRepo.ExecuteOperation("GetAllAdmins");
