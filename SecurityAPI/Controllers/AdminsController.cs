@@ -52,7 +52,7 @@ namespace UsersAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+       // [Authorize]
         public HttpResponseMessage Post([FromBody]AdminInfo admin)
         {
             var response = new HttpResponseMessage();
