@@ -1,5 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[SelectProducts]
-	@Id INT NOT NULL, 
     @Name VARCHAR(30), 
     @Brand VARCHAR(20), 
     @Version DECIMAL(5, 3), 
@@ -9,8 +8,7 @@
     @Display INT, 
     @Battery VARCHAR(30), 
     @Camera INT, 
-    @Image VARCHAR(200), 
-    @Sellers_ID INT 
+    @Image VARCHAR(200)
 AS
 	declare @sqlName nvarchar(100)
 	declare @sqlBrand nvarchar(100)
