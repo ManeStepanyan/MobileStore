@@ -25,7 +25,10 @@ namespace SecurityAPI
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        //  public IConfiguration Configuration { get; }
+        private IConfiguration Configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json").Build();
         private IConfiguration Configuration1 = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json").Build();
@@ -45,9 +48,36 @@ namespace SecurityAPI
                         options.RequireHttpsMetadata = false;
                         options.ApiName = "Users";
                     });
-            services.AddSingleton(new Repo<UserInfo>(
-                new MapInfo(this.Configuration1["Mappers:Users"]),
-                new SpExecuter(this.Configuration1["ConnectionStrings:UsersDB"])));
+            services.AddSingleton(new Repo<UserInformation>(
+                new MapInfo(this.Configuration["Mappers:Users"]),
+                new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+            services.AddSingleton(new Repo<AdminPublicInfo>(
+              new MapInfo(this.Configuration["Mappers:Users"]),
+              new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+            services.AddSingleton(new Repo<AdminInfo>(
+             new MapInfo(this.Configuration["Mappers:Users"]),
+             new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+            services.AddSingleton(new Repo<SellerPublicInfo>(
+             new MapInfo(this.Configuration["Mappers:Users"]),
+             new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+            services.AddSingleton(new Repo<SellerInfo>(
+             new MapInfo(this.Configuration["Mappers:Users"]),
+             new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+            services.AddSingleton(new Repo<CustomerInfo>(
+              new MapInfo(this.Configuration["Mappers:Users"]),
+             new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+
+            services.AddSingleton(new Repo<CustomerPublicInfo>(
+       new MapInfo(this.Configuration["Mappers:Users"]),
+       new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+
+            services.AddSingleton(new Repo<UserPublicInfo>(
+                new MapInfo(this.Configuration["Mappers:Users"]),
+                new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+
+            services.AddSingleton(new Repo<UserInformation>(
+             new MapInfo(this.Configuration["Mappers:Users"]),
+             new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

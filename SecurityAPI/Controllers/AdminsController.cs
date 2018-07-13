@@ -1,54 +1,78 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using DatabaseAccess.Repository;
 using UsersAPI.Models;
-using DatabaseAccess.SpExecuters;
 using System.Linq;
 using System.Net.Http;
 using System.Net;
-using DatabaseAccessor.Repository;
 using Cryptography;
+using System.Threading.Tasks;
+
 namespace UsersAPI.Controllers
 {
     [Route("api/admins")]
   //  [Authorize]
     public class AdminsController: Controller
     {
-        private MapInfo mapInfo;
-        private ISpExecuter spExecuter;
+       // private MapInfo mapInfo;
+       // private ISpExecuter spExecuter;
         private Repo<AdminInfo> repo;
         private Repo<AdminPublicInfo> publicRepo;
         private Repo<UserPublicInfo> userRepo;
 
-        public AdminsController()
+        public AdminsController(Repo<AdminInfo> repo, Repo<AdminPublicInfo> publicRepo,Repo<UserPublicInfo> userRepo)
         {
-            this.repo = new Repo<AdminInfo>(mapInfo,spExecuter);
-            this.publicRepo = new Repo<AdminPublicInfo>(mapInfo,spExecuter);
-            this.userRepo = new Repo<UserPublicInfo>(mapInfo,spExecuter);
+            this.repo = repo;
+            this.publicRepo = publicRepo;
+            this.userRepo = userRepo;
         }
 
         [HttpGet]
       //  [Authorize]
-        public IEnumerable<AdminPublicInfo> Get()
+    /*    public IEnumerable<AdminPublicInfo> Get()
         {
             return (IEnumerable<AdminPublicInfo>) this.publicRepo.ExecuteOperation("GetAllAdmins");
+        } */
+        public async Task<IActionResult> Get()
+        {
+            var result = await this.publicRepo.ExecuteOperationAsync("GetAllAdmins");
+
+            if (result == null)
+                return new StatusCodeResult(204);
+
+            return new JsonResult(result);
         }
 
         [HttpGet("{id}", Name = "GetAdmin")]
         [Authorize]
-        public AdminPublicInfo GetAdmin(int id)
+        public IActionResult GetAdmin(int id)
         {
-            var userId = int.Parse(
-                   ((System.Security.Claims.ClaimsIdentity)this.User.Identity).Claims
-                   .Where(claim => claim.Type == "user_id").First().Value);
-            if (((AdminInfo)this.repo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) })).User_Id == userId)
+           var res= this.publicRepo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) });
+            if (res == null)
             {
-                return (AdminPublicInfo)this.publicRepo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) });
-            }
+                return new StatusCodeResult(404);
+            } return new JsonResult(res);
+            /*   var userId = int.Parse(
+                      ((System.Security.Claims.ClaimsIdentity)this.User.Identity).Claims
+                      .Where(claim => claim.Type == "user_id").First().Value);
+               if (((AdminInfo)this.repo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) })).User_Id == userId)
+               {
+                   return (AdminPublicInfo)this.publicRepo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) });
+               }
 
-            else return default(AdminPublicInfo);
+               else return default(AdminPublicInfo); */
+        }
+        [HttpGet("{id}", Name = "GetAdmin")]
+        [Authorize]
+        public IActionResult GetAdmin(string login)
+        {
+            var res = this.publicRepo.ExecuteOperation("GetAdmin", new[] { new KeyValuePair<string, object>("login", login) });
+            if (res == null)
+            {
+                return new StatusCodeResult(404);
+            }
+            return new JsonResult(res);
         }
 
         [HttpPost]

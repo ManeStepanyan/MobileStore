@@ -47,8 +47,9 @@ namespace AuthenticationServer.Validators
                 {
                     // if password is ok set
                     if (user.Password == context.Password)
-                    {
-                        context.Result = new GrantValidationResult(
+                        if (user.Password == context.Password && user.IsVerified == true)
+                        {
+                            context.Result = new GrantValidationResult(
                             subject: user.Id.ToString(),
                             authenticationMethod: "custom",
                             claims: GetUserClaims(user));

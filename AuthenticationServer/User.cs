@@ -13,5 +13,6 @@ namespace AuthenticationServer
         public string Email { get; set; }
         public int Role_Id { get; set; }
         public bool IsActive { get; set; }
+        public bool IsVerified { get; set; }
     }
 }

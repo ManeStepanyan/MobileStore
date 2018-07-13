@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace UsersAPI.Models
 {
-    public class UserInfo
+    public class UserInformation
     {
         public int Id { get; set; }
         public string Login { get; set; }
