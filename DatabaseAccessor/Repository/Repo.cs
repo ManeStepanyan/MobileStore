@@ -1,11 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Xml.Linq;
-using System.Xml.XPath;
+﻿using System.Linq;
 using System.Collections.Generic;
 using DatabaseAccess.SpExecuters;
-using Microsoft.Extensions.Configuration;
+using DatabaseAccessor.Repository;
+using System.Threading.Tasks;
 
 namespace DatabaseAccess.Repository
 {/// <summary>
@@ -137,8 +134,10 @@ namespace DatabaseAccess.Repository
         {
             var properties = entity.GetType().GetProperties();
 
+           /* return properties.Select(property =>
+                    KeyValuePair.Create(property.Name, property.GetValue(entity))); */
             return properties.Select(property =>
-                    KeyValuePair.Create(property.Name, property.GetValue(entity)));
+                 new   KeyValuePair<string,object>(property.Name, property.GetValue(entity)));
         }
     }
 }

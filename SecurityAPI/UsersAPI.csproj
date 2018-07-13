@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Recipe\DatabaseAccessor\DatabaseAccessor.csproj" />
     <ProjectReference Include="..\AuthenticationServer\AuthenticationServer.csproj" />
     <ProjectReference Include="..\Cryptography\Cryptography.csproj" />
+    <ProjectReference Include="..\DatabaseAccessor\DatabaseAccessor.csproj" />
   </ItemGroup>
 
 </Project>

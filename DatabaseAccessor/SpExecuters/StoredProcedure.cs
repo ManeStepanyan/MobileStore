@@ -20,6 +20,7 @@ namespace DatabaseAccess.SpExecuters
         /// <summary>
         /// Gets or sets parameters of stored procedure
         /// </summary>
-        public IEnumerable<KeyValuePair<string,object>> Parameters { get; set; }
+        public IEnumerable<KeyValuePair<string, object>> Parameters { get; set; }
     }
 }
+

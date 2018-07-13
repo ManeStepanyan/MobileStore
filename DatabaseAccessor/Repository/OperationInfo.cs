@@ -25,6 +25,6 @@ namespace DatabaseAccess.Repository
         /// <summary>
         /// Gets or sets Parameters names map info
         /// </summary>
-        public Dictionary<string,string> ParametersMappInfo { get; set; }
+        public Dictionary<string, string> ParametersMappInfo { get; set; }
     }
 }

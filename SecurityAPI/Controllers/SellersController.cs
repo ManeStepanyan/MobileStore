@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Cryptography;
 using DatabaseAccess.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UsersAPI.Models;
 

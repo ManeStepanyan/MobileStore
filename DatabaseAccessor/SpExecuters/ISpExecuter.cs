@@ -21,7 +21,8 @@ namespace DatabaseAccess.SpExecuters
         /// <param name="procedureName">Proceduer name</param>
         /// <param name="parameters">Procedure parametes</param>
         /// <returns>Enumerable of rows</returns>
-        IEnumerable<TResult> ExecuteSp<TResult>(string procedureName, IEnumerable<KeyValuePair<string, object>> parameters = null);
+        IEnumerable<TResult> ExecuteSp<TResult>(string procedureName, IEnumerable<KeyValuePair<string, object>> parameters = null)
+            where TResult : class;
 
         /// <summary>
         /// Executes stored procedure which return data is one row.
@@ -30,7 +31,8 @@ namespace DatabaseAccess.SpExecuters
         /// <param name="procedureName">Stored procedure name.</param>
         /// <param name="parameters">Stored proceduer parameters</param>
         /// <returns>Result which is one row in SQL table.</returns>
-        TResult ExecuteEntitySp<TResult>(string procedureName, IEnumerable<KeyValuePair<string, object>> parameters = null);
+        TResult ExecuteEntitySp<TResult>(string procedureName, IEnumerable<KeyValuePair<string, object>> parameters = null)
+            where TResult : class;
 
         /// <summary>
         /// Executes store procedure asynchronously which return data is enumerable.
@@ -40,7 +42,7 @@ namespace DatabaseAccess.SpExecuters
         /// <param name="parameters">Parameters</param>
         /// <returns>Enumerable of rows</returns>
         Task<IEnumerable<TResult>> ExecuteSpAsync<TResult>(string procedureName,
-                    IEnumerable<KeyValuePair<string, object>> parameters = null);
+                    IEnumerable<KeyValuePair<string, object>> parameters = null) where TResult : class;
 
         /// <summary>
         /// Executes store procedure which return data is scalar.
@@ -49,7 +51,8 @@ namespace DatabaseAccess.SpExecuters
         /// <param name="procedureName">Procedure name</param>
         /// <param name="parameters">Procedure Parameters</param>
         /// <returns>Scalar result</returns>
-        TResult ExecuteScalarSp<TResult>(string procedureName, IEnumerable<KeyValuePair<string, object>> parameters = null);
+        TResult ExecuteScalarSp<TResult>(string procedureName, IEnumerable<KeyValuePair<string, object>> parameters = null)
+            where TResult : class;
 
         /// <summary>
         /// Executes store procedure which doesn't have return data.
