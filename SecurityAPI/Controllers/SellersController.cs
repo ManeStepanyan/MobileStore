@@ -84,7 +84,7 @@ namespace UsersAPI.Controllers
 
             if (seller.User_Id == userId)
             {
-                this.repo.ExecuteOperation("UpdateSeller", new[] { new KeyValuePair<string, object>("id", seller.Id), new KeyValuePair<string, object>("name", seller.Name), new KeyValuePair<string, object>("email", seller.Email), new KeyValuePair<string, object>("login", seller.Login), new KeyValuePair<string, object>("password", seller.Password) });
+                this.repo.ExecuteOperation("UpdateSeller", new[] { new KeyValuePair<string, object>("id", seller.Id), new KeyValuePair<string, object>("name", seller.Name), new KeyValuePair<string, object>("email", seller.Email), new KeyValuePair<string, object>("login", seller.Login), new KeyValuePair<string, object>("password",MyCryptography.Encrypt( seller.Password)) });
             }
         }
     
@@ -95,5 +95,12 @@ namespace UsersAPI.Controllers
         {
         this.repo.ExecuteOperation("DeleteSeller", new[] { new KeyValuePair<string, object>("id", id) });
     }
+        [HttpPut]
+        [Route("sellers/id/rate")]
+        public void RateSeller(int id, decimal rating)
+        {
+            this.publicRepo.ExecuteOperation("RateSeller", new[] { new KeyValuePair<string, object>("id", id), new KeyValuePair<string, object>("rating", rating) });
+
+        }
     }
 }
