@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>UsersDatabase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{316d747b-42f4-4077-9c6a-6b2e766b4d7b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>UsersDatabase</RootNamespace>
+    <AssemblyName>UsersDatabase</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="StoredProcedures" />
+    <Folder Include="StoredProcedures\CreateOperations" />
+    <Folder Include="StoredProcedures\UpdateOperations" />
+    <Folder Include="StoredProcedures\DeleteOperations" />
+    <Folder Include="StoredProcedures\ReadOperations" />
+    <Folder Include="StoredProcedures\Other" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Admins.sql" />
+    <Build Include="Tables\Customers.sql" />
+    <Build Include="Tables\Roles.sql" />
+    <Build Include="Tables\Sellers.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="StoredProcedures\CreateOperations\AddAdmin.sql" />
+    <Build Include="StoredProcedures\CreateOperations\AddUser.sql" />
+    <Build Include="StoredProcedures\CreateOperations\AddCustomer.sql" />
+    <Build Include="StoredProcedures\CreateOperations\AddSeller.sql" />
+    <Build Include="StoredProcedures\DeleteOperations\DeleteAdmin.sql" />
+    <Build Include="StoredProcedures\DeleteOperations\DeleteCustomerById.sql" />
+    <Build Include="StoredProcedures\DeleteOperations\DeleteSellerById.sql" />
+    <Build Include="StoredProcedures\DeleteOperations\DeleteCustomerByLogin.sql" />
+    <Build Include="StoredProcedures\DeleteOperations\DeleteSellerByLogin.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetCustomerById.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetRoleByLogin.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetAdminById.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetCustomerByLogin.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetUserByLogin.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetUserById.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetSellerByLogin.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetSellerById.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetSellers.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetCustomers.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetAdmins.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetUsers.sql" />
+    <Build Include="StoredProcedures\Other\LoginExists.sql" />
+    <Build Include="StoredProcedures\UpdateOperations\RateSeller.sql" />
+    <Build Include="StoredProcedures\UpdateOperations\ChangeStatus.sql" />
+    <Build Include="StoredProcedures\UpdateOperations\UpdateAdmin.sql" />
+    <Build Include="StoredProcedures\UpdateOperations\UpdateCustomer.sql" />
+    <Build Include="StoredProcedures\UpdateOperations\UpdateSeller.sql" />
+    <Build Include="StoredProcedures\DeleteOperations\DeleteUser.sql" />
+    <Build Include="StoredProcedures\CreateOperations\CreateUser.sql" />
+  </ItemGroup>
+</Project>
