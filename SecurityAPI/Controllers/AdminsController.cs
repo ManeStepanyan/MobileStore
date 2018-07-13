@@ -29,7 +29,7 @@ namespace UsersAPI.Controllers
         }
 
         [HttpGet]
-      //  [Authorize]
+        [Authorize("Admin")]
     /*    public IEnumerable<AdminPublicInfo> Get()
         {
             return (IEnumerable<AdminPublicInfo>) this.publicRepo.ExecuteOperation("GetAllAdmins");

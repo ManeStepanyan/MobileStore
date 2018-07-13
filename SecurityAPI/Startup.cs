@@ -48,9 +48,24 @@ namespace SecurityAPI
                         options.RequireHttpsMetadata = false;
                         options.ApiName = "Users";
                     });
-        services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("User", "Admin")));
+       // services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("User", "Admin")));
+            // adding policies
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.RequireClaim("Role","1"));
+                
+            });
+            /*services.AddAuthorization(options =>
+           {
+               options.AddPolicy("OnlyForArgishti",
+              policy => policy.RequireRole("Role for Argishti"));
+               options.AddPolicy("For Sevak", policy =>
+               {
+                   policy.RequireUserName("Sevak"); policy.RequireClaim("Profile", "Programer", "Student");
+               });
+           });*/
 
-        services.AddSingleton(new Repo<UserInformation>(
+            services.AddSingleton(new Repo<UserInformation>(
                 new MapInfo(this.Configuration["Mappers:Users"]),
                 new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
             services.AddSingleton(new Repo<AdminPublicInfo>(

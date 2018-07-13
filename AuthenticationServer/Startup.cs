@@ -43,6 +43,7 @@ namespace AuthenticationServer
             services.AddSingleton(new Repo<User>(
                 new MapInfo(this.Configuration["Mappers:Users"]),
                 new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
+      
         }
 
 
