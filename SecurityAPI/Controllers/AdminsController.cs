@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace UsersAPI.Controllers
 {
     [Route("api/admins")]
-  //  [Authorize]
+    [Authorize("Admin")]
     public class AdminsController: Controller
     {
        // private MapInfo mapInfo;

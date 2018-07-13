@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
 
@@ -24,7 +25,7 @@ namespace AuthenticationServer
             {
                 new Client
                 {
-                    ClientId = "Security",
+                    ClientId = "SuperAdmin",
 
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
 
@@ -32,6 +33,11 @@ namespace AuthenticationServer
                     {
                         new Secret("secret".Sha256())
                     },
+                    Claims = new[]
+                    {
+                        new Claim("User", "Admin"),
+                    },
+                    ClientClaimsPrefix = "",
                     AllowedScopes = { "Users" }
                 }
             };

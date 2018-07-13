@@ -39,6 +39,7 @@ namespace AuthenticationServer.Services
         {
             try
             {
+                context.IssuedClaims.AddRange(context.Subject.Claims);
                 // depending on the scope accessing the user data.
                 if (!string.IsNullOrEmpty(context.Subject.Identity.Name))
                 {

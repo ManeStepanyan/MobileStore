@@ -48,7 +48,9 @@ namespace SecurityAPI
                         options.RequireHttpsMetadata = false;
                         options.ApiName = "Users";
                     });
-            services.AddSingleton(new Repo<UserInformation>(
+        services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("User", "Admin")));
+
+        services.AddSingleton(new Repo<UserInformation>(
                 new MapInfo(this.Configuration["Mappers:Users"]),
                 new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
             services.AddSingleton(new Repo<AdminPublicInfo>(
