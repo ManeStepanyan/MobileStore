@@ -12,7 +12,7 @@ namespace SecurityAPI
         {
             return new List<ApiResource>
             {
-                new ApiResource("Users","UserAPI")
+                new ApiResource("UserAPI")
             };
         }
     }

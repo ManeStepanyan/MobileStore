@@ -26,6 +26,16 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
 		</parameters>
 		<returnDataType>Entity</returnDataType>
 	</operation>
+  <operation name='GetAdminByName'>
+    <spName>GetAdminByName</spName>
+    <parameters>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
 	<operation name='GetSeller'>
 		<spName>GetSellerById</spName>
 		<parameters>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityModel;
 using IdentityServer4.Models;
 
 namespace AuthenticationServer
@@ -13,7 +14,7 @@ namespace AuthenticationServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("Users","UserAPI")
+                new ApiResource("UserAPI")
                
             };
         }
@@ -35,10 +36,10 @@ namespace AuthenticationServer
                     },
                     Claims = new[]
                     {
-                        new Claim("User", "Admin"),
+                        new Claim("Role", "Admin"),
                     },
                     ClientClaimsPrefix = "",
-                    AllowedScopes = { "Users" }
+                    AllowedScopes = { "UserAPI" }
                 }
             };
 
@@ -53,8 +54,8 @@ namespace AuthenticationServer
                 new IdentityResources.Email(),
                 new IdentityResource
                 {
-                    Name = "role",
-                    UserClaims = new List<string> {"role"}
+                    Name = JwtClaimTypes.Role,
+                    UserClaims = new List<string> { JwtClaimTypes.Role }
                 }
             };
 

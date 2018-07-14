@@ -100,5 +100,7 @@
     <Build Include="StoredProcedures\UpdateOperations\UpdateSeller.sql" />
     <Build Include="StoredProcedures\DeleteOperations\DeleteUser.sql" />
     <Build Include="StoredProcedures\CreateOperations\CreateUser.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetUser.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetAdminByName.sql" />
   </ItemGroup>
 </Project>

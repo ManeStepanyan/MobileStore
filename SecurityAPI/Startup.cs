@@ -46,11 +46,19 @@ namespace SecurityAPI
                     {
                         options.Authority = "http://localhost:5000";
                         options.RequireHttpsMetadata = false;
-                        options.ApiName = "Users";
+                        options.ApiName = "UserAPI";
                     });
-        services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("User", "Admin")));
+            //  services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireRole("Admin")));
+            services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("role", "1"))); //ha?
+            // adding policies
+            /*  services.AddAuthorization(options =>
+              {
+                  options.AddPolicy("Admin", policy => policy.RequireClaim("Role","1"));
 
-        services.AddSingleton(new Repo<UserInformation>(
+              }); */
+
+
+            services.AddSingleton(new Repo<UserInformation>(
                 new MapInfo(this.Configuration["Mappers:Users"]),
                 new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
             services.AddSingleton(new Repo<AdminPublicInfo>(
