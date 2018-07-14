@@ -49,7 +49,7 @@ namespace AuthenticationServer.Validators
                     // if password is ok set
                     //    if (user.Password == context.Password)
                     var jnj = MyCryptography.Encrypt(context.Password);
-                        if (user.Password ==context.Password) //MyCryptography.Encrypt(context.Password)) /// heto kavelacnes
+                        if (user.Password ==MyCryptography.Encrypt(context.Password)) /// heto kavelacnes
                         {
                             context.Result = new GrantValidationResult(
                             subject: user.Id.ToString(),

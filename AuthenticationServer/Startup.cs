@@ -44,7 +44,7 @@ namespace AuthenticationServer
                 new MapInfo(this.Configuration["Mappers:Users"]),
                 new SpExecuter(this.Configuration["ConnectionStrings:UsersDB"])));
 
-         //   services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("role_id", "1")));
+           services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("role_id", "1")));
         }
 
 
