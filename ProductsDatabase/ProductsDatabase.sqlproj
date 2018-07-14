@@ -66,6 +66,7 @@
     <Build Include="StoredProcedures\GetProductByName.sql" />
     <Build Include="StoredProcedures\DeleteProduct.sql" />
     <Build Include="StoredProcedures\UpdateProduct.sql" />
+    <Build Include="StoredProcedures\CreateProduct.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProductsDatabase.refactorlog" />
