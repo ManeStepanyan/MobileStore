@@ -82,15 +82,22 @@ namespace ProductAPI.Controllers
 
         // PUT: api/Products/5
         [HttpPut("{id}")]
-        public void Put(int Id, [FromBody]Product product)
+        public void Put(int Id, double Price, string Image)
         {
-            this.repository.ExecuteOperation("UpdateProduct", new[] { new KeyValuePair<string, object>("Id", Id), new KeyValuePair<string, object>("Price", )});
+            this.repository.ExecuteOperation("UpdateProduct", new[] {
+                new KeyValuePair<string, object>("Id", Id),
+                new KeyValuePair<string, object>("Price", Price),
+                new KeyValuePair<string, object>("Image", Image),
+            });
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(int Id)
         {
+            this.repository.ExecuteOperation("DeleteProduct", new[] {
+                new KeyValuePair<string, object>("Id", Id),
+            });
         }
     }
 }
