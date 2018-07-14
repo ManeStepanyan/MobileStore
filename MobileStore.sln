@@ -13,6 +13,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "UsersDatabase", "UsersDatab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseAccessor", "DatabaseAccessor\DatabaseAccessor.csproj", "{21917EEC-2BF4-409B-A517-BC53FF1A3058}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{AE18FAE1-8F96-44B5-A9C7-FDE3748D1439}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{21917EEC-2BF4-409B-A517-BC53FF1A3058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21917EEC-2BF4-409B-A517-BC53FF1A3058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21917EEC-2BF4-409B-A517-BC53FF1A3058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE18FAE1-8F96-44B5-A9C7-FDE3748D1439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE18FAE1-8F96-44B5-A9C7-FDE3748D1439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE18FAE1-8F96-44B5-A9C7-FDE3748D1439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE18FAE1-8F96-44B5-A9C7-FDE3748D1439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -46,6 +46,8 @@ namespace AuthenticationServer.Services
                     // get user from db (in my case this is by email)
                     var user = await this._userRepository.FindAsync(context.Subject.Identity.Name);
 
+                   
+
                     // checking user
                     if (user != null)
                     {
@@ -101,10 +103,10 @@ namespace AuthenticationServer.Services
 
                        if (user != null)
                        {
-                           if (user.IsActive)
+                        /*   if (user.IsActive)
                            {
                                context.IsActive = user.IsActive;
-                           }
+                           } */
                        }
                    }
                }

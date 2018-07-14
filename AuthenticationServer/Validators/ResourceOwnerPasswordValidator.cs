@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using IdentityModel;
 using AuthenticationServer.UsersRepository;
+using Cryptography;
 
 namespace AuthenticationServer.Validators
 {
@@ -41,13 +42,14 @@ namespace AuthenticationServer.Validators
             {
                 // getting user
                 var user = await this._userRepository.FindAsync(context.UserName);
-
+                var del = user.Password;
                 // checking password
                 if (user != null)
                 {
                     // if password is ok set
-                    if (user.Password == context.Password)
-                        if (user.Password == context.Password && user.IsVerified == true)
+                    //    if (user.Password == context.Password)
+                    var jnj = MyCryptography.Encrypt(context.Password);
+                        if (user.Password ==context.Password) //MyCryptography.Encrypt(context.Password)) /// heto kavelacnes
                         {
                             context.Result = new GrantValidationResult(
                             subject: user.Id.ToString(),
