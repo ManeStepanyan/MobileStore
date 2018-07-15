@@ -10,7 +10,7 @@
 AS
 begin
 declare @userid int
-	Execute @userid= AddUser @Login, @Password, @Email, @Role_Id
+	Execute @userid= AddUser @Login, @Password, @Email, @Role_Id,0
 	if @Role_Id=1 Insert into dbo.Admins([UserId],[Name])
 	Values(@userid,@Name)
 	if @Role_Id=2 Insert into dbo.Sellers([UserId],[Name],[Address],[CellPhone])

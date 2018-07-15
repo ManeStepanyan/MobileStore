@@ -7,7 +7,7 @@
 AS
 	begin
     declare @userId int
-    execute @userId = AddUser @Login, @Password, @Email, 1
+    execute @userId = AddUser @Login, @Password, @Email, 1,0
 	Insert into dbo.Admins([UserId],[Name])
 	Values(@userId,@Name)
 	end

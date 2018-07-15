@@ -12,5 +12,6 @@ namespace UsersAPI.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public int RoleId { get; set; }
+        public bool IsVarified { get; set; }
     }
 }
