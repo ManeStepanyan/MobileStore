@@ -294,7 +294,11 @@ namespace DatabaseAccess.SpExecuters
             // setting result object properties
             foreach (var property in properties)
             {
-                property.SetValue(result, reader[property.Name]);
+                if (reader[property.Name] == DBNull.Value)
+                {
+                    property.SetValue(result, null);
+                        }
+             else   property.SetValue(result, reader[property.Name]);
             }
 
             // returning result

@@ -47,8 +47,6 @@ namespace AuthenticationServer.Validators
                 if (user != null)
                 {
                     // if password is ok set
-                    //    if (user.Password == context.Password)
-                    var jnj = MyCryptography.Encrypt(context.Password);
                         if (user.Password ==MyCryptography.Encrypt(context.Password)) /// heto kavelacnes
                         {
                             context.Result = new GrantValidationResult(
@@ -88,7 +86,7 @@ namespace AuthenticationServer.Validators
             {
                 new Claim("user_id", user.Id.ToString()),
                 new Claim(JwtClaimTypes.Name,user.Login),
-                new Claim(JwtClaimTypes.Role, user.Role_Id.ToString())
+                new Claim(JwtClaimTypes.Role, user.RoleId.ToString())
             };
         }
     }

@@ -115,7 +115,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
       </parameter>
       <parameter>
         <parameterName>Role_Id</parameterName>
-        <spParameterName>Role_Id</spParameterName>
+        <spParameterName>RoleId</spParameterName>
       </parameter>
       <parameter>
         <parameterName>name</parameterName>
@@ -323,20 +323,6 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
       <parameter>
         <parameterName>password</parameterName>
         <spParameterName>Password</spParameterName>
-      </parameter>
-    </parameters>
-    <returnDataType>NoReturnValue</returnDataType>
-  </operation>
-  <operation name="ChangeStatus">
-    <spName>ChangeStatus</spName>
-    <parameters>
-      <parameter>
-        <parameterName>id</parameterName>
-        <spParameterName>Id</spParameterName>
-      </parameter>
-      <parameter>
-        <parameterName>isTrue</parameterName>
-        <spParameterName>Status</spParameterName>
       </parameter>
     </parameters>
     <returnDataType>NoReturnValue</returnDataType>

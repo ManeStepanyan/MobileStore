@@ -8,6 +8,6 @@ AS
 	begin
     declare @userId int
     execute @userId = AddUser @Login, @Password, @Email, 1
-	Insert into dbo.Admins([User_Id],[Name])
+	Insert into dbo.Admins([UserId],[Name])
 	Values(@userId,@Name)
 	end

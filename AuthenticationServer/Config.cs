@@ -34,12 +34,12 @@ namespace AuthenticationServer
                     {
                         new Secret("secret".Sha256())
                     },
-                    Claims = new[]
+                 /*   Claims = new[]
                     {
                         new Claim("Role", "Admin"),
-                    },
+                    }, */
                     ClientClaimsPrefix = "",
-                    AllowedScopes = { "UserAPI" }
+                    AllowedScopes = { "UserAPI","ProductAPI","OrderAPI" }
                 }
             };
 

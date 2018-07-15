@@ -7,7 +7,7 @@
 AS
 begin
 declare @UserId int
-select UserId= [User_Id] from Admins where Id=@Id
+select UserId= [UserId] from Admins where Id=@Id
 	Update Admins
 	set [Name]=IIF(@Name=null, [Name],@Name)
 	where Id=@Id

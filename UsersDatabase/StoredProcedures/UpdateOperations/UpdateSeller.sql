@@ -9,7 +9,7 @@
 AS
 begin
 declare @UserId int
-select @UserId=[User_Id] from Sellers where Id=@Id
+select @UserId=[UserId] from Sellers where Id=@Id
 	Update Sellers
 	set [Name]=IIF(@Name =null, [Name],@Name),
 	[Address]=IIF(@Address =null, [Address],@Address),

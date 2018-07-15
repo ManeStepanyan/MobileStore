@@ -115,7 +115,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
       </parameter>
       <parameter>
         <parameterName>Role_Id</parameterName>
-        <spParameterName>Role_Id</spParameterName>
+        <spParameterName>RoleId</spParameterName>
       </parameter>
       <parameter>
         <parameterName>name</parameterName>
@@ -296,51 +296,37 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
 		</parameters>
 		<returnDataType>NoReturnValue</returnDataType>
 	</operation>
-	<operation name="UpdateCustomer">
-		<spName>UpdateCustomer</spName>
-		<parameters>
-			<parameter>
-				<parameterName>name</parameterName>
-				<spParameterName>Name</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>surname</parameterName>
-				<spParameterName>Surname</spParameterName>
-			</parameter>
-			
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="ChangeStatus">
-		<spName>ChangeStatus</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>isTrue</parameterName>
-				<spParameterName>Status</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
+  <operation name="UpdateCustomer">
+    <spName>UpdateCustomer</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>surname</parameterName>
+        <spParameterName>Surname</spParameterName>
+      </parameter>
+
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
 	<operation name="RateSeller">
 		<spName>ChangeStatus</spName>
 		<parameters>

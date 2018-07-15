@@ -11,10 +11,10 @@ AS
 begin
 declare @userid int
 	Execute @userid= AddUser @Login, @Password, @Email, @Role_Id
-	if @Role_Id=1 Insert into dbo.Admins([User_Id],[Name])
+	if @Role_Id=1 Insert into dbo.Admins([UserId],[Name])
 	Values(@userid,@Name)
-	if @Role_Id=2 Insert into dbo.Sellers([User_Id],[Name],[Address],[CellPhone])
+	if @Role_Id=2 Insert into dbo.Sellers([UserId],[Name],[Address],[CellPhone])
 	Values(@userid,@Name,@Address,@CellPhone)
-	else 	Insert into dbo.Customers([User_Id],[Name],[Surname],[Status])
-	Values(@userid,@Name,@Surname,0)
+	else 	Insert into dbo.Customers([UserId],[Name],[Surname])
+	Values(@userid,@Name,@Surname)
 end

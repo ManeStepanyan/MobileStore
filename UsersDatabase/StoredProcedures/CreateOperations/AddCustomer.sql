@@ -8,6 +8,6 @@ AS
 	begin
     declare @userId int
     execute @userId = AddUser @Login, @Password, @Email, 3
-	Insert into dbo.Customers([User_Id],[Name],[Surname],[Status])
-	Values(@userId,@Name,@Surname,0)
+	Insert into dbo.Customers([UserId],[Name],[Surname])
+	Values(@userId,@Name,@Surname)
 	end
