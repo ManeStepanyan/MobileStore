@@ -38,8 +38,7 @@ namespace UsersAPI.Controllers
 
         // GET: api/Customers/5
         [HttpGet("{id}", Name = "GetByN")]
-        [Authorize(Policy = "Admin")]
-        [Authorize(Policy ="Customer")]
+        [Authorize(Policy = "Admin, Customer")]
         public async Task<IActionResult> Get(int id)
         {
             CustomerInfo customer = new CustomerInfo();
@@ -59,8 +58,7 @@ namespace UsersAPI.Controllers
 
         }
         [HttpGet("login/{login}", Name = "GetByLogin")]
-        [Authorize(Policy = "Admin")]
-        [Authorize(Policy = "Customer")]
+        [Authorize(Policy = "Admin, Customer")]
         public async Task<IActionResult> Get(string login)
         {
             CustomerPublicInfo customer = new CustomerPublicInfo();
@@ -112,8 +110,7 @@ namespace UsersAPI.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        [Authorize(Policy = "Admin")]
-        [Authorize(Policy = "Customer")]
+        [Authorize(Policy = "Admin, Customer")]
         public async Task<IActionResult> Delete(int id)
         {
             var role = int.Parse(((ClaimsIdentity)this.User.Identity).Claims.Where(claim => claim.Type == "role").First().Value);

@@ -92,8 +92,9 @@ namespace UsersAPI.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        [Authorize(Policy = "Admin")]
-        [Authorize(Policy = "Seller")]
+      //  [Authorize(Policy = "Admin")]
+    //    [Authorize(Policy = "Seller")]
+        [Authorize( "Admin, Seller")]
         public async Task<IActionResult> Delete(int id)
         {
             var role = int.Parse(((ClaimsIdentity)this.User.Identity).Claims.Where(claim => claim.Type == "role").First().Value);

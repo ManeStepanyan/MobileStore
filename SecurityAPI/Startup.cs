@@ -48,7 +48,8 @@ namespace SecurityAPI
             services.AddAuthorization(options => options.AddPolicy("Admin", policy => policy.RequireClaim("role", "1")));
             services.AddAuthorization(options => options.AddPolicy("Seller", policy => policy.RequireClaim("role", "2")));
             services.AddAuthorization(options => options.AddPolicy("Customer", policy => policy.RequireClaim("role", "3")));
-          
+            services.AddAuthorization(options => options.AddPolicy("Admin, Seller", policy => policy.RequireClaim("role", "1","2")));
+            services.AddAuthorization(options => options.AddPolicy("Admin, Customer",policy=>policy.RequireClaim("role", "1", "3")));
 
             services.AddSingleton(new Repo<UserInformation>(
                 new MapInfo(this.Configuration["Mappers:Users"]),

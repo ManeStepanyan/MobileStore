@@ -353,7 +353,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
   <operation name="DeleteAdmin">
-    <spName>uspDeleteUser</spName>
+    <spName>DeleteAdmin</spName>
     <parameters>
       <parameter>
         <parameterName>id</parameterName>
@@ -363,7 +363,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
   <operation name="DeleteSeller">
-    <spName>DeleteSeller</spName>
+    <spName>DeleteSellerById</spName>
     <parameters>
       <parameter>
         <parameterName>id</parameterName>
@@ -373,7 +373,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
   <operation name="DeleteCustomer">
-    <spName>DeleteCustomer</spName>
+    <spName>DeleteCustomerById</spName>
     <parameters>
       <parameter>
         <parameterName>id</parameterName>
