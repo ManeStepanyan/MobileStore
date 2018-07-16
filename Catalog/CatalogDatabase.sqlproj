@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>ShopCartDatabase</Name>
+    <Name>CatalogDatabase</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{4bd56d5b-808d-4123-8ada-d0e9ab825d31}</ProjectGuid>
+    <ProjectGuid>{33e2fdba-ad64-4c46-bd22-a7a3d67747f8}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>ShopCartDatabase</RootNamespace>
-    <AssemblyName>ShopCartDatabase</AssemblyName>
+    <RootNamespace>Catalog</RootNamespace>
+    <AssemblyName>Catalog</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -60,8 +60,8 @@
     <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="ShopCart.sql" />
-    <Build Include="StoredProcedures\AddToShopCart.sql" />
-    <Build Include="StoredProcedures\DeleteFromShopCart.sql" />
+    <Build Include="Catalog.sql" />
+    <Build Include="StoredProcedures\GetSellerId.sql" />
+    <Build Include="StoredProcedures\GetProducts.sql" />
   </ItemGroup>
 </Project>

@@ -16,7 +16,6 @@ namespace ProductAPI.Controllers
     {
 
         private readonly Repo<Product> repository;
-        private readonly Repo<ProductPublicInfo> publicRepository;
 
         public ProductsController(Repo<Product> repository)
         {
@@ -27,7 +26,7 @@ namespace ProductAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await this.publicRepository.ExecuteOperationAsync("GetProducts");
+            var result = await this.repository.ExecuteOperationAsync("GetProducts");
 
             if (result == null)
                 return new StatusCodeResult(204);
@@ -40,7 +39,7 @@ namespace ProductAPI.Controllers
         [HttpGet("{Id}", Name = "Get")]
         public IActionResult Get(int Id)
         {
-            var res = this.publicRepository.ExecuteOperation("GetProductById", new[] { new KeyValuePair<string, object>("Id", Id) });
+            var res = this.repository.ExecuteOperation("GetProductById", new[] { new KeyValuePair<string, object>("Id", Id) });
             if (res == null)
             {
                 return new StatusCodeResult(404);
@@ -51,7 +50,7 @@ namespace ProductAPI.Controllers
         [HttpGet("{Name}", Name = "Get")]
         public IActionResult Get(string Name)
         {
-            var res = this.publicRepository.ExecuteOperation("GetProductByName", new[] { new KeyValuePair<string, object>("Name", Name) });
+            var res = this.repository.ExecuteOperation("GetProductByName", new[] { new KeyValuePair<string, object>("Name", Name) });
             if (res == null)
             {
                 return new StatusCodeResult(404);
