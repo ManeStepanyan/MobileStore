@@ -13,6 +13,5 @@
         public string Battery { get; set; }
         public int Camera { get; set; }
         public string Image { get; set; }
-        public int Sellers_ID { get; set; }
     }
 }

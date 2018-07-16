@@ -10,6 +10,5 @@
     [Display] INT NOT NULL, 
     [Battery] VARCHAR(30) NOT NULL, 
     [Camera] INT NOT NULL, 
-    [Image] VARCHAR(200) NOT NULL, 
-    [Seller's_ID] INT NOT NULL
+    [Image] VARCHAR(200) NOT NULL
 )

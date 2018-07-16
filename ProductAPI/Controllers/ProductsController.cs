@@ -74,8 +74,7 @@ namespace ProductAPI.Controllers
                     new KeyValuePair<string, object>("Display", product.Display),
                     new KeyValuePair<string, object>("Battery", product.Battery),
                     new KeyValuePair<string, object>("Camera", product.Camera),
-                    new KeyValuePair<string, object>("Image", product.Image),
-                    new KeyValuePair<string, object>("Sellers_ID", product.Sellers_ID)
+                    new KeyValuePair<string, object>("Image", product.Image)
                 });
         }
 
