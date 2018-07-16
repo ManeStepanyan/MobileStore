@@ -64,7 +64,6 @@
     <Build Include="StoredProcedures\GetAllOrders.sql" />
     <Build Include="StoredProcedures\GetOrdersByTimeSpan.sql" />
     <Build Include="StoredProcedures\GetOrderByOrderId.sql" />
-    <Build Include="StoredProcedures\GetOrderByProductId.sql" />
     <Build Include="StoredProcedures\CreateOrder.sql" />
     <Build Include="StoredProcedures\DeleteOrder.sql" />
   </ItemGroup>
