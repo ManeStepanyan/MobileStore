@@ -89,7 +89,7 @@ namespace UsersAPI.Controllers
                ((ClaimsIdentity)this.User.Identity).Claims
                .Where(claim => claim.Type == "name").First().Value.ToString();
             if (userName == "Admin888") { 
-              await this.repo.ExecuteOperationAsync("UpdateAdmin", new[] { new KeyValuePair<string, object>("id", id), new KeyValuePair<string, object>("name", admin.Name), new KeyValuePair<string, object>("email", admin.Email), new KeyValuePair<string, object>("login", admin.Login), new KeyValuePair<string, object>("password", admin.Password) });
+              await this.repo.ExecuteOperationAsync("UpdateAdmin", new[] { new KeyValuePair<string, object>("id", id), new KeyValuePair<string, object>("name", admin.Name), new KeyValuePair<string, object>("email", admin.Email),  new KeyValuePair<string, object>("password", admin.Password) });
                 return new JsonResult(await this.repo.ExecuteOperationAsync("GetAdmin", new[] { new KeyValuePair<string, object>("id", id) })); }
             return new StatusCodeResult(404);
         }

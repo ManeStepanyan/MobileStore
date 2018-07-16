@@ -100,6 +100,7 @@
     <Build Include="StoredProcedures\CreateOperations\CreateUser.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetUser.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetAdminByName.sql" />
-    <Build Include="StoredProcedures\UpdateOperations\ValidateUser.sql" />
+    <Build Include="StoredProcedures\VerifyUser.sql" />
+    <Build Include="StoredProcedures\AddActivationCode.sql" />
   </ItemGroup>
 </Project>

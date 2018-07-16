@@ -82,7 +82,7 @@ namespace UsersAPI.Controllers
                            .Where(claim => claim.Type == "user_id").First().Value);
             if (userId == ((SellerInfo)(await this.repo.ExecuteOperationAsync("GetSeller", new[] { new KeyValuePair<string, object>("id", id) }))).UserId)
             {
-                await this.repo.ExecuteOperationAsync("UpdateSeller", new[] { new KeyValuePair<string, object>("id", id), new KeyValuePair<string, object>("name", seller.Name = seller.Name ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("cellphone", seller.CellPhone = seller.CellPhone ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("address", seller.Address = seller.Address ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("email", seller.Email = seller.Email ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("login", seller.Login = seller.Login ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("password", seller.Password= MyCryptography.Encrypt(seller.Password)?? DBNull.Value.ToString()) });
+                await this.repo.ExecuteOperationAsync("UpdateSeller", new[] { new KeyValuePair<string, object>("id", id), new KeyValuePair<string, object>("name", seller.Name ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("cellphone",  seller.CellPhone ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("address",seller.Address ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("email", seller.Email ?? DBNull.Value.ToString()),new KeyValuePair<string, object>("password", MyCryptography.Encrypt(seller.Password)?? DBNull.Value.ToString()) });
                  return await this.GetById(id);
             }
                 return new StatusCodeResult(404);

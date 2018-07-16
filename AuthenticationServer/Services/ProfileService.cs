@@ -14,7 +14,7 @@ namespace AuthenticationServer.Services
    /// Profile serviice
    /// </summary>
     public class ProfileService : IProfileService
-    {
+    { 
         /// <summary>
         /// User repository
         /// </summary>
@@ -103,10 +103,10 @@ namespace AuthenticationServer.Services
 
                        if (user != null)
                        {
-                        /*   if (user.IsActive)
+                           if (user.IsActive)
                            {
                                context.IsActive = user.IsActive;
-                           } */
+                           } 
                        }
                    }
                }

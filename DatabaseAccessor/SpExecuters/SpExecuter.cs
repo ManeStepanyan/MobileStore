@@ -293,7 +293,7 @@ namespace DatabaseAccess.SpExecuters
 
             // setting result object properties
             foreach (var property in properties)
-            { if (property.Name == "IsValidated")
+            { if (property.Name == "IsValidated" || property.Name=="IsActive")
                 {////????????????
                     reader.GetBoolean(reader.GetOrdinal(property.Name));
                 }

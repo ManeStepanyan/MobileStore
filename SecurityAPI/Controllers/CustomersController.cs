@@ -101,7 +101,7 @@ namespace UsersAPI.Controllers
        
             if (((CustomerInfo)(await this.repo.ExecuteOperationAsync("GetCustomer", new[] { new KeyValuePair<string, object>("id", id) }))).UserId == userId)
             {
-              await this.repo.ExecuteOperationAsync("UpdateCustomer", new[] { new KeyValuePair<string, object>("id", id), new KeyValuePair<string, object>("name", customer.Name = customer.Name?? DBNull.Value.ToString()), new KeyValuePair<string, object>("surname", customer.Surname = customer.Surname ?? DBNull.Value.ToString()),new KeyValuePair<string, object>("email", customer.Email=customer.Email ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("login", customer.Login=customer.Login ?? DBNull.Value.ToString()), new KeyValuePair<string, object>("password", customer.Password= MyCryptography.Encrypt(customer.Password) ?? DBNull.Value.ToString()) });
+              await this.repo.ExecuteOperationAsync("UpdateCustomer", new[] { new KeyValuePair<string, object>("id", id), new KeyValuePair<string, object>("name", customer.Name = customer.Name?? DBNull.Value.ToString()), new KeyValuePair<string, object>("surname", customer.Surname = customer.Surname ?? DBNull.Value.ToString()),new KeyValuePair<string, object>("email", customer.Email=customer.Email ?? DBNull.Value.ToString())s, new KeyValuePair<string, object>("password", customer.Password= MyCryptography.Encrypt(customer.Password) ?? DBNull.Value.ToString()) });
                 return new JsonResult(await this.Get(id));
             }
             return new StatusCodeResult(404);

@@ -17,7 +17,6 @@ select @UserId=[UserId] from Sellers where Id=@Id
 	where Id=@Id
 	Update Users
 	set [Email]=IIF(@Email=null, [Email],@Email), 
-	[Login]=IIF(@Login=null,[Login],@Login), 
 	[Password]=IIF(@Password=null, [Password],@Password)
 	where Id=@UserId
 end
