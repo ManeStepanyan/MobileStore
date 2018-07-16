@@ -2,4 +2,4 @@
 	AS
 	SELECT *
 	from Sellers inner join Users
-	on Sellers.[User_Id]=Users.Id
+	on Sellers.[UserId]=Users.Id

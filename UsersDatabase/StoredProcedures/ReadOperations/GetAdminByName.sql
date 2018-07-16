@@ -3,5 +3,5 @@
 AS
 	SELECT *
 	from Admins inner join Users on
-	Admins.[User_Id]=Users.Id
+	Admins.[UserId]=Users.Id
 	where Users.[Login]=@Login

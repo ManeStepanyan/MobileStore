@@ -3,5 +3,5 @@
 AS
 	SELECT *
 	from Sellers inner join Users on
-	Sellers.[User_Id]=Users.Id
+	Sellers.[UserId]=Users.Id
 	where Sellers.Id=@Id

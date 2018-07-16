@@ -133,6 +133,10 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
         <parameterName>email</parameterName>
         <spParameterName>Email</spParameterName>
       </parameter>
+      <parameter>
+        <parameterName>activationCode</parameterName>
+        <spParameterName>ActivationCode</spParameterName>
+      </parameter>
     </parameters>
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
@@ -252,10 +256,6 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
         <spParameterName>Email</spParameterName>
       </parameter>
       <parameter>
-        <parameterName>login</parameterName>
-        <spParameterName>Login</spParameterName>
-      </parameter>
-      <parameter>
         <parameterName>password</parameterName>
         <spParameterName>Password</spParameterName>
       </parameter>
@@ -286,10 +286,6 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
         <spParameterName>Email</spParameterName>
       </parameter>
       <parameter>
-        <parameterName>login</parameterName>
-        <spParameterName>Login</spParameterName>
-      </parameter>
-      <parameter>
         <parameterName>password</parameterName>
         <spParameterName>Password</spParameterName>
       </parameter>
@@ -317,26 +313,18 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
         <spParameterName>Email</spParameterName>
       </parameter>
       <parameter>
-        <parameterName>login</parameterName>
-        <spParameterName>Login</spParameterName>
-      </parameter>
-      <parameter>
         <parameterName>password</parameterName>
         <spParameterName>Password</spParameterName>
       </parameter>
     </parameters>
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
-  <operation name="ChangeStatus">
-    <spName>ChangeStatus</spName>
+  <operation name="ValidateUser">
+    <spName>ValidateUser</spName>
     <parameters>
       <parameter>
         <parameterName>id</parameterName>
-        <spParameterName>Id</spParameterName>
-      </parameter>
-      <parameter>
-        <parameterName>isTrue</parameterName>
-        <spParameterName>Status</spParameterName>
+        <spParameterName>UserId</spParameterName>
       </parameter>
     </parameters>
     <returnDataType>NoReturnValue</returnDataType>
@@ -367,7 +355,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
   <operation name="DeleteAdmin">
-    <spName>uspDeleteUser</spName>
+    <spName>DeleteAdmin</spName>
     <parameters>
       <parameter>
         <parameterName>id</parameterName>
@@ -377,7 +365,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
   <operation name="DeleteSeller">
-    <spName>DeleteSeller</spName>
+    <spName>DeleteSellerById</spName>
     <parameters>
       <parameter>
         <parameterName>id</parameterName>
@@ -387,7 +375,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
   <operation name="DeleteCustomer">
-    <spName>DeleteCustomer</spName>
+    <spName>DeleteCustomerById</spName>
     <parameters>
       <parameter>
         <parameterName>id</parameterName>
@@ -425,5 +413,29 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
       </parameter>
     </parameters>
     <returnDataType>Scalar</returnDataType>
+  </operation>
+  <operation name="VerifyUser">
+    <spName>VerifyUser</spName>
+    <parameters>
+      <parameter>
+        <parameterName>activationCode</parameterName>
+        <spParameterName>ActivationCode</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="AddActivationCode">
+    <spName>AddActivationCode</spName>
+    <parameters>
+      <parameter>
+        <parameterName>activationCode</parameterName>
+        <spParameterName>ActivationCode</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
   </operation>
 </operations>

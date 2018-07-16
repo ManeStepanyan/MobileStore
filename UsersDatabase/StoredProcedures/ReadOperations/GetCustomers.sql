@@ -2,4 +2,4 @@
 AS
 	SELECT *
 	from Customers join Users
-	on Customers.[User_Id]=Users.Id
+	on Customers.[UserId]=Users.Id
