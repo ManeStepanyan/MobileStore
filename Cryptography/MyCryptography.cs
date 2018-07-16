@@ -137,6 +137,7 @@ namespace Cryptography
                     return null;
                 }
             }
+
             catch (Exception ex)
             {
                 // Se algum erro ocorrer, dispara a exceção            
