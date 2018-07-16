@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>OrdersDatabase</Name>
+    <Name>ShopCartDatabase</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{ec5bbab3-15b6-4cc6-b01f-71baffb48254}</ProjectGuid>
+    <ProjectGuid>{4bd56d5b-808d-4123-8ada-d0e9ab825d31}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>OrdersDB</RootNamespace>
-    <AssemblyName>OrdersDB</AssemblyName>
+    <RootNamespace>ShopCartDatabase</RootNamespace>
+    <AssemblyName>ShopCartDatabase</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -60,15 +60,8 @@
     <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Orders.sql" />
-    <Build Include="StoredProcedures\GetAllOrders.sql" />
-    <Build Include="StoredProcedures\GetOrdersByTimeSpan.sql" />
-    <Build Include="StoredProcedures\GetOrderByOrderId.sql" />
-    <Build Include="StoredProcedures\GetOrderByProductId.sql" />
-    <Build Include="StoredProcedures\CreateOrder.sql" />
-    <Build Include="StoredProcedures\DeleteOrder.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="OrdersDatabase.refactorlog" />
+    <Build Include="ShopCart.sql" />
+    <Build Include="StoredProcedures\AddToShopCart.sql" />
+    <Build Include="StoredProcedures\DeleteFromShopCart.sql" />
   </ItemGroup>
 </Project>
