@@ -63,6 +63,8 @@
     <Build Include="Orders.sql" />
     <Build Include="StoredProcedures\GetAllOrders.sql" />
     <Build Include="StoredProcedures\GetOrdersByTimeSpan.sql" />
+    <Build Include="StoredProcedures\GetOrderByOrderId.sql" />
+    <Build Include="StoredProcedures\GetOrderByProductId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OrdersDatabase.refactorlog" />
