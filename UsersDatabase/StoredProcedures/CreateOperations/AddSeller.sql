@@ -8,7 +8,7 @@
 AS
 	begin
     declare @userId int
-    execute @userId = AddUser @Login, @Password, @Email, 2
-	Insert into dbo.Sellers([User_Id],[Name],[Address],[CellPhone])
+    execute @userId = AddUser @Login, @Password, @Email, 2,0
+	Insert into dbo.Sellers([UserId],[Name],[Address],[CellPhone])
 	Values(@userId,@Name,@Address,@CellPhone)
 	end

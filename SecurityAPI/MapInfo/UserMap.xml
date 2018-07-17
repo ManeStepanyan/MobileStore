@@ -2,30 +2,30 @@
 <operations
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="MapSchema.xsd">
-	<operation name="GetAllUsers">
-		<spName>GetUsers</spName>
-		<returnDataType>Enumerable</returnDataType>
-	</operation>
-	<operation name='GetUser'>
-		<spName>GetUser</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Entity</returnDataType>
-	</operation>
-	<operation name='GetAdmin'>
-		<spName>GetAdminById</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Entity</returnDataType>
-	</operation>
+  <operation name="GetAllUsers">
+    <spName>GetUsers</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name='GetUser'>
+    <spName>GetUser</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetAdmin'>
+    <spName>GetAdminById</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
   <operation name='GetAdminByName'>
     <spName>GetAdminByName</spName>
     <parameters>
@@ -36,68 +36,68 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     </parameters>
     <returnDataType>Entity</returnDataType>
   </operation>
-	<operation name='GetSeller'>
-		<spName>GetSellerById</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Entity</returnDataType>
-	</operation>
-	<operation name='GetCustomer'>
-		<spName>GetCustomerById</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Entity</returnDataType>
-	</operation>
-	<operation name='GetUserByName'>
-		<spName>GetUserByLogin</spName>
-		<parameters>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Entity</returnDataType>
-	</operation>
-	<operation name='GetCustomerByName'>
-		<spName>GetCustomerByLogin</spName>
-		<parameters>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Entity</returnDataType>
-	</operation>
-	<operation name='GetSellerByName'>
-		<spName>GetSellerByLogin</spName>
-		<parameters>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Entity</returnDataType>
-	</operation>
-	<operation name="GetAllAdmins">
-		<spName>GetAdmins</spName>
-		<returnDataType>Enumerable</returnDataType>
-	</operation>
-	<operation name="GetAllSellers">
-		<spName>GetSellers</spName>
-		<returnDataType>Enumerable</returnDataType>
-	</operation>
-	<operation name="GetAllCustomers">
-		<spName>GetCustomers</spName>
-		<returnDataType>Enumerable</returnDataType>
-	</operation>
+  <operation name='GetSeller'>
+    <spName>GetSellerById</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetCustomer'>
+    <spName>GetCustomerById</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetUserByName'>
+    <spName>GetUserByLogin</spName>
+    <parameters>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetCustomerByName'>
+    <spName>GetCustomerByLogin</spName>
+    <parameters>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetSellerByName'>
+    <spName>GetSellerByLogin</spName>
+    <parameters>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name="GetAllAdmins">
+    <spName>GetAdmins</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name="GetAllSellers">
+    <spName>GetSellers</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name="GetAllCustomers">
+    <spName>GetCustomers</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
   <operation name="CreateUser">
     <spName>CreateUser</spName>
     <parameters>
@@ -133,297 +133,309 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
         <parameterName>email</parameterName>
         <spParameterName>Email</spParameterName>
       </parameter>
+      <parameter>
+        <parameterName>activationCode</parameterName>
+        <spParameterName>ActivationCode</spParameterName>
+      </parameter>
     </parameters>
     <returnDataType>NoReturnValue</returnDataType>
   </operation>
-	<operation name="CreateAdmin">
-		<spName>AddAdmin</spName>
-		<parameters>
-			<parameter>
-				<parameterName>name</parameterName>
-				<spParameterName>Name</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>					
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="CreateSeller">
-		<spName>AddSeller</spName>
-		<parameters>
-			<parameter>
-				<parameterName>name</parameterName>
-				<spParameterName>Name</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>address</parameterName>
-				<spParameterName>Address</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>cellphone</parameterName>
-				<spParameterName>CellPhone</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="CreateCustomer">
-		<spName>AddCustomer</spName>
-		<parameters>
-			<parameter>
-				<parameterName>name</parameterName>
-				<spParameterName>Name</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>surname</parameterName>
-				<spParameterName>Surname</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>		
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="UpdateUser">
-		<spName>UpdateUser</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>					
-		</parameters>		
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>		
-	<operation name="UpdateAdmin">
-		<spName>UpdateAdmin</spName>
-		<parameters>
-			<parameter>
-				<parameterName>name</parameterName>
-				<spParameterName>Name</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="UpdateSeller">
-		<spName>UpdateSeller</spName>
-		<parameters>
-			<parameter>
-				<parameterName>name</parameterName>
-				<spParameterName>Name</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>address</parameterName>
-				<spParameterName>Address</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>cellphone</parameterName>
-				<spParameterName>CellPhone</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="UpdateCustomer">
-		<spName>UpdateCustomer</spName>
-		<parameters>
-			<parameter>
-				<parameterName>name</parameterName>
-				<spParameterName>Name</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>surname</parameterName>
-				<spParameterName>Surname</spParameterName>
-			</parameter>
-			
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>email</parameterName>
-				<spParameterName>Email</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>password</parameterName>
-				<spParameterName>Password</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="ChangeStatus">
-		<spName>ChangeStatus</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>isTrue</parameterName>
-				<spParameterName>Status</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="RateSeller">
-		<spName>ChangeStatus</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-			<parameter>
-				<parameterName>rating</parameterName>
-				<spParameterName>Rate</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	
-	<operation name="DeleteUser">
-		<spName>uspDeleteUser</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="DeleteAdmin">
-		<spName>uspDeleteUser</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="DeleteSeller">
-		<spName>DeleteSeller</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="DeleteCustomer">
-		<spName>DeleteCustomer</spName>
-		<parameters>
-			<parameter>
-				<parameterName>id</parameterName>
-				<spParameterName>Id</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="DeleteCustomerByName">
-		<spName>DeleteCustomerByName</spName>
-		<parameters>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="DeleteSellerByName">
-		<spName>DeleteSellerByName</spName>
-		<parameters>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>NoReturnValue</returnDataType>
-	</operation>
-	<operation name="ExistsLogin">
-		<spName>LoginExists</spName>
-		<parameters>
-			<parameter>
-				<parameterName>login</parameterName>
-				<spParameterName>Login</spParameterName>
-			</parameter>
-		</parameters>
-		<returnDataType>Scalar</returnDataType>
-	</operation>
+  <operation name="CreateAdmin">
+    <spName>AddAdmin</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="CreateSeller">
+    <spName>AddSeller</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>address</parameterName>
+        <spParameterName>Address</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>cellphone</parameterName>
+        <spParameterName>CellPhone</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="CreateCustomer">
+    <spName>AddCustomer</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>surname</parameterName>
+        <spParameterName>Surname</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="UpdateUser">
+    <spName>UpdateUser</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="UpdateAdmin">
+    <spName>UpdateAdmin</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="UpdateSeller">
+    <spName>UpdateSeller</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>address</parameterName>
+        <spParameterName>Address</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>cellphone</parameterName>
+        <spParameterName>CellPhone</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="UpdateCustomer">
+    <spName>UpdateCustomer</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>surname</parameterName>
+        <spParameterName>Surname</spParameterName>
+      </parameter>
+
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>email</parameterName>
+        <spParameterName>Email</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>password</parameterName>
+        <spParameterName>Password</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="ValidateUser">
+    <spName>ValidateUser</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>UserId</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="RateSeller">
+    <spName>ChangeStatus</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>rating</parameterName>
+        <spParameterName>Rate</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+
+  <operation name="DeleteUser">
+    <spName>uspDeleteUser</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="DeleteAdmin">
+    <spName>DeleteAdmin</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="DeleteSeller">
+    <spName>DeleteSellerById</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="DeleteCustomer">
+    <spName>DeleteCustomerById</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="DeleteCustomerByName">
+    <spName>DeleteCustomerByName</spName>
+    <parameters>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="DeleteSellerByName">
+    <spName>DeleteSellerByName</spName>
+    <parameters>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="ExistsLogin">
+    <spName>LoginExists</spName>
+    <parameters>
+      <parameter>
+        <parameterName>login</parameterName>
+        <spParameterName>Login</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Scalar</returnDataType>
+  </operation>
+  <operation name="VerifyUser">
+    <spName>VerifyUser</spName>
+    <parameters>
+      <parameter>
+        <parameterName>activationCode</parameterName>
+        <spParameterName>ActivationCode</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name="AddActivationCode">
+    <spName>AddActivationCode</spName>
+    <parameters>
+      <parameter>
+        <parameterName>activationCode</parameterName>
+        <spParameterName>ActivationCode</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
 </operations>

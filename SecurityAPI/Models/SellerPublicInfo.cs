@@ -12,6 +12,6 @@ namespace UsersAPI.Models
         public string Address { get; set; }
         public string CellPhone { get; set; }
         public string Email { get; set; }
-        public decimal Rating { get; set; }
+        public decimal? Rating { get; set; }
     }
 }

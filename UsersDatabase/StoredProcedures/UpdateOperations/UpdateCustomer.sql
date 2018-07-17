@@ -8,14 +8,13 @@
 AS
 begin
 declare @UserId int
-select @UserId=[User_Id] from Customers where Id=@Id
+select @UserId=[UserId] from Customers where Id=@Id
 	Update Customers
 	set [Name]=IIF(@Name=null,[Name], @Name), 
 	[Surname]=IIF(@Surname=null, [Surname],@Surname)
 	where Id=@Id
 	Update Users
 	set [Email]=IIF(@Email=null, [Email],@Email), 
-	[Login]=IIF(@Login=null,[Login],@Login), 
 	[Password]=IIF(@Password=null, [Password],@Password)
 	where Id=@UserId
 	

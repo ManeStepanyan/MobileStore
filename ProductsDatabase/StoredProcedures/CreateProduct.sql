@@ -8,10 +8,9 @@
     @Display INT, 
     @Battery VARCHAR(30), 
     @Camera INT, 
-    @Image VARCHAR(200),
-	@Sellers_ID INT
+    @Image VARCHAR(200)
 AS
 	INSERT INTO Products ([Name], [Brand], [Version], [Price], RAM, [Year], Display, Battery, 
-							Camera, [Image], [Seller's_ID])
-	VALUES (@Name, @Brand, @Version, @Price, @RAM, @Year, @Display, @Battery, @Camera, @Image, @Sellers_ID)
+							Camera, [Image])
+	VALUES (@Name, @Brand, @Version, @Price, @RAM, @Year, @Display, @Battery, @Camera, @Image)
 GO

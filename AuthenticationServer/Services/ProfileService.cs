@@ -11,7 +11,7 @@ namespace AuthenticationServer.Services
    /// Profile serviice
    /// </summary>
     public class ProfileService : IProfileService
-    {
+    { 
         /// <summary>
         /// User repository
         /// </summary>

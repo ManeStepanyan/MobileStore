@@ -2,4 +2,4 @@
 AS
 	SELECT *
 	from Admins inner join Users
-	on Admins.[User_Id]=Users.Id
+	on Admins.[UserId]=Users.Id

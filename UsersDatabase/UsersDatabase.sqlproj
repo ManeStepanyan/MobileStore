@@ -81,7 +81,6 @@
     <Build Include="StoredProcedures\DeleteOperations\DeleteCustomerByLogin.sql" />
     <Build Include="StoredProcedures\DeleteOperations\DeleteSellerByLogin.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetCustomerById.sql" />
-    <Build Include="StoredProcedures\ReadOperations\GetRoleByLogin.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetAdminById.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetCustomerByLogin.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetUserByLogin.sql" />
@@ -94,7 +93,6 @@
     <Build Include="StoredProcedures\ReadOperations\GetUsers.sql" />
     <Build Include="StoredProcedures\Other\LoginExists.sql" />
     <Build Include="StoredProcedures\UpdateOperations\RateSeller.sql" />
-    <Build Include="StoredProcedures\UpdateOperations\ChangeStatus.sql" />
     <Build Include="StoredProcedures\UpdateOperations\UpdateAdmin.sql" />
     <Build Include="StoredProcedures\UpdateOperations\UpdateCustomer.sql" />
     <Build Include="StoredProcedures\UpdateOperations\UpdateSeller.sql" />
@@ -102,5 +100,7 @@
     <Build Include="StoredProcedures\CreateOperations\CreateUser.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetUser.sql" />
     <Build Include="StoredProcedures\ReadOperations\GetAdminByName.sql" />
+    <Build Include="StoredProcedures\VerifyUser.sql" />
+    <Build Include="StoredProcedures\AddActivationCode.sql" />
   </ItemGroup>
 </Project>

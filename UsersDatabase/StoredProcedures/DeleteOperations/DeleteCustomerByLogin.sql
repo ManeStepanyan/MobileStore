@@ -4,6 +4,6 @@ AS
 begin
 declare @userId int
 select	@userId= Id from Users where [Login]=@Login
-delete from Customers where [User_Id]=@userId
+delete from Customers where [UserId]=@userId
 delete from Users where [Login]=@Login
 end

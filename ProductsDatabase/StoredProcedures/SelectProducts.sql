@@ -24,19 +24,19 @@ AS
 	from Products
 	select @Brand1= iif(@Brand is null, [Brand], @Brand)
 	from Products
-	select @Version1= iif(@Version != 0.0, [Version], @Version)
+	select @Version1= iif(@Version is null, [Version], @Version)
 	from Products
-	select @Price1= iif(@Price != 0, [Price], @Price)
+	select @Price1= iif(@Price is null, [Price], @Price)
 	from Products
-	select @RAM1= iif(@RAM != 0, [RAM], @RAM)
+	select @RAM1= iif(@RAM is null, [RAM], @RAM)
 	from Products
-	select @Year1= iif(@Year!=0, [Year], @Year)
+	select @Year1= iif(@Year is null, [Year], @Year)
 	from Products
-	select @Display1= iif(@Display!=0, [Display], @Display)
+	select @Display1= iif(@Display is null, [Display], @Display)
 	from Products
 	select @Battery1= iif(@Battery is null, [Battery], @Battery)
 	from Products
-	select @Camera1= iif(@Camera != 0, [Camera], @Camera)
+	select @Camera1= iif(@Camera is null, [Camera], @Camera)
 	from Products
 	select @Image1= iif(@Image1 is null, [Image], @Image)
 	from Products

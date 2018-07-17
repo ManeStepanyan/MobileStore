@@ -20,7 +20,7 @@ namespace Cryptography
         /// <summary>     
         /// Vetor de bytes utilizados para a criptografia (Chave Externa)     
         /// </summary>     
-        private static byte[] bIV =
+        private static readonly byte[] bIV =
         { 0x50, 0x08, 0xF1, 0xDD, 0xDE, 0x3C, 0xF2, 0x18,
         0x44, 0x74, 0x19, 0x2C, 0x53, 0x49, 0xAB, 0xBC };
 
@@ -50,12 +50,14 @@ namespace Cryptography
                     byte[] bText = new UTF8Encoding().GetBytes(text);
 
                     // Instancia a classe de criptografia Rijndael
-                    Rijndael rijndael = new RijndaelManaged();
+                    Rijndael rijndael = new RijndaelManaged
+                    {
 
-                    // Define o tamanho da chave "256 = 8 * 32"                
-                    // Lembre-se: chaves possíves:                
-                    // 128 (16 caracteres), 192 (24 caracteres) e 256 (32 caracteres)                
-                    rijndael.KeySize = 256;
+                        // Define o tamanho da chave "256 = 8 * 32"                
+                        // Lembre-se: chaves possíves:                
+                        // 128 (16 caracteres), 192 (24 caracteres) e 256 (32 caracteres)                
+                        KeySize = 256
+                    };
 
                     // Cria o espaço de memória para guardar o valor criptografado:                
                     MemoryStream mStream = new MemoryStream();
@@ -102,12 +104,14 @@ namespace Cryptography
                     byte[] bText = Convert.FromBase64String(text);
 
                     // Instancia a classe de criptografia Rijndael                
-                    Rijndael rijndael = new RijndaelManaged();
+                    Rijndael rijndael = new RijndaelManaged
+                    {
 
-                    // Define o tamanho da chave "256 = 8 * 32"                
-                    // Lembre-se: chaves possíves:                
-                    // 128 (16 caracteres), 192 (24 caracteres) e 256 (32 caracteres)                
-                    rijndael.KeySize = 256;
+                        // Define o tamanho da chave "256 = 8 * 32"                
+                        // Lembre-se: chaves possíves:                
+                        // 128 (16 caracteres), 192 (24 caracteres) e 256 (32 caracteres)                
+                        KeySize = 256
+                    };
 
                     // Cria o espaço de memória para guardar o valor DEScriptografado:               
                     MemoryStream mStream = new MemoryStream();
@@ -133,6 +137,7 @@ namespace Cryptography
                     return null;
                 }
             }
+
             catch (Exception ex)
             {
                 // Se algum erro ocorrer, dispara a exceção            

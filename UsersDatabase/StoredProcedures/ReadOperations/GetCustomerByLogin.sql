@@ -7,6 +7,6 @@ declare @userId int
 	from Users where [Login]=@Login
  SELECT *
 	from Customers inner join Users on
-	Customers.[User_Id]=Users.Id
-	where Customers.[User_Id]=@userId
+	Customers.[UserId]=Users.Id
+	where Customers.[UserId]=@userId
 end
