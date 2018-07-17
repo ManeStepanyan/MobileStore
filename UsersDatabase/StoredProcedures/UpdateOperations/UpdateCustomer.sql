@@ -3,7 +3,7 @@
 	@Name varchar(25),
 	@Surname varchar(30),
 	@Email varchar(30),
-	@Login varchar(30),
+
 	@Password varchar(25)
 AS
 begin
@@ -15,6 +15,7 @@ select @UserId=[UserId] from Customers where Id=@Id
 	where Id=@Id
 	Update Users
 	set [Email]=IIF(@Email=null, [Email],@Email), 
+	
 	[Password]=IIF(@Password=null, [Password],@Password)
 	where Id=@UserId
 	

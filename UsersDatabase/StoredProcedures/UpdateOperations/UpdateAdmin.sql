@@ -2,6 +2,7 @@
     @Id int,
 	@Name varchar(20),
 	@Email varchar(40),
+
 	@Password varchar(30)
 AS
 begin

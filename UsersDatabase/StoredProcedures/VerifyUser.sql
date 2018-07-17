@@ -3,6 +3,6 @@
 AS
 begin
 	update Users
-	set IsValidated=1
+	set IsVerified=1
 	where ActivationCode=@ActivationCode
 end

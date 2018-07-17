@@ -47,7 +47,7 @@ namespace AuthenticationServer.Validators
                 if (user != null)
                 {
                     // if password is ok set
-                    if (user.Password == MyCryptography.Encrypt(context.Password)) //
+                    if (user.Password == MyCryptography.Encrypt(context.Password) && user.IsVerified==true) //
                     {
                         context.Result = new GrantValidationResult(
                         subject: user.Id.ToString(),
@@ -58,7 +58,7 @@ namespace AuthenticationServer.Validators
 
                     // othwerwise construct error response
                     context.Result = new GrantValidationResult(
-                        TokenRequestErrors.InvalidGrant, "Incorrect password");
+                        TokenRequestErrors.InvalidGrant, "Incorrect password or user is not verified");
                     return;
                 }
                 // message about non-existing user

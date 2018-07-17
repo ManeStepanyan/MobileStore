@@ -4,7 +4,7 @@
     [Password]       VARCHAR (50) NOT NULL,
     [Email]          NCHAR (40)   NOT NULL,
     [RoleId]         INT          NOT NULL,
-    [IsValidated]    BIT          NULL,
+    [IsVerified]     BIT          NULL,
     [IsActive]       BIT          NULL,
     [ActivationCode] VARCHAR (80) NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
@@ -12,6 +12,8 @@
     UNIQUE NONCLUSTERED ([Email] ASC),
     UNIQUE NONCLUSTERED ([Login] ASC)
 );
+
+
 
 
 

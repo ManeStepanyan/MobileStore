@@ -4,7 +4,6 @@
 	@Address varchar(60),
 	@Email varchar(40),
 	@CellPhone varchar(50),
-	@Login varchar(30),
 	@Password varchar(25)
 AS
 begin

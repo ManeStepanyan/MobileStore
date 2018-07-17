@@ -16,7 +16,7 @@ namespace UsersAPI.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public int RoleId { get; set; }
-        public string ActivationCode { get; set; }
-        public bool IsValidated { get; set; }
+      //  public string ActivationCode { get; set; }
+    //    public bool IsVerified { get; set; }
     }
 }
