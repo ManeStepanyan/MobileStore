@@ -47,12 +47,12 @@ namespace AuthenticationServer.Validators
                 if (user != null)
                 {
                     // if password is ok set
-                        if (user.Password ==MyCryptography.Encrypt(context.Password)) /// heto kavelacnes
-                        {
-                            context.Result = new GrantValidationResult(
-                            subject: user.Id.ToString(),
-                            authenticationMethod: "custom",
-                            claims: GetUserClaims(user));
+                    if (user.Password == MyCryptography.Encrypt(context.Password)) //
+                    {
+                        context.Result = new GrantValidationResult(
+                        subject: user.Id.ToString(),
+                        authenticationMethod: "custom",
+                        claims: GetUserClaims(user));
                         return;
                     }
 
@@ -90,5 +90,6 @@ namespace AuthenticationServer.Validators
             };
         }
     }
-}
+    }
+
 
