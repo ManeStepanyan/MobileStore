@@ -88,7 +88,7 @@ namespace AuthenticationServer.Validators
             {
                 new Claim("user_id", user.Id.ToString()),
                 new Claim(JwtClaimTypes.Name,user.Login),
-                new Claim(JwtClaimTypes.Role, user.Role_Id.ToString())                
+                new Claim(JwtClaimTypes.Role, user.RoleId.ToString())                
             };
         }
     }
