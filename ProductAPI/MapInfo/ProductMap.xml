@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<operations
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="MapSchema.xsd">
+  <operation name="GetAllProducts">
+    <spName>GetProducts</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name='GetProduct'>
+    <spName>GetProductById</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetProductByName'>
+    <spName>GetProductByName</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+</operations>

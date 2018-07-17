@@ -19,7 +19,10 @@ namespace ProductAPI
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        //  public IConfiguration Configuration { get; }
+        private IConfiguration Configuration = new ConfigurationBuilder()
+                     .SetBasePath(Directory.GetCurrentDirectory())
+                     .AddJsonFile("appsettings.json").Build();
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,7 +33,9 @@ namespace ProductAPI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddSingleton(new Repo<Product>(
+          new MapInfo(this.Configuration["Mappers:Products"]),
+          new SpExecuter(this.Configuration["ConnectionStrings:ProductsDB"])));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -2,7 +2,8 @@
     @Name VARCHAR(30)=null, 
     @Brand VARCHAR(20)=null, 
     @Version DECIMAL(5, 3)=null, 
-    @Price MONEY=null,
+    @PriceFrom MONEY=null,
+	@PriceTo MONEY=null,
     @RAM INT =null,
     @Year INT =null,
     @Display INT =null,
@@ -14,6 +15,7 @@ AS
 	declare @Brand1 varchar(20)
 	declare @Version1 decimal(5, 3)
 	declare @Price1 money
+	declare @Price2 money
 	declare @RAM1 int
 	declare @Year1 int 
 	declare @Display1 int 
@@ -26,7 +28,9 @@ AS
 	from Products
 	select @Version1= iif(@Version is null, [Version], @Version)
 	from Products
-	select @Price1= iif(@Price is null, [Price], @Price)
+	select @Price1= iif(@PriceFrom is null, [Price], @PriceFrom)
+	from Products
+	select @Price2= iif(@PriceTo is null, [Price], @PriceTo)
 	from Products
 	select @RAM1= iif(@RAM is null, [RAM], @RAM)
 	from Products
@@ -48,7 +52,7 @@ AS
 	intersect
 	select *  from Products where [Version]=@Version1 
 	intersect
-	select *  from Products where [Price]=@Price1 
+	select *  from Products where [Price] between @Price1  and @Price2
 	intersect
 	select *  from Products where [RAM]=@RAM1 
 	intersect
@@ -61,4 +65,5 @@ AS
 	select *  from Products where [Camera]=@Camera1 
 	intersect
 	select *  from Products where [Image]=@Image1
+	order by Price
 GO

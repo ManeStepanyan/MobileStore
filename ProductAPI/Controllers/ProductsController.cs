@@ -25,7 +25,7 @@ namespace ProductAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await this.repository.ExecuteOperationAsync("GetProducts");
+            var result = await this.repository.ExecuteOperationAsync("GetAllProducts");
 
             if (result == null)
                 return new StatusCodeResult(204);
@@ -36,9 +36,9 @@ namespace ProductAPI.Controllers
 
         // GET: api/Products/5
         [HttpGet("{Id}", Name = "GetProductById")]
-        public async Task<IActionResult> Get(int Id)
+        public async Task<IActionResult> Get(int id)
         {
-            var res = this.repository.ExecuteOperation("GetProductById", new[] { new KeyValuePair<string, object>("Id", Id) });
+            var res = this.repository.ExecuteOperation("GetProduct", new[] { new KeyValuePair<string, object>("id", id) });
             if (res == null)
             {
                 return new StatusCodeResult(404);
@@ -47,9 +47,9 @@ namespace ProductAPI.Controllers
         }
 
         [HttpGet("{Name}", Name = "GetProductByName")]
-        public async Task<IActionResult> Get(string Name)
+        public async Task<IActionResult> Get(string name)
         {
-            var res = await this.repository.ExecuteOperationAsync("GetProductByName", new[] { new KeyValuePair<string, object>("Name", Name) });
+            var res = await this.repository.ExecuteOperationAsync("GetProductByName", new[] { new KeyValuePair<string, object>("name", name) });
 
             if (res == null)
             {
@@ -59,7 +59,7 @@ namespace ProductAPI.Controllers
         }
 
         // POST: api/Products
-        [HttpPost]
+   /*     [HttpPost]
         public async Task<IActionResult> Post([FromBody]Product product)
         {
            var res = await this.repository.ExecuteOperationAsync("CreateProduct", new[] 
@@ -77,11 +77,11 @@ namespace ProductAPI.Controllers
            });
 
             return new JsonResult(res);
-        }
+        } */
 
 
         // PUT: api/Products/5
-        [HttpPut("{id}")]
+     /*   [HttpPut("{id}")]
         public async Task<IActionResult> Put(int Id, double Price, string Image)
         {
             await this.repository.ExecuteOperationAsync("UpdateProduct", new[]
@@ -103,8 +103,8 @@ namespace ProductAPI.Controllers
                 new KeyValuePair<string, object>("Id", Id),
             });
             return new StatusCodeResult(200);
-        }
-    }
+        } */
+    } 
 }
 
 
