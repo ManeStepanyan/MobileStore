@@ -60,6 +60,20 @@ namespace OrdersAndShopCartAPI.Controllers
         }
 
 
+        [HttpGet("{productId}", Name = "GetOrderByProductId")]
+        public async Task<IActionResult> GetOrderByProductId(int id)
+        {
+            var res = await this.repo.ExecuteOperationAsync("GetOrderByProductId", new[]
+            {
+                new KeyValuePair<string, object>("id", id)
+            });
+            if (res == null)
+            {
+                return new StatusCodeResult(404);
+            }
+            return new JsonResult(res);
+        }
+
         // POST: api/Orders
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Order order)

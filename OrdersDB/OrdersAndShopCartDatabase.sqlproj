@@ -62,13 +62,14 @@
   <ItemGroup>
     <Build Include="Orders.sql" />
     <Build Include="StoredProcedures\GetAllOrders.sql" />
-    <Build Include="StoredProcedures\GetOrdersByTimeSpan.sql" />
+    <Build Include="StoredProcedures\GetOrderByTimeSpan.sql" />
     <Build Include="StoredProcedures\GetOrderByOrderId.sql" />
     <Build Include="StoredProcedures\CreateOrder.sql" />
     <Build Include="StoredProcedures\DeleteOrder.sql" />
     <Build Include="ShopCart.sql" />
     <Build Include="StoredProcedures\AddToShopCart.sql" />
     <Build Include="StoredProcedures\DeleteFromShopCart.sql" />
+    <Build Include="StoredProcedures\GetOrderByProductId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OrdersDatabase.refactorlog" />

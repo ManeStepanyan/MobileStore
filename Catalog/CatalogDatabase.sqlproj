@@ -60,8 +60,9 @@
     <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Catalog.sql" />
+    <Build Include="SellerProduct.sql" />
     <Build Include="StoredProcedures\GetSellerId.sql" />
     <Build Include="StoredProcedures\GetProducts.sql" />
+    <Build Include="CustomerProduct.sql" />
   </ItemGroup>
 </Project>
