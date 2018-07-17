@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using AuthenticationServer.Validators;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
-using System.Collections.Generic;
-using System.Security.Claims;
-using IdentityModel;
 using AuthenticationServer.UsersRepository;
 
 namespace AuthenticationServer.Services
@@ -18,7 +15,7 @@ namespace AuthenticationServer.Services
         /// <summary>
         /// User repository
         /// </summary>
-        private readonly IUserRepository _userRepository;
+        private readonly IUserRepository userRepository;
 
         /// <summary>
         /// Creates new instance of 
@@ -27,7 +24,7 @@ namespace AuthenticationServer.Services
         /// <param name="userRepository">User repository</param>
         public ProfileService(IUserRepository userRepository)
         {
-            this._userRepository = userRepository;
+            this.userRepository = userRepository;
         }
 
         /// <summary>
@@ -44,10 +41,7 @@ namespace AuthenticationServer.Services
                 if (!string.IsNullOrEmpty(context.Subject.Identity.Name))
                 {
                     // get user from db (in my case this is by email)
-                    var user = await this._userRepository.FindAsync(context.Subject.Identity.Name);
-
-                   
-
+                    var user = await this.userRepository.FindAsync(context.Subject.Identity.Name);                 
                     // checking user
                     if (user != null)
                     {
@@ -66,7 +60,7 @@ namespace AuthenticationServer.Services
                     if (!string.IsNullOrEmpty(userId?.Value) && int.Parse(userId.Value) > 0)
                     {
                         // get user from db (find user by user id)
-                        var user = await this._userRepository.FindAsync(int.Parse(userId.Value));
+                        var user = await this.userRepository.FindAsync(int.Parse(userId.Value));
 
                         // issue the claims for the user
                         if (user != null)
@@ -99,14 +93,14 @@ namespace AuthenticationServer.Services
 
                    if (!string.IsNullOrEmpty(userId?.Value) && int.Parse(userId.Value) > 0)
                    {
-                       var user = await this._userRepository.FindAsync(int.Parse(userId.Value));
+                       var user = await this.userRepository.FindAsync(int.Parse(userId.Value));
 
                        if (user != null)
                        {
-                        /*   if (user.IsActive)
+                           if (user.IsActive)
                            {
                                context.IsActive = user.IsActive;
-                           } */
+                           } 
                        }
                    }
                }
