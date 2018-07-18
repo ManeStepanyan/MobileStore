@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[SelectProducts]
     @Name VARCHAR(30)=null, 
     @Brand VARCHAR(20)=null, 
-    @Version DECIMAL(5, 3)=null, 
+    @Version VARCHAR(10)=null, 
     @PriceFrom MONEY=null,
 	@PriceTo MONEY=null,
     @RAM INT =null,
