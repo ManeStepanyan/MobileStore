@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using AuthenticationServer;
 using DatabaseAccess.Repository;
 using DatabaseAccess.SpExecuters;
 using DatabaseAccessor.Repository;
