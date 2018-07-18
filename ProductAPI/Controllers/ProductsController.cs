@@ -59,7 +59,7 @@ namespace ProductAPI.Controllers
         }
 
         // POST: api/Products
-   /*     [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody]Product product)
         {
            var res = await this.repository.ExecuteOperationAsync("CreateProduct", new[] 
@@ -77,11 +77,11 @@ namespace ProductAPI.Controllers
            });
 
             return new JsonResult(res);
-        } */
+        } 
 
 
         // PUT: api/Products/5
-     /*   [HttpPut("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put(int Id, double Price, string Image)
         {
             await this.repository.ExecuteOperationAsync("UpdateProduct", new[]
@@ -103,7 +103,7 @@ namespace ProductAPI.Controllers
                 new KeyValuePair<string, object>("Id", Id),
             });
             return new StatusCodeResult(200);
-        } */
+        } 
     } 
 }
 
