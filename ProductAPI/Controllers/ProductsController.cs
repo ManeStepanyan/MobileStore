@@ -38,7 +38,7 @@ namespace ProductAPI.Controllers
         [HttpGet("{Id}", Name = "GetProductById")]
         public async Task<IActionResult> Get(int id)
         {
-            var res = this.repository.ExecuteOperation("GetProduct", new[] { new KeyValuePair<string, object>("id", id) });
+            var res = await this.repository.ExecuteOperationAsync("GetProduct", new[] { new KeyValuePair<string, object>("id", id) });
             if (res == null)
             {
                 return new StatusCodeResult(404);
