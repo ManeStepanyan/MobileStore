@@ -45,7 +45,7 @@ namespace OrdersAndShopCartAPI.Controllers
 
         // GET: api/Orders/5
         [HttpGet("{date}", Name = "GetOrderByTimeSpan")]
-        public async Task<IActionResult> GetOrderById(DateTime start, DateTime end)
+        public async Task<IActionResult> GetOrderByTimeSpan(DateTime start, DateTime end)
         {
             var res = await this.repo.ExecuteOperationAsync("GetOrderByTimeSpan", new[]
             {
@@ -87,13 +87,6 @@ namespace OrdersAndShopCartAPI.Controllers
                 new KeyValuePair<string, object>("TotalAmount", order.TotalAmount),
             });
             return new JsonResult(res);
-        }
-
-        //petqa update??
-        // PUT: api/Orders/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
         }
 
         // DELETE: api/ApiWithActions/5
