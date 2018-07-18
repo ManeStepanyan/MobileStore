@@ -62,7 +62,15 @@
   <ItemGroup>
     <Build Include="SellerProduct.sql" />
     <Build Include="StoredProcedures\GetSellerId.sql" />
-    <Build Include="StoredProcedures\GetProducts.sql" />
+    <Build Include="StoredProcedures\GetProductsBySellerId.sql" />
     <Build Include="CustomerProduct.sql" />
+    <Build Include="StoredProcedures\GetCustomer.sql" />
+    <Build Include="StoredProcedures\GetProductByCustomerId.sql" />
+    <Build Include="StoredProcedures\GetAllSellerProducts.sql" />
+    <Build Include="StoredProcedures\GetAllCustomerProducts.sql" />
+    <Build Include="StoredProcedures\AddSellerProduct.sql" />
+    <Build Include="StoredProcedures\DeleteSellerProduct.sql" />
+    <Build Include="StoredProcedures\DeleteCostumerProduct.sql" />
+    <Build Include="StoredProcedures\AddCustomerProduct.sql" />
   </ItemGroup>
 </Project>
