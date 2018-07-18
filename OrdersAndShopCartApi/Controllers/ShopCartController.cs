@@ -34,7 +34,7 @@ namespace OrdersAndShopCartAPI.Controllers
         }
 
         [HttpGet("{id}", Name = "GetShopCartById")]
-        public async Task<IActionResult> GetShopCartByOrderId(int id)
+        public async Task<IActionResult> GetShopCartById(int id)
         {
             var res = await this.repo.ExecuteOperationAsync("GetShopCartById", new[]
             {
