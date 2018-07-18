@@ -297,7 +297,7 @@ namespace DatabaseAccess.SpExecuters
                 {////????????????
                     reader.GetBoolean(reader.GetOrdinal(property.Name));
                 }
-                if (reader[property.Name] == DBNull.Value)
+                if (reader[property.Name].ToString() == DBNull.Value.ToString())
                 {
                     property.SetValue(result, null);
                 }

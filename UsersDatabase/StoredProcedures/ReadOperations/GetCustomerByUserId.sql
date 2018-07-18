@@ -2,5 +2,7 @@
 	@userid int
 AS
 begin
-	SELECT * from Customers where UserId=@userid
+	SELECT * from Customers
+	inner join Users on Customers.UserId=Users.Id
+	where Customers.UserId=@userid
 end
