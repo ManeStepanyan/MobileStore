@@ -21,7 +21,9 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OrdersAndShopCartDatabase",
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CatalogDatabase", "Catalog\CatalogDatabase.sqlproj", "{33E2FDBA-AD64-4C46-BD22-A7A3D67747F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersAndShopCartAPI", "OrdersAndShopCartApi\OrdersAndShopCartAPI.csproj", "{1CB71B1F-2904-4078-A512-C6F31D9DD97A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersAndShopCartAPI", "OrdersAndShopCartApi\OrdersAndShopCartAPI.csproj", "{1CB71B1F-2904-4078-A512-C6F31D9DD97A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient", "WebClient\WebClient.csproj", "{36FDB59E-05D4-4A68-BC16-C4FCD9687ED1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{1CB71B1F-2904-4078-A512-C6F31D9DD97A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB71B1F-2904-4078-A512-C6F31D9DD97A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB71B1F-2904-4078-A512-C6F31D9DD97A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36FDB59E-05D4-4A68-BC16-C4FCD9687ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36FDB59E-05D4-4A68-BC16-C4FCD9687ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36FDB59E-05D4-4A68-BC16-C4FCD9687ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36FDB59E-05D4-4A68-BC16-C4FCD9687ED1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
