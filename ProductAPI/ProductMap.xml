@@ -2,6 +2,52 @@
 <operations
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="MapSchema.xsd">
+  <operation name='CreateProduct'>
+    <spName>CreateProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>name</parameterName>
+        <spParameterName>Name</spParameterName>
+      </parameter>
+          <parameter>
+        <parameterName>brand</parameterName>
+        <spParameterName>Brand</spParameterName>
+      </parameter>
+              <parameter>
+        <parameterName>version</parameterName>
+        <spParameterName>Version</spParameterName>
+      </parameter>
+              <parameter>
+        <parameterName>price</parameterName>
+        <spParameterName>Price</spParameterName>
+      </parameter>
+                <parameter>
+        <parameterName>ram</parameterName>
+        <spParameterName>RAM</spParameterName>
+      </parameter>
+            <parameter>
+        <parameterName>year</parameterName>
+        <spParameterName>Year</spParameterName>
+      </parameter>
+              <parameter>
+        <parameterName>display</parameterName>
+        <spParameterName>Display</spParameterName>
+      </parameter>
+      <parameter>
+      <parameterName>battery</parameterName>
+        <spParameterName>Battery</spParameterName>
+      </parameter>
+     <parameter>
+      <parameterName>camera</parameterName>
+        <spParameterName>Camera</spParameterName>
+      </parameter>
+     <parameter>
+      <parameterName>image</parameterName>
+        <spParameterName>Image</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Scalar</returnDataType>
+  </operation>
   <operation name="GetAllProducts">
     <spName>GetProducts</spName>
     <returnDataType>Enumerable</returnDataType>
@@ -25,5 +71,43 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
       </parameter>
     </parameters>
     <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='DeleteProduct'>
+    <spName>DeleteProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnData</returnDataType>
+  </operation>
+  <operation name='UpdateProduct'>
+    <spName>UpdateProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>price</parameterName>
+        <spParameterName>Price</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>image</parameterName>
+        <spParameterName>Image</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+ <operation name='SearchProduct'>
+    <spName>SearchProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>price</parameterName>
+        <spParameterName>Price</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>image</parameterName>
+        <spParameterName>Image</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
   </operation>
 </operations>

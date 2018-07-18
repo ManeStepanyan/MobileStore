@@ -13,4 +13,5 @@ AS
 	INSERT INTO Products ([Name], [Brand], [Version], [Price], RAM, [Year], Display, Battery, 
 							Camera, [Image])
 	VALUES (@Name, @Brand, @Version, @Price, @RAM, @Year, @Display, @Battery, @Camera, @Image)
+	return scope_identity()
 GO
