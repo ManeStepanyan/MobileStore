@@ -102,5 +102,7 @@
     <Build Include="StoredProcedures\ReadOperations\GetAdminByName.sql" />
     <Build Include="StoredProcedures\VerifyUser.sql" />
     <Build Include="StoredProcedures\AddActivationCode.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetSellerByUserId.sql" />
+    <Build Include="StoredProcedures\ReadOperations\GetCustomerByUserId.sql" />
   </ItemGroup>
 </Project>

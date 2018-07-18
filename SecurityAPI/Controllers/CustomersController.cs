@@ -76,7 +76,16 @@ namespace UsersAPI.Controllers
             }
             return new JsonResult(customer);
         }
-
+        [HttpGet("users/{id}", Name = "GetCustomerByUserId")]
+        public async Task<IActionResult> GetByUserId(int id)
+        {
+            var res = await this.publicRepo.ExecuteOperationAsync("GetCustomerByUserId", new[] { new KeyValuePair<string, object>("userid", id) });
+            if (res == null)
+            {
+                return new StatusCodeResult(404);
+            }
+            return new JsonResult(res);
+        }
         // POST: api/Customers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CustomerInfo customer)
