@@ -66,16 +66,6 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     </parameters>
     <returnDataType>Entity</returnDataType>
   </operation>
-  <operation name='GetSeller'>
-    <spName>GetSellerById</spName>
-    <parameters>
-      <parameter>
-        <parameterName>id</parameterName>
-        <spParameterName>Id</spParameterName>
-      </parameter>
-    </parameters>
-    <returnDataType>Entity</returnDataType>
-  </operation>
   <operation name='GetCustomer'>
     <spName>GetCustomerById</spName>
     <parameters>
