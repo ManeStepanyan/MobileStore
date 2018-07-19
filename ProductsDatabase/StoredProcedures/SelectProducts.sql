@@ -6,7 +6,7 @@
 	@PriceTo MONEY=null,
     @RAM INT =null,
     @Year INT =null,
-    @Display INT =null,
+    @Display decimal =null,
     @Battery VARCHAR(30) =null,
     @Camera INT =null,
     @Image VARCHAR(200)=null
