@@ -1,7 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <operations>
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="MapSchema.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="MapSchema.xsd">
+  <operation name="GetAllSellerPoducts">
+    <spName>GetAllSellerPoducts</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name='GetProductBySellerId'>
+    <spName>GetProductBySellerId</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Seller_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetSeller'>
+    <spName>GetSeller</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Product_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
   <operation name="AddSellerProduct">
     <spName>AddSellerProduct</spName>
     <parameters>
@@ -15,6 +39,64 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
       </parameter>
     </parameters>
     <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name='DeleteSellerProduct'>
+    <spName>DeleteSellerProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Product_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnData</returnDataType>
+  </operation>
+  <operation name="GetAllCustomerProducts">
+    <spName>GetAllCustomerProducts</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name='GetProductByCustomerId'>
+    <spName>GetProductByCustomerId</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Customer_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetCustomer'>
+    <spName>GetCustomer</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Product_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name="AddCustomerProduct">
+    <spName>AddCustomerProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>ProductId</parameterName>
+        <spParameterName>Product_Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>CustomerId</parameterName>
+        <spParameterName>Customer_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+  <operation name='DeleteCustomerProduct'>
+    <spName>DeleteCustomerProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Product_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnData</returnDataType>
   </operation>
 </operations>
   

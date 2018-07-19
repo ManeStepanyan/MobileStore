@@ -45,10 +45,10 @@ namespace CatalogAPI.Controllers
         }
 
         // GET: api/CustomerProduct/5
-        [HttpGet("{id}", Name = "GetCustomerId")]
-        public async Task<IActionResult> GetCustomerId(int id)
+        [HttpGet("{id}", Name = "GetCustomer")]
+        public async Task<IActionResult> GetCustomer(int id)
         {
-            var res = await this.repo.ExecuteOperationAsync("GetCustomerId", new[] { new KeyValuePair<string, object>("id", id) });
+            var res = await this.repo.ExecuteOperationAsync("GetCustomer", new[] { new KeyValuePair<string, object>("id", id) });
             if (res == null)
             {
                 return new StatusCodeResult(404);

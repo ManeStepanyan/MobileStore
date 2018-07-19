@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="SellerProduct.sql" />
-    <Build Include="StoredProcedures\GetSellerId.sql" />
+    <Build Include="StoredProcedures\GetSeller.sql" />
     <Build Include="StoredProcedures\GetProductsBySellerId.sql" />
     <Build Include="CustomerProduct.sql" />
     <Build Include="StoredProcedures\GetCustomer.sql" />

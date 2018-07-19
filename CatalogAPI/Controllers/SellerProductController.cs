@@ -52,9 +52,9 @@ namespace CatalogAPI.Controllers
 
         // GET: api/SellerProduct/5
         [HttpGet("{id}", Name = "GetSellerId")]
-        public async Task<IActionResult> GetSellerId(int id)
+        public async Task<IActionResult> GetSeller(int id)
         {
-            var res = await this.repo.ExecuteOperationAsync("GetSellerId", new[] { new KeyValuePair<string, object>("id", id) });
+            var res = await this.repo.ExecuteOperationAsync("GetSeller", new[] { new KeyValuePair<string, object>("id", id) });
             if (res == null)
             {
                 return new StatusCodeResult(404);
