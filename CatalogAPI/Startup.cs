@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
+using CatalogAPI.Models;
+using DatabaseAccess.Repository;
+using DatabaseAccess.SpExecuters;
+using DatabaseAccessor.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+
 
 namespace CatalogAPI
 {
@@ -19,7 +21,10 @@ namespace CatalogAPI
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        //   public IConfiguration Configuration { get; }
+        private IConfiguration Configuration = new ConfigurationBuilder()
+                     .SetBasePath(Directory.GetCurrentDirectory())
+                     .AddJsonFile("appsettings.json").Build();
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,6 +35,25 @@ namespace CatalogAPI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddMvcCore()
+                    .AddRazorViewEngine()
+                    .AddAuthorization()
+                    .AddJsonFormatters();
+
+            services.AddAuthentication("Bearer")
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = "http://localhost:5000";
+                        options.RequireHttpsMetadata = false;
+                        options.ApiName = "CatalogAPI";
+                    });
+            // adding policies
+          services.AddAuthorization(options => options.AddPolicy("Seller", policy => policy.RequireClaim("role", "2")));
+          
+
+            services.AddSingleton(new Repo<SellerProduct>(
+                new MapInfo(this.Configuration["Mappers:Catalog"]),
+                new SpExecuter(this.Configuration["ConnectionStrings:CatalogDB"])));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -51,6 +75,7 @@ namespace CatalogAPI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

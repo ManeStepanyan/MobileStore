@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using CatalogAPI.Models;
 using DatabaseAccess.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -60,16 +65,21 @@ namespace CatalogAPI.Controllers
 
         // POST: api/SellerProduct
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] SellerProduct sellerProduct)
+        //  [Authorize(Policy = "Seller")]
+        public async Task<IActionResult> Post([FromBody] Product product)
         {
-            var res = await this.repo.ExecuteOperationAsync("AddSellerProduct", new[]
-            {
-                new KeyValuePair<string, object>("ProductId", sellerProduct.ProductId),
-                new KeyValuePair<string, object>("SellerId", sellerProduct.SellerId)
-            });
-            return new JsonResult(res);
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:5002/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            MediaTypeFormatter jsonFormatter = new JsonMediaTypeFormatter();
+            HttpContent content = new ObjectContent(typeof(Product), jsonFormatter, null);
+            HttpResponseMessage response = await client.PostAsync("api/products/", content);
+            int id = int.Parse(response.ToString());
+            return new JsonResult(id);
         }
-        
+
+
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
@@ -82,3 +92,4 @@ namespace CatalogAPI.Controllers
         }
     }
 }
+
