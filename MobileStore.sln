@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductAPI", "ProductAPI\Pr
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ProductsDatabase", "ProductsDatabase\ProductsDatabase.sqlproj", "{161EEF2C-4D74-48EC-8590-9BE59060D68C}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OrdersAndShopCartDatabase", "OrdersDB\OrdersAndShopCartDatabase.sqlproj", "{EC5BBAB3-15B6-4CC6-B01F-71BAFFB48254}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CatalogDatabase", "Catalog\CatalogDatabase.sqlproj", "{33E2FDBA-AD64-4C46-BD22-A7A3D67747F8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersAndShopCartAPI", "OrdersAndShopCartApi\OrdersAndShopCartAPI.csproj", "{1CB71B1F-2904-4078-A512-C6F31D9DD97A}"
