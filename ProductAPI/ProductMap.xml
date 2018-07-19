@@ -49,7 +49,7 @@ xsi:noNamespaceSchemaLocation="MapSchema.xsd">
     <returnDataType>Scalar</returnDataType>
   </operation>
   <operation name="GetAllProducts">
-    <spName>GetProducts</spName>
+    <spName>GetAllProducts</spName>
     <returnDataType>Enumerable</returnDataType>
   </operation>
   <operation name='GetProduct'>

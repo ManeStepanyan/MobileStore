@@ -8,6 +8,7 @@ namespace OrdersAndShopCartAPI.Models
     public class Order
     {
         public int Id { get; set; }
+        public int ProductId { get; set }
         public DateTime Date { get; set; } 
         public string Address { get; set; }
         public string CellPhone { get; set; }
