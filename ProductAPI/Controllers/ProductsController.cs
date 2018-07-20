@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DatabaseAccess.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
 
@@ -38,7 +34,7 @@ namespace ProductAPI.Controllers
         [HttpGet("{Id}", Name = "GetProductById")]
         public async Task<IActionResult> Get(int id)
         {
-            var res = this.repository.ExecuteOperation("GetProduct", new[] { new KeyValuePair<string, object>("id", id) });
+            var res = await this.repository.ExecuteOperationAsync("GetProduct", new[] { new KeyValuePair<string, object>("id", id) });
             if (res == null)
             {
                 return new StatusCodeResult(404);
@@ -59,36 +55,36 @@ namespace ProductAPI.Controllers
         }
 
         // POST: api/Products
-   /*     [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody]Product product)
         {
            var res = await this.repository.ExecuteOperationAsync("CreateProduct", new[] 
            {
-              new KeyValuePair<string, object>("Name", product.Name),
-              new KeyValuePair<string, object>("Brand", product.Brand),
-              new KeyValuePair<string, object>("Version", product.Version),
-              new KeyValuePair<string, object>("Price", product.Price),
-              new KeyValuePair<string, object>("RAM", product.RAM),
-              new KeyValuePair<string, object>("Year", product.Year),
-              new KeyValuePair<string, object>("Display", product.Display),
-              new KeyValuePair<string, object>("Battery", product.Battery),
-              new KeyValuePair<string, object>("Camera", product.Camera),
-              new KeyValuePair<string, object>("Image", product.Image)
+              new KeyValuePair<string, object>("name", product.Name),
+              new KeyValuePair<string, object>("brand", product.Brand),
+              new KeyValuePair<string, object>("version", product.Version),
+              new KeyValuePair<string, object>("price", product.Price),
+              new KeyValuePair<string, object>("ram", product.RAM),
+              new KeyValuePair<string, object>("year", product.Year),
+              new KeyValuePair<string, object>("display", product.Display),
+              new KeyValuePair<string, object>("battery", product.Battery),
+              new KeyValuePair<string, object>("camera", product.Camera),
+              new KeyValuePair<string, object>("image", product.Image)
            });
 
             return new JsonResult(res);
-        } */
+        } 
 
 
         // PUT: api/Products/5
-     /*   [HttpPut("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put(int Id, double Price, string Image)
         {
             await this.repository.ExecuteOperationAsync("UpdateProduct", new[]
             {
-                new KeyValuePair<string, object>("Id", Id),
-                new KeyValuePair<string, object>("Price", Price),
-                new KeyValuePair<string, object>("Image", Image)
+                new KeyValuePair<string, object>("id", Id),
+                new KeyValuePair<string, object>("price", Price),
+                new KeyValuePair<string, object>("image", Image)
             });
 
             return new JsonResult(await this.repository.ExecuteOperationAsync("GetProduct", new[]
@@ -97,13 +93,13 @@ namespace ProductAPI.Controllers
 
     // DELETE: api/ApiWithActions/5
     [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int Id)
+        public async Task<IActionResult> Delete(int id)
         {
             await this.repository.ExecuteOperationAsync("DeleteProduct", new[] {
-                new KeyValuePair<string, object>("Id", Id),
+                new KeyValuePair<string, object>("id", id),
             });
             return new StatusCodeResult(200);
-        } */
+        } 
     } 
 }
 

@@ -14,8 +14,11 @@ namespace AuthenticationServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("UserAPI")
-               
+                new ApiResource("UserAPI"),
+                new ApiResource("ProductAPI"),
+                new ApiResource("CatalogAPI"),
+                new ApiResource("OrderAndShopcartAPI")
+
             };
         }
 
@@ -39,7 +42,7 @@ namespace AuthenticationServer
                         new Claim("Role", "Admin"),
                     }, */
                     ClientClaimsPrefix = "",
-                    AllowedScopes = { "UserAPI","ProductAPI","OrderAPI" }
+                    AllowedScopes = { "UserAPI","ProductAPI","OrderAndShopcartAPI","CatalogAPI" }
                 }
             };
 
