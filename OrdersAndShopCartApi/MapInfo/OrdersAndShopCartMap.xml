@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<operations
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="MapSchema.xsd">
+  <operation name="GetAllOrders">
+    <spName>GetAllOrders</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name='GetOrderById'>
+    <spName>GetOrderByOrderId</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetOrderByTimeSpan'>
+    <spName>GetOrderByTimeSpan</spName>
+    <parameters>
+      <parameter>
+        <parameterName>start</parameterName>
+        <spParameterName>start</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>end</parameterName>
+        <spParameterName>end</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='GetOrderByProductId'>
+    <spName>GetOrderByOrderId</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+  <operation name='CreateOrder'>
+    <spName>CreateOrder</spName>
+    <parameters>
+      <parameter>
+        <parameterName>ProductId</parameterName>
+        <spParameterName>ProductId</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>Date</parameterName>
+        <spParameterName>Date</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>version</parameterName>
+        <spParameterName>Version</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>Address</parameterName>
+        <spParameterName>Address</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>CellPhone</parameterName>
+        <spParameterName>CellPhone</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>Quantity</parameterName>
+        <spParameterName>Quantity</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>TotalAmount</parameterName>
+        <spParameterName>TotalAmount</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Scalar</returnDataType>
+  </operation>
+  <operation name='DeleteOrder'>
+    <spName>DeleteOrder</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnData</returnDataType>
+  </operation>
+  <operation name="GetAllShopCarts">
+    <spName>GetAllShopCarts</spName>
+    <returnDataType>Enumerable</returnDataType>
+  </operation>
+  <operation name='GetShopCartById'>
+    <spName>GetShopCartById</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Entity</returnDataType>
+  </operation>
+   <operation name='AddToShopCart'>
+    <spName>AddToShopCart</spName>
+    <parameters>
+      <parameter>
+        <parameterName>CostumerId</parameterName>
+        <spParameterName>Customer_Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>ProductId</parameterName>
+        <spParameterName>Product_Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>Quantity</parameterName>
+        <spParameterName>Quantity</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Scalar</returnDataType>
+  </operation>
+  <operation name='UpdateShopCart'>
+    <spName>UpdateShopCart</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>quantity</parameterName>
+        <spParameterName>Quantity</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>Scalar</returnDataType>
+  </operation>
+  <operation name='DeleteFromShopCart'>
+    <spName>DeleteFromShopCart</spName>
+    <parameters>
+      <parameter>
+        <parameterName>id</parameterName>
+        <spParameterName>Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnData</returnDataType>
+  </operation>
+</operations>
