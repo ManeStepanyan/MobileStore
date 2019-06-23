@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<operations>
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="MapSchema.xsd">
+  <operation name="AddSellerProduct">
+    <spName>AddSellerProduct</spName>
+    <parameters>
+      <parameter>
+        <parameterName>productId</parameterName>
+        <spParameterName>Product_Id</spParameterName>
+      </parameter>
+      <parameter>
+        <parameterName>sellerId</parameterName>
+        <spParameterName>Seller_Id</spParameterName>
+      </parameter>
+    </parameters>
+    <returnDataType>NoReturnValue</returnDataType>
+  </operation>
+</operations>
+  
+
