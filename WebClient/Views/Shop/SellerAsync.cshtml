@@ -1,0 +1,35 @@
+﻿@model List<WebClient.Models.SellerModel>
+
+@using (Html.BeginForm())
+{
+    @foreach (var seller in Model)
+    {
+        <div>
+            <p data-type = "id">@seller.Id</p>
+            <p>@seller.Name</p>
+            <p>@seller.Address</p>
+            <p>@seller.CellPhone</p>
+            <p>@seller.Email</p>
+            <p>@seller.Rating</p>
+            <input type="button" class="products btn btn-primary" value="See All Products">
+        </div>
+    }
+    <script>
+        $('button').hasClass("products").on('click', function () {
+            $.ajax
+                ({
+                    type: "GET",
+                    dataType: "Json",
+                    url: '@Url.Action("Seller", "Home")' + '?id=' + $(this).parent().find('p').attr('data-type'),
+                    async: false,
+                    success: function (data) {
+
+                    }
+                    error: function () {
+                        ErrorMessage("", '');
+                    }
+                })
+        });        
+            
+    </script>
+}
